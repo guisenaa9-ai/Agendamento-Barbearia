@@ -1,0 +1,40 @@
+:root{--ds-green:#18392c;--ds-green-2:#28513e;--ds-gold:#b58b50;--ds-cream:#f7f4ec;--ds-paper:#fffefa;--ds-ink:#172820;--ds-muted:#69766d;--ds-line:#e3e4dc;--ds-shadow:0 18px 50px rgba(24,57,44,.09)}
+body{background:radial-gradient(circle at 90% 0,#efe8da 0,transparent 28rem),var(--ds-cream);color:var(--ds-ink)}
+button,.primary,.staff-attendance-link,.whatsapp-send{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+button:not(:disabled):hover,.primary:hover,.staff-attendance-link:hover,.whatsapp-send:hover{transform:translateY(-1px);box-shadow:0 9px 20px rgba(24,57,44,.17)}
+button,.primary{border-radius:10px!important;font-weight:600}
+input,select,textarea{border-color:#d9ded5!important;border-radius:10px!important;background:#fffefa!important;transition:border-color .18s ease,box-shadow .18s ease}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ds-gold)!important;box-shadow:0 0 0 4px rgba(181,139,80,.13)}
+.customer-header,.staff-header{background:rgba(255,254,250,.72);border:1px solid rgba(227,228,220,.9)!important;border-radius:16px;padding:14px 18px!important;box-shadow:0 8px 30px rgba(24,57,44,.045);backdrop-filter:blur(12px)}
+.entry-layout{border-radius:24px;box-shadow:var(--ds-shadow)}
+.entry-card{background:linear-gradient(145deg,#fff 0,#fffefa 100%)}
+.entry-tabs{border:1px solid #e7e8e0}
+.entry-form input{min-height:48px}
+.entry-form .entry-submit{min-height:52px;background:linear-gradient(135deg,var(--ds-green),var(--ds-green-2))}
+.entry-team,.my-booking,.barber-agenda,.metric,.ranking-panel,.catalog-form,.catalog-list,.finance-detail-card,.visit-card,.cancellation-panel,.summary,article{box-shadow:0 12px 35px rgba(24,57,44,.055)}
+.entry-team-card,.team-card{border-radius:18px!important;transition:transform .22s ease,box-shadow .22s ease}
+.entry-team-card:hover,.team-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(24,57,44,.12)}
+.entry-team-card .portrait,.team-card .portrait{background:linear-gradient(145deg,#eee6d6,#d9d0bf)}
+.entry-team-card .portrait img,.team-card .portrait img{object-fit:contain!important}
+.staff-shell{gap:28px}
+.staff-sidebar{background:rgba(255,254,250,.7);border:1px solid var(--ds-line)!important;border-radius:16px;padding:18px!important;min-height:0;box-shadow:0 10px 35px rgba(24,57,44,.045)}
+.staff-nav button,.attendance-nav-link{border-radius:10px!important}
+.staff-nav button[aria-selected=true]{background:linear-gradient(135deg,var(--ds-green),var(--ds-green-2));box-shadow:0 10px 24px rgba(24,57,44,.2)}
+.staff-toolbar{background:linear-gradient(120deg,#fffefa,#f3eee3);border:1px solid var(--ds-line);border-radius:16px;padding:20px 22px}
+.staff-toolbar h2{font-size:34px}
+.staff-filters,.finance-filters{border-radius:14px;box-shadow:0 8px 28px rgba(24,57,44,.04)}
+.metrics{gap:18px}
+.metric{position:relative;overflow:hidden;border-radius:16px;padding:24px}
+.metric:before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:linear-gradient(var(--ds-gold),#d4ba88)}
+.metric strong{font-family:Georgia,serif;color:var(--ds-green);font-size:31px}
+.ranking-panel,.catalog-form,.catalog-list,.finance-table-wrap,.finance-detail-card,.barber-agenda,.visit-card{border-radius:16px!important}
+.barber-heading{background:linear-gradient(135deg,#edf2eb,#f8f4e9)}
+.barber-heading .portrait{border:3px solid #fff;box-shadow:0 5px 14px rgba(24,57,44,.15)}
+.reservation{background:#fff}
+.booking-state,.visit-badge{font-weight:600;letter-spacing:.02em}
+.finance-table th{background:#edf2eb;color:var(--ds-green)}
+.finance-table tbody tr{transition:background .15s ease}
+.new-barber-button{background:linear-gradient(135deg,#a77942,#c49b60)}
+.visit-card{border-top:4px solid var(--ds-gold)}
+@media(max-width:760px){.customer-header,.staff-header{border-radius:13px;padding:11px 12px!important}.staff-sidebar{padding:10px!important;background:transparent;border:0!important;box-shadow:none}.staff-nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.staff-nav button,.attendance-nav-link{justify-content:center}.staff-toolbar{padding:17px}.staff-toolbar h2{font-size:28px}.metrics{grid-template-columns:1fr 1fr!important;gap:11px}.metric{padding:18px 15px}.metric strong{font-size:24px}.entry-team-card .portrait,.team-card .portrait{aspect-ratio:4/3!important}.entry-team-card .portrait img,.team-card .portrait img{object-fit:contain!important}.catalog-form,.catalog-list,.ranking-panel{padding:19px}}
+@media(max-width:420px){.metrics{grid-template-columns:1fr!important}.staff-brand{gap:8px}.staff-seal{display:none}.barber-pole{transform:scale(.88)}.entry-brand{gap:8px}}

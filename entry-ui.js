@@ -1,0 +1,5 @@
+(function(){
+const $=id=>document.getElementById(id);function choose(kind,focus=false){const signup=kind==='cadastro';$('entrar').hidden=signup;$('cadastro').hidden=!signup;for(const [id,active] of [['entrylogin',!signup],['entrysignup',signup]]){$(id).setAttribute('aria-selected',String(active));$(id).tabIndex=active?0:-1;}if(focus)$(signup?'signupname':'loginemail').focus();}
+$('entrylogin').onclick=()=>{history.replaceState(null,'',location.pathname+location.search+'#entrar');choose('entrar');};$('entrysignup').onclick=()=>{history.replaceState(null,'',location.pathname+location.search+'#cadastro');choose('cadastro');};for(const id of ['entrylogin','entrysignup'])$(id).onkeydown=e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=e.key==='Home'?'entrylogin':e.key==='End'?'entrysignup':id==='entrylogin'?'entrysignup':'entrylogin';$(next).click();$(next).focus();}};
+window.addEventListener('hashchange',()=>choose(location.hash==='#cadastro'?'cadastro':'entrar'));choose(location.hash==='#cadastro'?'cadastro':'entrar');
+})();

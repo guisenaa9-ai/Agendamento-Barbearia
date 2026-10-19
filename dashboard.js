@@ -1,0 +1,5 @@
+(function(){
+function summarize(bookings,barbers){const grouped=window.BarberTeam.group(bookings,barbers);const ranking=grouped.map(g=>({id:g.id,name:g.name,count:g.bookings.filter(r=>r.status==='confirmed').length,value:g.bookings.filter(r=>r.status==='confirmed').reduce((s,r)=>s+Number(r.price),0)})).sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name,'pt-BR'));const confirmed=bookings.filter(r=>r.status==='confirmed');return {confirmed:confirmed.length,cancelled:bookings.filter(r=>r.status==='cancelled').length,customers:new Set(confirmed.map(r=>(r.phone||'').replace(/\D/g,'')||r.customer)).size,value:confirmed.reduce((s,r)=>s+Number(r.price),0),ranking,leaders:ranking.filter(r=>r.count>0&&r.count===ranking[0]?.count)};}
+function validCPF(value){const cpf=value.replace(/\D/g,'');if(!cpf)return true;if(!/^\d{11}$/.test(cpf)||/^(\d)\1{10}$/.test(cpf))return false;for(let length=9;length<=10;length++){let sum=0;for(let i=0;i<length;i++)sum+=Number(cpf[i])*(length+1-i);let digit=(sum*10)%11;if(digit===10)digit=0;if(digit!==Number(cpf[length]))return false;}return true;}
+window.BarberDashboard={summarize,validCPF};
+})();

@@ -1,0 +1,11 @@
+(function(){
+const profiles={
+ 'Bruno Martins':{specialty:'Cortes clássicos',bio:'Bruno gosta do visual clássico: corte social, linhas bem definidas e acabamento cuidadoso. Sua proposta é um corte prático que combine com o dia a dia.',photo:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'},
+ 'Caio Ribeiro':{specialty:'Degradê e estilo',bio:'Caio traz uma proposta moderna, com foco em degradês e transições suaves. Gosta de conversar sobre o estilo desejado antes de começar o atendimento.',photo:'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80'},
+ 'Diego Costa':{specialty:'Corte e barba',bio:'Diego se dedica à combinação de corte e barba, buscando equilíbrio no visual e atenção aos detalhes do acabamento.',photo:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80'}
+};
+function profile(name){return profiles[name]||{specialty:'Barbeiro da equipe',bio:'Conheça este profissional da Barbearia Daniel Silva e escolha seu horário de atendimento.',photo:null};}
+function portrait(name,photo){const p=profile(name),wrap=document.createElement('div');wrap.className='portrait';const fallback=document.createElement('span');fallback.className='portrait-fallback';fallback.textContent=name.split(' ').filter(Boolean).map(n=>n[0]).slice(0,2).join('');fallback.setAttribute('aria-hidden','true');wrap.append(fallback);const source=photo||p.photo;if(source){const img=document.createElement('img');img.src=source;img.alt=photo?'Foto de '+name:'Retrato ilustrativo do personagem fictício '+name;img.loading='lazy';img.width=600;img.height=600;img.referrerPolicy='no-referrer';img.onerror=()=>img.remove();wrap.append(img);}return wrap;}
+function group(bookings,barbers){const groups=new Map();for(const b of barbers)groups.set(b.id,{id:b.id,name:b.name,photo_url:b.photo_url||null,active:b.active!==false,bookings:[]});for(const r of bookings){if(!groups.has(r.barber_id))groups.set(r.barber_id,{id:r.barber_id,name:r.barber_name,photo_url:null,active:false,bookings:[]});groups.get(r.barber_id).bookings.push(r);}return [...groups.values()].sort((a,b)=>a.name.localeCompare(b.name,'pt-BR')).map(g=>({...g,bookings:g.bookings.slice().sort((a,b)=>a.starts_at.localeCompare(b.starts_at))}));}
+window.BarberTeam={profile,portrait,group};
+})();

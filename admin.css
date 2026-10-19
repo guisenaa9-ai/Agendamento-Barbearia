@@ -1,0 +1,200 @@
+*{box-sizing:border-box}
+body{margin:0;background:#f7f6f2;color:#243e31;font:16px system-ui}
+main{max-width:1200px;margin:auto;padding:25px}
+header{border-bottom:1px solid #ddd;margin-bottom:30px}
+h1{font-size:26px}
+h2{font-size:21px}
+section{margin:20px 0}
+#login{max-width:420px}
+label{display:block;font-size:14px;margin:12px 0}
+input{display:block;padding:13px;border:1px solid #aaa;border-radius:6px;width:100%;font:inherit;margin-top:5px}
+button{background:#243e31;color:white;border:0;border-radius:6px;padding:12px 18px;font:inherit;cursor:pointer}
+button:disabled{opacity:.5}
+button:focus-visible{outline:3px solid #ad8754;outline-offset:3px}
+.row{display:flex;gap:15px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.grid section{padding:22px;background:white;border:1px solid #ddd;border-radius:10px}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:white;font-size:14px}
+th,td{text-align:left;padding:14px;border-bottom:1px solid #ddd;white-space:nowrap}
+li{margin:15px 0;display:flex;justify-content:space-between;gap:12px;align-items:center}
+li button{font-size:12px}
+#status{white-space:pre-wrap}
+#status:empty{display:none}
+[hidden]{display:none!important}
+@media(max-width:700px){.grid{grid-template-columns:1fr}
+main{padding:16px}
+}
+
+
+.barber-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
+.barber-agenda{background:#fff;border:1px solid #dedfd7;border-radius:14px;overflow:hidden}
+.barber-heading{display:flex;gap:14px;align-items:center;background:#e9eee5;padding:20px}
+.barber-heading h3{margin:0;font-size:18px}
+.barber-heading p{font-size:12px;line-height:1.6;margin:7px 0 0;color:#657265}
+.portrait{position:relative;overflow:hidden;background:#ded5c4;flex-shrink:0}
+.portrait-fallback{display:grid;place-items:center;width:100%;height:100%;font:30px Georgia;color:#243e31}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.barber-heading .portrait{width:58px;height:58px;border-radius:50%}
+.reservation{padding:20px;border-top:1px solid #e6e6de}
+.reservation-time{color:#846635;font-size:13px;font-weight:600;margin:0 0 10px}
+.reservation h4{font-size:18px;margin:0 0 10px;overflow-wrap:anywhere}
+.reservation p:not(.reservation-time){color:#657265;font-size:13px;line-height:1.6;margin:6px 0}
+.booking-state{display:inline-block;font-size:11px;background:#edf1eb;border-radius:20px;padding:5px 10px;margin-top:8px}
+.cancel-booking{display:block;background:white;color:#864734;border:1px solid #d8b5ab;font-size:12px;margin-top:15px;padding:9px 12px}
+.cancelled{background:#faf9f6}
+.cancelled .booking-state{background:#f0e5df;color:#864734}
+.agenda-empty{padding:20px;font-size:13px;color:#657265;line-height:1.7}
+@media(max-width:1000px){.barber-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:650px){.barber-cards{grid-template-columns:1fr}
+}
+
+
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.metric{background:white;border:1px solid #dedfd7;border-radius:12px;padding:22px}
+.metric span{display:block;font-size:13px;color:#657265}
+.metric strong{display:block;font-size:28px;margin-top:12px}
+.ranking-panel{padding:24px;background:white;border:1px solid #dedfd7;border-radius:14px;margin-top:22px}
+.help{font-size:12px;color:#657265;line-height:1.7}
+.ranking{padding:0;list-style:none}
+.ranking-item{display:block;margin:20px 0}
+.ranking-line{display:flex;justify-content:space-between;gap:15px;font-size:14px}
+.ranking-track{height:9px;background:#edf1eb;border-radius:9px;margin-top:10px;overflow:hidden}
+.ranking-track div{height:100%;background:#ad8754;border-radius:9px}
+.contact-detail{display:block;margin-top:8px;font-size:12px;color:#657265}
+.catalog-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+#barbers li{align-items:flex-start;padding-bottom:18px;border-bottom:1px solid #dedfd7}
+@media(max-width:900px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:480px){.metric{padding:15px}
+.metric strong{font-size:22px}
+#barbers li{display:block}
+.catalog-actions{justify-content:flex-start;margin-top:12px}
+.ranking-line{flex-wrap:wrap}
+}
+
+
+select{display:block;padding:13px;border:1px solid #aaa;border-radius:6px;width:100%;font:inherit;margin-top:5px;background:white;color:#243e31}
+.new-booking{background:white;border:1px solid #dedfd7;padding:22px;border-radius:12px;margin:25px 0}
+.new-booking summary{cursor:pointer;font-weight:600}
+.new-booking .grid{gap:0 25px}
+
+
+.reservation-code{overflow-wrap:anywhere;font-family:monospace;user-select:all}
+
+
+.whatsapp-actions{margin-top:18px;border-top:1px dashed #dedfd7;padding-top:8px}
+.whatsapp-actions label{font-size:12px}
+.whatsapp-actions select{font-size:13px;padding:10px}
+.whatsapp-send{display:inline-block;background:#176b3a;color:white;text-decoration:none;border-radius:6px;padding:12px 15px;font-size:13px;font-weight:600}
+.whatsapp-send:focus-visible{outline:3px solid #ad8754;outline-offset:3px}
+.whatsapp-settings{border:1px solid #dedfd7;border-radius:10px;background:white;padding:22px;margin:25px 0}
+.whatsapp-settings summary{cursor:pointer;font-weight:600}
+.whatsapp-settings label{max-width:400px}
+
+
+.staff-attendance-link{display:inline-block;background:#ad8754;color:white;border-radius:7px;padding:13px 16px;font-size:14px;font-weight:600;text-decoration:none}
+
+.staff-page{background:#f5f5ef;color:#243e31;font-family:'DM Sans',system-ui,sans-serif}
+.staff-page main{max-width:1500px;padding:24px 35px}
+.staff-header{border-bottom:1px solid #e1e4d8;display:flex;align-items:center;justify-content:space-between;margin:0 0 28px;padding-bottom:22px;gap:20px}
+.staff-brand{display:flex;align-items:center;gap:13px}
+.staff-seal{height:42px;width:42px;display:grid;place-items:center;border:1px solid #b69865;border-radius:50%;font:21px Georgia;color:#9d7a46}
+.staff-brand div>span{font-size:8px;letter-spacing:2.5px}
+.staff-brand h1{font-size:20px;font-family:Georgia;font-weight:500;margin:5px 0 0}
+.staff-header-note{font-size:9px;letter-spacing:1.6px;color:#8e957f}
+.staff-shell{display:grid;grid-template-columns:205px minmax(0,1fr);gap:35px}
+.staff-sidebar{position:sticky;top:25px;align-self:start;min-height:500px;border-right:1px solid #e1e4d8;padding-right:25px}
+.staff-nav-label{font-size:9px;letter-spacing:1.7px;color:#959d88;margin:5px 0 22px}
+.staff-nav{display:flex;flex-direction:column;gap:9px}
+.staff-nav button{display:flex;align-items:center;gap:12px;text-align:left;background:transparent;color:#68795f;border-radius:9px;padding:14px;font-size:13px}
+.staff-nav button>span{font-size:18px;width:20px;text-align:center}
+.staff-nav button[aria-selected=true]{background:#243e31;color:white;box-shadow:0 5px 14px #243e3115}
+.attendance-nav-link{display:flex;gap:12px;align-items:center;color:#68795f;text-decoration:none;font-size:13px;padding:14px;border-top:1px solid #e1e4d8;margin-top:15px}
+.attendance-nav-link>span{font-size:18px;width:20px;text-align:center}
+.sidebar-caption{color:#a0a68f;font-size:10px;line-height:1.9;margin:40px 14px}
+.staff-toolbar{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:27px}
+.staff-toolbar h2{font-family:Georgia;font-size:31px;font-weight:500;margin:12px 0 0}
+.staff-eyebrow{color:#a58a59;font-size:9px;letter-spacing:1.6px;font-weight:600}
+.staff-logout{background:white;border:1px solid #dce1d2;color:#6b795f;padding:10px 17px;font-size:12px}
+.staff-filters{background:white;border:1px solid #e1e4d8;border-radius:10px;padding:12px 18px;display:flex;align-items:center;justify-content:flex-start;gap:14px;margin-bottom:25px}
+.staff-filters label{display:flex;align-items:center;gap:13px;margin:0;font-size:12px}
+.staff-filters input{width:auto;padding:9px;margin:0;font-size:12px;border-color:#dce1d2}
+.staff-filters button{font-size:11px;padding:10px 14px}
+.staff-filters button:last-child{background:transparent;color:#6c795e}
+.staff-page section{margin-top:0}
+.staff-tabpanel>section{margin:0}
+.section-intro{margin:10px 0 25px}
+.section-intro h3{font-family:Georgia;font-size:23px;font-weight:500;margin:0 0 9px}
+.section-intro p{color:#7e8972;font-size:12px;line-height:1.8}
+.catalog-screen{display:grid;grid-template-columns:minmax(260px,.85fr) minmax(300px,1.15fr);gap:25px;align-items:start}
+.catalog-form,.catalog-list{background:white;border:1px solid #e1e4d8;border-radius:12px;padding:24px}
+.catalog-screen h3{font-size:15px;margin:0 0 20px}
+.catalog-list ul{padding:0;list-style:none}
+.catalog-form label{font-size:12px}
+.catalog-form input{font-size:14px;border-color:#dce1d2}
+.catalog-form button{font-size:12px}
+.catalog-list li{font-size:13px;line-height:1.7;align-items:flex-start}
+.catalog-list li>div:first-child{min-width:0;overflow-wrap:anywhere}
+.staff-login{background:white;border:1px solid #e1e4d8;max-width:470px!important;padding:35px;border-radius:15px;margin:55px auto!important}
+.staff-login h2{font:28px Georgia;line-height:1.3;margin:16px 0}
+.staff-login>p{font-size:13px;line-height:1.9;color:#7e8972}
+.staff-login label{font-size:12px}
+.staff-login input{border-color:#dce1d2}
+.staff-login form button{width:100%;font-size:13px;margin-top:10px}
+.staff-page .barber-heading{padding:17px}
+.staff-page .barber-heading h3{font-size:16px}
+.attendance-section-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:8px;background:#e9eee5;border-radius:9px;margin-bottom:25px}
+.attendance-section-tabs a{color:#68795f;padding:11px 17px;text-decoration:none;font-size:13px;border-radius:7px}
+.attendance-section-tabs a[aria-current=page]{background:#243e31;color:white}
+.staff-nav button:focus-visible,.attendance-nav-link:focus-visible{outline:3px solid #ad8754;outline-offset:3px}
+@media(max-width:1150px){.staff-shell{grid-template-columns:165px minmax(0,1fr);gap:23px}
+.staff-sidebar{padding-right:15px}
+.catalog-screen{grid-template-columns:1fr}
+.staff-page .barber-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){.staff-page main{padding:20px 16px}
+.staff-header{margin-bottom:20px}
+.staff-header-note{font-size:8px;max-width:110px;text-align:right;line-height:1.8}
+.staff-shell{grid-template-columns:1fr;gap:22px}
+.staff-sidebar{position:static;border:0;min-height:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.staff-nav-label,.sidebar-caption{display:none}
+.staff-nav{flex-direction:row;flex-wrap:wrap;gap:7px}
+.staff-nav button{font-size:12px;gap:6px;padding:11px 13px;background:#e9eee5}
+.staff-nav button>span{font-size:15px;width:auto}
+.attendance-nav-link{border:0;margin:0;padding:11px 13px;background:#e9eee5;border-radius:9px;font-size:12px;gap:6px}
+.attendance-nav-link>span{font-size:15px;width:auto}
+.staff-toolbar h2{font-size:27px}
+.staff-filters{padding:13px;flex-wrap:wrap;gap:10px}
+.staff-filters label{width:100%;justify-content:space-between}
+.staff-filters input{flex:1;max-width:230px}
+.staff-page .barber-cards{grid-template-columns:1fr}
+.staff-login{padding:27px;margin:25px auto!important}
+.attendance-section-tabs a{font-size:12px;padding:10px 12px}
+}
+.finance-filters{display:flex;gap:12px;align-items:end;flex-wrap:wrap;background:#fff;border:1px solid #e1e4d8;border-radius:12px;padding:18px;margin-bottom:18px}
+.finance-filters label{margin:0;font-size:12px}
+.finance-filters input{margin:7px 0 0;min-width:155px}
+.finance-filters button{margin:0;font-size:12px}
+.finance-table-wrap{overflow:auto;background:#fff;border:1px solid #e1e4d8;border-radius:12px}
+.finance-table{width:100%;border-collapse:collapse;min-width:780px}
+.finance-table th,.finance-table td{text-align:left;padding:15px;border-bottom:1px solid #edf0e8;font-size:12px}
+.finance-table th{color:#68795f;background:#f7f8f3;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.finance-table td:nth-child(n+2),.finance-table th:nth-child(n+2){text-align:right}
+.finance-table tfoot td{font-weight:700;background:#edf1eb;border:0}
+.finance-table tbody tr:hover{background:#fafaf6}
+.finance-detail-title{font:24px Georgia;margin:30px 0 15px}
+.finance-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.finance-detail-card{background:#fff;border:1px solid #e1e4d8;border-radius:12px;padding:20px;overflow:auto}
+.finance-detail-card h4{font:20px Georgia;margin:0 0 16px;color:#243e31}
+.barber-list-photo{display:block;width:72px;height:72px;object-fit:cover;border-radius:50%;margin-bottom:12px;border:3px solid #edf1eb}
+.new-barber-button{width:100%;margin:0 0 20px;background:#ad8754;font-size:13px}
+.finance-service-table{width:100%;border-collapse:collapse;min-width:520px}
+.finance-service-table th,.finance-service-table td{font-size:11px;padding:10px 8px;border-bottom:1px solid #edf0e8;text-align:right}
+.finance-service-table th:first-child,.finance-service-table td:first-child{text-align:left}
+@media(max-width:760px){.finance-filters{align-items:stretch}.finance-filters label,.finance-filters button{width:100%}.finance-filters input{width:100%}}
+@media(max-width:900px){.finance-details{grid-template-columns:1fr}}
+@media print{body.staff-page{background:#fff}.staff-header,.staff-sidebar,.staff-toolbar,.staff-filters,#status,.finance-filters{display:none!important}.staff-shell{display:block}.staff-tabpanel{display:none!important}#tab-financeiro{display:block!important}.finance-table-wrap{overflow:visible;border:0}.finance-table{min-width:0}.finance-details{display:block}.finance-detail-card{break-inside:avoid;margin-top:14px}.metrics{grid-template-columns:repeat(4,1fr)}}
+.bi-filters{display:flex;gap:12px;align-items:end;flex-wrap:wrap;background:#fff;border:1px solid #e1e4d8;border-radius:14px;padding:18px;margin-bottom:16px}.bi-filters label{margin:0;font-size:12px}.bi-filters input{margin-top:7px;min-width:155px}.bi-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:20px}.bi-card{background:#fff;border:1px solid #e1e4d8;border-radius:16px;padding:22px;box-shadow:0 12px 35px #18392c0d}.bi-wide{grid-column:1/-1}.bi-card-title{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.bi-card h4{font:22px Georgia;margin:7px 0 20px}.bi-bars{display:grid;gap:15px}.bi-bar-head{display:flex;justify-content:space-between;gap:15px;font-size:12px}.bi-bar-track{height:10px;background:#edf1eb;border-radius:20px;overflow:hidden;margin-top:7px}.bi-bar-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#b58b50,#d8bd88)}.bi-staff{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.bi-staff-item{background:#f7f8f3;border:1px solid #e7e9e0;border-radius:13px;padding:18px}.bi-staff-item strong{display:block;font:20px Georgia;margin-bottom:12px}.bi-staff-item span{display:block;color:#657265;font-size:12px;line-height:1.7}.bi-staff-item b{display:block;color:#243e31;font-size:18px;margin-top:6px}.bi-insight{background:linear-gradient(125deg,#18392c,#28513e);color:#fff}.bi-insight .staff-eyebrow{color:#d9bb82}.bi-insights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.bi-insights p{margin:0;padding:15px;border:1px solid #ffffff24;border-radius:12px;color:#e9eee8;line-height:1.7;font-size:12px}.bi-empty{color:#7e8972;font-size:12px}.bi-metrics .metric:nth-child(2):before{background:#4e8b68}.bi-metrics .metric:nth-child(3):before{background:#7898b2}.bi-metrics .metric:nth-child(4):before{background:#b86d5b}@media(max-width:900px){.bi-grid{grid-template-columns:1fr}.bi-wide{grid-column:auto}.bi-staff,.bi-insights{grid-template-columns:1fr 1fr}}@media(max-width:600px){.bi-filters{align-items:stretch}.bi-filters label,.bi-filters button,.bi-filters input{width:100%}.bi-staff,.bi-insights{grid-template-columns:1fr}}
+

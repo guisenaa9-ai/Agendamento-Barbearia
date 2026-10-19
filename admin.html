@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portal do chefe · Barbearia Daniel Silva</title>
+<link rel="stylesheet" href="admin.css?v=foto-separada-20261016-10">
+<link rel="stylesheet" href="pole.css?v=poste-animado-20261017-12">
+<link rel="stylesheet" href="polish.css?v=visual-premium-20261017-13">
+<link rel="stylesheet" href="cash.css?v=gestao-20261017-15">
+<link rel="stylesheet" href="operations.css?v=gestao-20261017-15">
+<link rel="stylesheet" href="agenda-pro.css?v=agenda-20261017-18">
+<link rel="stylesheet" href="agenda-pro-v2.css?v=agenda-20261017-20">
+<link rel="stylesheet" href="agenda-pro-v3.css?v=agenda-20261017-21">
+<link rel="stylesheet" href="agenda-view.css?v=services-39">
+<link rel="stylesheet" href="agenda-view-v2.css?v=services-39">
+<link rel="stylesheet" href="agenda-cancel.css?v=services-39">
+<link rel="stylesheet" href="attendance.css?v=integrado-20261017-17">
+<body class="staff-page">
+<main>
+<header class="staff-header">
+<div class="staff-brand">
+<span class="barber-pole" aria-hidden="true"></span>
+<span class="staff-seal" aria-hidden="true">DS</span>
+<div>
+<span>BARBEARIA</span>
+<h1>Daniel Silva</h1>
+</div>
+</div>
+<span class="staff-header-note">PORTAL DO CHEFE · MANAUS</span>
+</header>
+<p id="status" role="status">
+</p>
+<section id="login" class="staff-login">
+<span class="staff-eyebrow">BEM-VINDO DE VOLTA</span>
+<h2>Vamos cuidar da barbearia?</h2>
+<p>Entre para acompanhar a agenda, receber clientes e organizar sua equipe.</p>
+<form id="loginform">
+<label>E-mail<input id="email" type="email" autocomplete="username" required>
+</label>
+<label>Senha<input id="password" type="password" autocomplete="current-password" required>
+</label>
+<button>Entrar</button>
+</form>
+<p class="help">Acesso exclusivo à conta autorizada do chefe.</p>
+</section>
+<section id="panel" hidden>
+<div class="staff-shell">
+<aside class="staff-sidebar">
+<p class="staff-nav-label">SUA BARBEARIA</p>
+<div class="staff-nav" role="tablist" aria-label="Seções do portal do chefe">
+<button id="nav-dashboard" role="tab" type="button" aria-selected="true" aria-controls="tab-dashboard">
+<span aria-hidden="true">◫</span>Dashboard</button>
+<button id="nav-agenda" role="tab" type="button" aria-selected="false" aria-controls="tab-agenda" tabindex="-1">
+<span aria-hidden="true">▦</span>Agenda</button>
+<button id="nav-financeiro" role="tab" type="button" aria-selected="false" aria-controls="tab-financeiro" tabindex="-1">
+<span aria-hidden="true">R$</span>Financeiro</button>
+<button id="nav-caixa" role="tab" type="button" aria-selected="false" aria-controls="tab-caixa" tabindex="-1">
+<span aria-hidden="true">▣</span>Caixa diário</button>
+<button id="nav-bi" role="tab" type="button" aria-selected="false" aria-controls="tab-bi" tabindex="-1">
+<span aria-hidden="true">↗</span>BI e indicadores</button>
+<button id="nav-servicos" role="tab" type="button" aria-selected="false" aria-controls="tab-servicos" tabindex="-1">
+<span aria-hidden="true">✂</span>Serviços</button>
+<button id="nav-barbeiros" role="tab" type="button" aria-selected="false" aria-controls="tab-barbeiros" tabindex="-1">
+<span aria-hidden="true">♙</span>Barbeiros</button>
+<button id="nav-atendimentos" role="tab" type="button" aria-selected="false" aria-controls="tab-atendimentos" tabindex="-1">
+<span aria-hidden="true">✓</span>Atendimentos</button>
+</div>
+<p class="sidebar-caption">Uma agenda organizada.<br>Mais tempo para atender bem.</p>
+</aside>
+<div class="staff-content">
+<div class="staff-toolbar">
+<div>
+<span class="staff-eyebrow">NO SEU TEMPO, DO SEU JEITO</span>
+<h2 id="staffpagetitle">Visão geral</h2>
+</div>
+<button id="logout" class="staff-logout">Sair</button>
+</div>
+<div id="datefilters" class="staff-filters">
+<label>Dia da agenda<input id="filter" type="date">
+</label>
+<button id="refresh">Atualizar</button>
+<button id="all">Hoje</button>
+</div>
+<section id="tab-dashboard" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-dashboard">
+<section aria-label="Indicadores">
+<p id="dashboardperiod">
+</p>
+<div id="metrics" class="metrics">
+</div>
+<div class="ranking-panel">
+<h2>Quem tem mais agendamentos</h2>
+<p id="leader">
+</p>
+<p class="help">Ranking por reservas confirmadas no período selecionado. Cancelamentos não contam.</p>
+<ol id="ranking" class="ranking">
+</ol>
+</div>
+</section>
+</section>
+<section id="tab-agenda" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-agenda" hidden>
+<div class="section-intro">
+<h3>Cada cliente, um cuidado especial.</h3>
+<p>Consulte os horários, registre novas reservas e prepare os avisos por WhatsApp.</p>
+</div>
+<section class="availability-desk"><div class="availability-heading"><div><span class="staff-eyebrow">CONSULTA RÁPIDA</span><h3>Encontre um horário livre</h3><p>Pesquise o barbeiro e veja os intervalos disponíveis. O serviço será escolhido ao confirmar.</p></div><span class="availability-badge">Agendamento presencial</span></div><div class="availability-filters"><label>Nome do barbeiro<input id="deskbarbersearch" list="deskbarbernames" placeholder="Digite o nome ou deixe em branco"></label><datalist id="deskbarbernames"></datalist><label>Data de Manaus<input id="deskdate" type="date"></label><button id="desksearch" type="button">Buscar horários livres</button></div><p id="deskstatus" class="help" role="status"></p><div id="deskresults" class="availability-results"></div></section>
+<details class="new-booking">
+<summary id="adminbookingsummary">+ Registrar agendamento presencial</summary>
+<form id="adminbooking">
+<div class="grid">
+<label>Cliente<input id="newcustomer" list="bookingclientnames" maxlength="80" placeholder="Digite para buscar ou cadastrar" autocomplete="off" required><datalist id="bookingclientnames"></datalist>
+</label>
+<label>Celular com DDD<input id="newphone" type="tel" required>
+</label>
+<label>Serviço<select id="newservice" required>
+</select>
+</label>
+<label>Preferência de barbeiro<select id="newbarber">
+<option value="">Sem preferência</option>
+</select>
+</label>
+<label>Data de Manaus<input id="newdate" type="date" required>
+</label>
+<label>Horário<select id="newtime" required>
+<option value="">Escolha serviço e data</option>
+</select>
+</label>
+</div>
+<div class="booking-client-tools"><p id="bookingclientstatus" class="help">Digite pelo menos 2 letras para procurar um cliente cadastrado.</p><div id="newclientbox" class="new-client-box" hidden><label>E-mail do novo cliente (opcional)<input id="newclientemail" type="email" maxlength="120" placeholder="cliente@exemplo.com"></label><button id="savewalkinclient" type="button">+ Cadastrar novo cliente</button></div></div>
+<p class="help">Sem preferência: o sistema escolhe um barbeiro disponível, priorizando quem tem menos reservas confirmadas no dia.</p>
+<p id="newbookingstatus" role="status">
+</p>
+<button id="newconfirm" disabled>Confirmar agendamento</button>
+</form>
+</details>
+<details class="whatsapp-settings">
+<summary>WhatsApp: envio manual e teste</summary>
+<p class="help">O botão de cada reserva abre uma mensagem pronta. O envio só acontece quando você tocar em Enviar no WhatsApp.</p>
+<label>Destino dos avisos<select id="whatsappdestination">
+<option value="client">Celular do cliente</option>
+<option value="test">Meu número de teste</option>
+</select>
+</label>
+<label id="whatsapptestlabel" hidden>Número de teste com DDD<input id="whatsapptest" type="tel" maxlength="25" placeholder="(92) 99999-9999" autocomplete="off">
+</label>
+<p id="whatsappmode" class="help">Os botões abrirão a conversa com o cliente de cada reserva.</p>
+</details>
+<h3>Agenda por barbeiro</h3>
+<div class="agenda-legend" aria-label="Legenda da agenda"><span><i style="background:#4f8061"></i>Confirmado</span><span><i style="background:#c69543"></i>Cliente recebido</span><span><i style="background:#3c6f86"></i>Concluído</span><span><i style="background:#a66052"></i>Cancelado</span></div>
+<details class="new-booking"><summary>Bloquear horário, folga ou férias</summary><form id="blockform"><div class="grid"><label>Barbeiro<select id="blockbarber"><option value="">Toda a barbearia</option></select></label><label>Motivo<input id="blockreason" maxlength="120" placeholder="Ex.: Almoço, folga ou férias" required></label><label>Início<input id="blockstart" type="datetime-local" required></label><label>Fim<input id="blockend" type="datetime-local" required></label></div><button>Adicionar bloqueio</button></form><div id="blocklist" class="block-list"></div></details>
+<p id="count">
+</p>
+<section id="nopreferencesummary" class="no-preference-summary" hidden>
+<div><span class="staff-eyebrow">SEM PREFERÊNCIA</span><h3>Clientes direcionados automaticamente</h3></div>
+<div id="nopreferencelist" class="no-preference-list"></div>
+</section>
+<div id="barbercards" class="barber-cards">
+</div>
+<p id="empty" hidden>Nenhum agendamento encontrado.</p>
+</section>
+<section id="tab-financeiro" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-financeiro" hidden>
+<div class="section-intro">
+<h3>Faturamento e comissões</h3>
+<p>Valores calculados a partir dos atendimentos com pagamento registrado no período.</p>
+</div>
+<div class="finance-filters">
+<label>Data inicial<input id="financestart" type="date"></label>
+<label>Data final<input id="financeend" type="date"></label>
+<button id="financerefresh" type="button">Gerar relatório</button>
+<button id="financecsv" type="button">Baixar CSV</button>
+<button id="financeprint" type="button">Imprimir</button>
+</div>
+<p id="financeperiod" class="help"></p>
+<div id="financemetrics" class="metrics"></div>
+<div class="finance-table-wrap">
+<table class="finance-table">
+<thead><tr><th>Barbeiro</th><th>Atendimentos pagos</th><th>Comissão</th><th>Faturamento</th><th>Valor da comissão</th><th>Líquido da barbearia</th></tr></thead>
+<tbody id="financebody"></tbody>
+<tfoot id="financefoot"></tfoot>
+</table>
+</div>
+<p id="financeempty" hidden>Nenhum atendimento pago encontrado no período.</p>
+<h3 class="finance-detail-title">Detalhamento por barbeiro e serviço</h3>
+<div id="financedetails" class="finance-details"></div>
+</section>
+<section id="tab-bi" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-bi" hidden>
+<div class="section-intro"><h3>Inteligência da barbearia</h3><p>Entenda o movimento, a receita e o desempenho da equipe para tomar decisões com dados.</p></div>
+<div class="bi-filters"><label>Data inicial<input id="bistart" type="date"></label><label>Data final<input id="biend" type="date"></label><button id="birefresh" type="button">Atualizar análise</button></div>
+<p id="biperiod" class="help"></p><div id="bimetrics" class="metrics bi-metrics"></div>
+<div class="bi-grid"><article class="bi-card"><div class="bi-card-title"><div><span class="staff-eyebrow">DEMANDA</span><h4>Serviços mais procurados</h4></div></div><div id="biservices" class="bi-bars"></div></article>
+<article class="bi-card"><div class="bi-card-title"><div><span class="staff-eyebrow">MOVIMENTO</span><h4>Horários mais ocupados</h4></div></div><div id="bihours" class="bi-bars"></div></article>
+<article class="bi-card bi-wide"><div class="bi-card-title"><div><span class="staff-eyebrow">EQUIPE</span><h4>Desempenho dos barbeiros</h4></div><span class="help">Receita recebida e atendimentos</span></div><div id="bistaff" class="bi-staff"></div></article>
+<article class="bi-card bi-wide bi-insight"><span class="staff-eyebrow">LEITURA RÁPIDA</span><h4>Resumo para decisão</h4><div id="biinsights" class="bi-insights"></div></article></div>
+</section>
+<section id="tab-caixa" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-caixa" hidden>
+<div class="section-intro"><h3>Controle de caixa</h3><p>Registre abertura, despesas, retiradas e fechamento. Os pagamentos dos atendimentos entram automaticamente no resumo.</p></div>
+<div class="cash-date"><label>Dia de Manaus<input id="cashdate" type="date"></label><button id="cashrefresh" type="button">Atualizar caixa</button></div>
+<div id="cashmetrics" class="metrics"></div><div class="cash-grid"><article class="cash-card"><h4>Abertura e fechamento</h4><form id="cashsessionform"><label>Valor de abertura (R$)<input id="cashopening" type="number" min="0" step="0.01" required></label><label>Valor contado no fechamento (R$)<input id="cashclosing" type="number" min="0" step="0.01"></label><label>Observações<textarea id="cashnotes" rows="3" maxlength="1000"></textarea></label><button id="cashsave">Salvar caixa</button></form><p id="cashdifference" class="cash-difference"></p></article><article class="cash-card"><h4>Novo lançamento</h4><form id="cashmovementform"><label>Tipo<select id="cashkind"><option value="expense">Despesa</option><option value="withdrawal">Retirada</option><option value="deposit">Reforço de caixa</option><option value="income">Outra entrada</option></select></label><label>Categoria<input id="cashcategory" maxlength="80" placeholder="Ex.: Produtos de limpeza" required></label><label>Descrição<input id="cashdescription" maxlength="300"></label><label>Valor (R$)<input id="cashamount" type="number" min="0.01" step="0.01" required></label><label>Forma<select id="cashmethod"><option value="cash">Dinheiro</option><option value="pix">Pix</option><option value="debit">Débito</option><option value="credit">Crédito</option><option value="transfer">Transferência</option><option value="other">Outro</option></select></label><button>Adicionar lançamento</button></form></article></div><article class="cash-card"><h4>Movimentações do dia</h4><div id="cashmovements" class="cash-movements"></div></article>
+</section>
+<section id="tab-servicos" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-servicos" hidden>
+<div class="section-intro">
+<h3>O cuidado começa na escolha.</h3>
+<p>Organize os serviços, valores e tempo de cada atendimento.</p>
+</div>
+<div class="catalog-screen">
+<article class="catalog-form">
+<h3>Cadastrar serviço</h3>
+<form id="serviceform"><input id="serviceid" type="hidden">
+<label>Nome<input id="servicename" maxlength="80" required>
+</label>
+<label>Preço (R$)<input id="price" type="number" min="0" max="99999999" step="0.01" required>
+</label>
+<label>Duração (minutos)<input id="duration" type="number" min="5" max="600" step="5" required value="30">
+</label>
+<label>Descrição do serviço<textarea id="servicedescription" maxlength="500" rows="3" placeholder="Explique o acabamento e o que está incluído."></textarea></label><label>Foto do corte (opcional)<input id="servicephoto" type="file" accept="image/jpeg,image/png,image/webp"></label><p>Selecione uma foto de até 3 MB. Na edição, deixe vazio para manter a atual.</p><img id="servicepreview" hidden alt="Foto do serviço" style="width:100%;max-height:220px;object-fit:contain"><label><input id="removeservicephoto" type="checkbox"> Remover foto atual</label><button id="saveservice">Cadastrar serviço</button><button id="resetservice" type="button" hidden>Cancelar edição</button>
+</form>
+</article>
+<article class="catalog-list">
+<h3>Serviços cadastrados</h3>
+<ul id="services">
+</ul>
+</article>
+</div>
+</section>
+<section id="tab-barbeiros" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-barbeiros" hidden>
+<div class="section-intro">
+<h3>Uma boa equipe faz a diferença.</h3>
+<p>Cadastre seus profissionais e mantenha os dados de contato em dia.</p>
+</div>
+<div class="catalog-screen">
+<article class="catalog-form">
+<h3>Dados do barbeiro</h3>
+<button id="newbarberbutton" type="button" class="new-barber-button">+ Criar novo barbeiro</button>
+<form id="barberform">
+<input id="barberid" type="hidden">
+<label>Nome<input id="barbername" maxlength="80" required>
+</label>
+<label>CPF (opcional, somente para o chefe)<input id="barbercpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" autocomplete="off">
+</label>
+<label>Celular com DDD (opcional)<input id="barberphone" type="tel" maxlength="25" placeholder="(92) 99999-9999" autocomplete="off">
+</label>
+<label>Comissão sobre valores pagos (%)<input id="barbercommission" type="number" min="0" max="100" step="0.01" value="40" required>
+</label>
+<label>Foto do barbeiro (opcional)<input id="barberphoto" type="file" accept="image/jpeg,image/png,image/webp">
+</label>
+<p class="help">Use JPG, PNG ou WebP de até 3 MB. A foto aparecerá para os clientes na apresentação da equipe.</p>
+<button id="savebarber">Cadastrar barbeiro</button> <button id="resetbarber" type="button" hidden>Cancelar edição</button>
+<p class="help">CPF e celular ficam restritos ao chefe e não aparecem na página dos clientes.</p>
+</form>
+</article>
+<article class="catalog-list">
+<h3>Sua equipe</h3>
+<ul id="barbers">
+</ul>
+</article>
+</div>
+</section>
+<section id="tab-atendimentos" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-atendimentos" hidden>
+<div class="section-intro"><h3>Recepção e pagamentos</h3><p>Confirme a chegada, registre procedimentos extras, forma de pagamento e conclusão.</p></div><p id="visitstatus" role="status" tabindex="-1"></p>
+<div id="visitpanel"><div class="visit-filters"><label>Dia de Manaus<input id="visitdate" type="date" required></label><label>Buscar cliente<input id="visitsearch" type="search" placeholder="Nome do cliente"></label><label>Situação<select id="visitstate"><option value="all">Todos</option><option value="scheduled">Aguardando chegada</option><option value="arrived">Em atendimento</option><option value="completed">Concluídos</option><option value="cancelled">Cancelados</option></select></label><button id="visitrefresh">Atualizar</button></div><div id="visitmetrics" class="metrics"></div><div id="visitlist" class="visit-list"></div><p id="visitempty" hidden>Nenhum atendimento encontrado para esses filtros.</p></div>
+<section id="visiteditor" class="visit-editor" hidden><div class="row"><h2 id="visitclient"></h2><button id="closevisit" type="button">Fechar</button></div><p id="visitdetails"></p><p id="visittimestamps" class="help"></p><form id="visitform"><h3>Procedimentos extras</h3><p class="help">Informe os procedimentos realmente realizados e seus valores.</p><div class="extra-shortcuts"><button id="addhydration" type="button">+ Hidratação</button><button id="addbrush" type="button">+ Escova</button><button id="addextra" type="button">+ Outro procedimento</button></div><div id="visitextras"></div><div class="grid"><section><h3>Valores</h3><p class="bill-line"><span>Serviço agendado</span><strong id="baseamount"></strong></p><p class="bill-line"><span>Procedimentos extras</span><strong id="extraamount"></strong></p><label>Desconto (R$)<input id="visitdiscount" type="number" min="0" step="0.01" value="0" required></label><p class="bill-total"><span>Total do atendimento</span><strong id="totalamount"></strong></p></section><section><h3>Pagamento</h3><label class="payment-check"><input id="visitpaid" type="checkbox"> Pagamento recebido</label><label>Forma de pagamento<select id="visitmethod"><option value="">Selecione</option><option value="pix">Pix</option><option value="cash">Dinheiro</option><option value="debit">Cartão de débito</option><option value="credit">Cartão de crédito</option><option value="transfer">Transferência</option><option value="courtesy">Cortesia</option><option value="other">Outro</option></select></label></section></div><label>Observações<textarea id="visitnotes" maxlength="2000" rows="3"></textarea></label><p id="visiterror" role="alert"></p><div class="extra-shortcuts"><button id="savevisit" type="submit">Salvar atendimento</button><button id="finishvisit" type="button">Concluir atendimento e pagamento</button></div></form></section>
+</section>
+</div>
+</div>
+</section>
+</main>
+<div id="cancelmodal" class="cancel-modal" hidden>
+<section class="cancel-dialog" role="dialog" aria-modal="true" aria-labelledby="cancelheading">
+<button id="closecancel" class="cancel-close" type="button" aria-label="Fechar">×</button>
+<span class="staff-eyebrow">CANCELAMENTO PELA LOJA</span>
+<h2 id="cancelheading">Cancelar horário</h2>
+<p id="canceldetails" class="help"></p>
+<form id="cancelform">
+<label>Motivo que será informado ao cliente<textarea id="cancelreason" rows="4" minlength="5" maxlength="500" placeholder="Ex.: O barbeiro teve um imprevisto e não poderá atender neste horário." required></textarea></label>
+<p class="help">O horário será liberado e o WhatsApp abrirá com o aviso pronto para você confirmar o envio.</p>
+<p id="cancelerror" role="alert"></p>
+<div class="cancel-dialog-actions"><button id="confirmcancel">Cancelar e avisar pelo WhatsApp</button><button id="abortcancel" type="button" class="secondary">Voltar</button></div>
+</form>
+</section>
+</div>
+<script src="config.js?v=foto-separada-20261016-10">
+</script>
+<script src="api.js?v=services-39">
+</script>
+<script src="team.js?v=foto-separada-20261016-10">
+</script>
+<script src="dashboard.js?v=foto-separada-20261016-10">
+</script>
+<script src="finance-model.js?v=foto-separada-20261016-10"></script>
+<script src="bi-model.js?v=bi-20261017-14"></script>
+<script src="whatsapp.js?v=services-39">
+</script>
+<script src="staff-auth.js?v=services-39">
+</script>
+<script src="staff-tabs.js?v=foto-separada-20261016-10">
+</script>
+<script src="service-cards.js?v=services-39"></script><script src="admin.js?v=services-39">
+</script>
+<script src="cash.js?v=gestao-20261017-15"></script>
+<script src="operations.js?v=gestao-20261017-22"></script>
+<script src="agenda-pro.js?v=agenda-20261017-21"></script>
+<script src="attendance-model.js?v=integrado-20261017-17"></script>
+<script src="attendance.js?v=integrado-20261017-17"></script>
+<script src="update-check.js?v=services-39" data-version="services-39"></script></body>
+</html>

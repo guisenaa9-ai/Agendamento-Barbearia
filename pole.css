@@ -1,0 +1,5 @@
+.barber-pole{position:relative;display:inline-block;flex:0 0 auto;width:30px;height:58px;border:2px solid #29434a;border-radius:12px;background:linear-gradient(90deg,#b9c8ca 0,#faffff 18%,#fff 48%,#dce7e7 76%,#91a5a8 100%);box-shadow:0 8px 18px #10261f24,inset 0 0 0 1px #fff;isolation:isolate}
+.barber-pole:before{content:"";position:absolute;z-index:1;inset:5px 3px;border-radius:7px;background:repeating-linear-gradient(145deg,#e9213f 0 9px,#fff 9px 18px,#1174c7 18px 27px,#fff 27px 36px);background-size:100% 72px;box-shadow:inset 5px 0 7px #15363b42,inset -5px 0 7px #15363b42;animation:barber-pole-spin 2.6s linear infinite}
+.barber-pole:after{content:"";position:absolute;z-index:3;left:50%;top:-8px;transform:translateX(-50%);width:38px;height:8px;border:1px solid #667d82;border-radius:7px;background:linear-gradient(180deg,#f9ffff 0,#d4dfe0 42%,#72878c 52%,#dce5e6 100%);box-shadow:0 2px 5px #10261f2b,0 65px 0 -1px #dce5e6,0 65px 0 0 #667d82,0 67px 5px #10261f2b}
+@keyframes barber-pole-spin{to{background-position:0 72px}}
+@media(prefers-reduced-motion:reduce){.barber-pole:before{animation:none}}
