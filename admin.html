@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="pole.css?v=poste-animado-20261017-12">
 <link rel="stylesheet" href="polish.css?v=visual-premium-20261017-13">
 <link rel="stylesheet" href="cash.css?v=gestao-20261017-15">
-<link rel="stylesheet" href="operations.css?v=gestao-20261017-15">
+<link rel="stylesheet" href="operations.css?v=services-41">
 <link rel="stylesheet" href="agenda-pro.css?v=agenda-20261017-18">
 <link rel="stylesheet" href="agenda-pro-v2.css?v=agenda-20261017-20">
 <link rel="stylesheet" href="agenda-pro-v3.css?v=agenda-20261017-21">
@@ -146,7 +146,7 @@
 </details>
 <h3>Agenda por barbeiro</h3>
 <div class="agenda-legend" aria-label="Legenda da agenda"><span><i style="background:#4f8061"></i>Confirmado</span><span><i style="background:#c69543"></i>Cliente recebido</span><span><i style="background:#3c6f86"></i>Concluído</span><span><i style="background:#a66052"></i>Cancelado</span></div>
-<details class="new-booking"><summary>Bloquear horário, folga ou férias</summary><form id="blockform"><div class="grid"><label>Barbeiro<select id="blockbarber"><option value="">Toda a barbearia</option></select></label><label>Motivo<input id="blockreason" maxlength="120" placeholder="Ex.: Almoço, folga ou férias" required></label><label>Início<input id="blockstart" type="datetime-local" required></label><label>Fim<input id="blockend" type="datetime-local" required></label></div><button>Adicionar bloqueio</button></form><div id="blocklist" class="block-list"></div></details>
+<details class="new-booking"><summary>Fechar agenda: folga, férias, feriado ou horário</summary><p class="help">Ninguém consegue agendar no período fechado. Se já houver clientes marcados, eles aparecem abaixo com o aviso pronto para enviar no WhatsApp.</p><form id="blockform"><div class="grid"><label>Barbeiro<select id="blockbarber"><option value="">Toda a barbearia</option></select></label><label>Motivo<input id="blockreason" maxlength="120" placeholder="Ex.: Almoço, folga ou férias" required></label><label>Início<input id="blockstart" type="datetime-local" required></label><label>Fim<input id="blockend" type="datetime-local" required></label></div><button>Fechar agenda neste período</button></form><div id="blockaffected" class="block-affected" role="status" hidden></div><div id="blocklist" class="block-list"></div></details>
 <p id="count">
 </p>
 <section id="nopreferencesummary" class="no-preference-summary" hidden>
@@ -287,7 +287,7 @@
 </script>
 <script src="finance-model.js?v=foto-separada-20261016-10"></script>
 <script src="bi-model.js?v=bi-20261017-14"></script>
-<script src="whatsapp.js?v=services-39">
+<script src="whatsapp.js?v=services-41">
 </script>
 <script src="staff-auth.js?v=services-39">
 </script>
@@ -296,9 +296,9 @@
 <script src="service-cards.js?v=services-39"></script><script src="admin.js?v=services-39">
 </script>
 <script src="cash.js?v=services-40"></script>
-<script src="operations.js?v=gestao-20261017-22"></script>
+<script src="operations.js?v=services-41"></script>
 <script src="agenda-pro.js?v=agenda-20261017-21"></script>
 <script src="attendance-model.js?v=integrado-20261017-17"></script>
 <script src="attendance.js?v=integrado-20261017-17"></script>
-<script src="update-check.js?v=services-39" data-version="services-40"></script></body>
+<script src="update-check.js?v=services-39" data-version="services-41"></script></body>
 </html>
