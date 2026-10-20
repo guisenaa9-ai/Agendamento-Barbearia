@@ -62,5 +62,58 @@ and not exists(select 1 from public.schedule_blocks x where (x.barber_id is null
 order by 1;
 $$;
 grant execute on function public.available_slots(date,uuid,uuid) to anon,authenticated;
+
+-- Mesma regra para o cliente que remarca: só horários do expediente, fora de bloqueios, com a duração da reserva.
+create or replace function public.customer_change_slots(p_booking uuid,p_date date,p_barber uuid)
+returns table(slot text) language sql stable security definer set search_path='' as $$
+with cfg as (
+ select coalesce((select slot_minutes from public.shop_settings where id=1),30) step,
+  coalesce((select booking_days from public.shop_settings where id=1),60) days,
+  now() at time zone 'America/Manaus' agora),
+r as (select id,ends_at-starts_at dur from public.bookings
+ where id=p_booking and customer_id=auth.uid() and status='confirmed'
+ and clock_timestamp()<=(starts_at at time zone 'America/Manaus')-interval '1 hour')
+select distinct to_char(t,'HH24:MI')
+from cfg cross join r cross join public.barbers b
+join lateral (select h.opens_at,h.closes_at from public.business_hours h
+ where h.weekday=extract(dow from p_date)::int
+ and (h.barber_id=b.id or (h.barber_id is null and not exists(select 1 from public.business_hours x where x.barber_id=b.id)))) h on true
+cross join lateral generate_series(p_date+h.opens_at,p_date+h.closes_at-r.dur,make_interval(mins=>cfg.step)) t
+where b.id=p_barber and b.active
+and p_date between cfg.agora::date and cfg.agora::date+cfg.days
+and t>cfg.agora
+and not exists(select 1 from public.bookings o where o.id<>r.id and o.barber_id=b.id and o.status='confirmed' and not o.no_show and tsrange(o.starts_at,o.ends_at,'[)')&&tsrange(t,t+r.dur,'[)'))
+and not exists(select 1 from public.schedule_blocks x where (x.barber_id is null or x.barber_id=b.id) and tsrange(x.starts_at,x.ends_at,'[)')&&tsrange(t,t+r.dur,'[)'))
+order by 1;
+$$;
+revoke all on function public.customer_change_slots(uuid,date,uuid) from public,anon;
+grant execute on function public.customer_change_slots(uuid,date,uuid) to authenticated;
+
+-- Igual à versão original, sem o horário fixo das 9h às 18h30: quem valida o horário é available_slots.
+create or replace function public.book_appointment(p_date date,p_time text,p_barber uuid,p_service uuid,p_customer text,p_phone text)
+returns uuid language plpgsql security definer set search_path='' as $$
+declare s public.services%rowtype; b public.barbers%rowtype; start_time timestamp; result uuid;
+begin
+ if p_customer is null or length(trim(p_customer)) not between 1 and 80 or p_phone is null or length(p_phone)>30
+  or length(regexp_replace(p_phone,'[^0-9]','','g')) not between 10 and 15 then
+  raise exception 'Informe nome e celular com DDD.';
+ end if;
+ if p_time is null or p_time !~ '^([01][0-9]|2[0-3]):[0-5][0-9]$' then raise exception 'Horário inválido.'; end if;
+ select * into s from public.services where id=p_service and active for share;
+ if not found then raise exception 'Serviço indisponível.'; end if;
+ select * into b from public.barbers where id=p_barber and active for share;
+ if not found then raise exception 'Barbeiro indisponível.'; end if;
+ if not exists(select 1 from public.available_slots(p_date,p_barber,p_service) where slot=p_time) then
+  raise exception 'Horário indisponível. Escolha outro horário.';
+ end if;
+ start_time:=p_date+p_time::time;
+ insert into public.bookings(customer,phone,service_id,barber_id,service_name,barber_name,price,starts_at,ends_at)
+ values(trim(p_customer),p_phone,s.id,b.id,s.name,b.name,s.price,start_time,start_time+make_interval(mins=>s.duration))
+ returning id into result;
+ return result;
+exception when exclusion_violation then
+ raise exception 'Horário acabou de ser reservado. Escolha outro horário.';
+end;$$;
+revoke all on function public.book_appointment(date,text,uuid,uuid,text,text) from public,anon,authenticated;
 commit;
 notify pgrst,'reload schema';
