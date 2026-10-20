@@ -992,7 +992,7 @@ end;$$;
 create or replace function public.admin_loyalty(p_phone text)
 returns jsonb language plpgsql stable security definer set search_path='' as $$
 begin
- if not public.is_staff() then raise exception 'Acesso permitido somente ao chefe.'; end if;
+ if not public.is_staff() then raise exception 'Acesso permitido somente à equipe da barbearia.'; end if;
  return public.loyalty_status(p_phone);
 end;$$;
 
