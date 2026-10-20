@@ -41,3 +41,10 @@ Agenda → Horário de funcionamento; Serviços; Barbeiros (foto, especialidade 
 
 ## Atualizar um cliente
 Copie todos os arquivos deste repositório, menos o `config.js` dele, e rode no Supabase dele os `.sql` novos ou alterados.
+
+## Demonstração para mostrar a clientes
+1. Crie um projeto Supabase só para a demo e siga o passo 1 inteiro (incluindo criar o chefe em `admins`).
+2. Rode `demo-dados.sql`: cria a barbearia fictícia com 3 barbeiros, 6 serviços, 30 dias de histórico
+   (atendimentos pagos, faltas, cancelamentos), 7 dias de agenda, uma folga e o caixa da semana.
+   O script recusa rodar em banco que já tenha reservas.
+3. Publique uma cópia do site com o `config.js` apontando para o projeto da demo (`shopName` pode ser o nome fictício).
