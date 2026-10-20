@@ -197,3 +197,34 @@ footer{font-size:13px!important;color:#5f6a5c}
 }
 @media(prefers-reduced-motion:no-preference){.booking-bar:not([hidden]){animation:ds-bar-in .35s cubic-bezier(.2,.8,.2,1)}}
 @keyframes ds-bar-in{from{transform:translateY(100%)}to{transform:none}}
+
+/* Área do barbeiro: agenda do dia como linha do tempo, próximo cliente em destaque, comissão em primeiro plano */
+#barbername{font-family:'Playfair Display',Georgia,serif;font-size:32px;font-weight:500;color:#18392c}
+#barberlogout{background:#fff!important;color:#18392c!important;border:1px solid #d9ded5!important;box-shadow:none!important;padding:0 18px}
+.barber-updates{padding:18px 20px!important;border-radius:16px!important}
+.barber-updates .help{font-size:14px;color:#5f6a5c}
+.update-item{position:relative;margin:0!important;padding:10px 0 10px 16px;border-top:1px solid #edf0e6;font-size:15px!important;line-height:1.45}
+.update-item.fresh:before{content:"";position:absolute;left:0;top:17px;width:7px;height:7px;border-radius:50%;background:#d1203a}
+.barber-daynav{display:flex;align-items:end;gap:8px;margin:22px 0 4px}
+.barber-daynav label{flex:1;font-size:14px;font-weight:600;color:#18392c}
+.barber-daynav input{width:100%;min-height:48px;font-size:16px}
+.barber-daynav button{min-width:48px;min-height:48px;padding:0 14px;background:#fff!important;color:#18392c!important;border:1px solid #d9ded5!important;font-size:20px;font-weight:700}
+#barbertoday{font-size:15px}
+.barber-count{margin:6px 0 0;font-size:15px;color:#5f6a5c;font-weight:600}
+#barberday-list{grid-template-columns:1fr!important;gap:10px;margin-top:14px}
+#barberday-list .my-booking{border-left:4px solid #c49242}
+#barberday-list .my-booking.is-off{border-left-color:#d8c3bd;opacity:.72}
+#barberday-list .my-booking.is-off h3{text-decoration:line-through;text-decoration-color:#9b473b80}
+#barberday-list .my-booking:has(.is-arrived){border-left-color:#1c4fa0}
+#barberday-list .my-booking:has(.status-pill:not([class*=is-])){border-left-color:#1f5a3c}
+#barberday-list .my-booking.is-next{border:2px solid #18392c;border-left-width:6px;box-shadow:0 14px 34px #18392c24}
+#barberday-list .my-booking.is-next h3:before{content:"PRÓXIMO CLIENTE";display:block;margin-bottom:4px;font-size:11px;letter-spacing:1.5px;color:#8a6a3a}
+#barbermetrics .metric:last-child{background:#18392c;border-color:#18392c}
+#barbermetrics .metric:last-child span{color:#d6e4dc}
+#barbermetrics .metric:last-child strong{color:#fff}
+#barbermetrics .metric span{font-size:14px;color:#5f6a5c}
+#barberarea>.help{font-size:14px;color:#5f6a5c}
+@media(max-width:760px){#barbername{font-size:26px}#barbermetrics .metric:last-child{grid-column:1/-1;order:-1}}
+@media(prefers-reduced-motion:no-preference){#barberday-list .my-booking.is-next{animation:ds-rise .5s cubic-bezier(.2,.8,.2,1) both,ds-next 2.4s 1s ease-in-out 2}}
+@keyframes ds-next{50%{box-shadow:0 14px 34px #18392c24,0 0 0 6px #c4924233}}
+.barber-daynav label{margin:0!important}.barber-daynav input{margin:6px 0 0!important}
