@@ -1,5 +1,5 @@
 (function(){
-const api=window.BarberAPI,key='daniel-silva-customer-session-v1';let session=null,refreshing=null;
+const api=window.BarberAPI,key='daniel-silva-customer-session-v1:'+(window.BARBER_CONFIG?.url||'');let session=null,refreshing=null;
 function persist(){try{if(session)sessionStorage.setItem(key,JSON.stringify(session));else sessionStorage.removeItem(key);}catch{}}
 function set(value){session=value;if(session)session.expires_at=session.expires_at||Date.now()/1000+session.expires_in;persist();window.dispatchEvent(new Event('customer-session'));}
 try{const saved=JSON.parse(sessionStorage.getItem(key)||'null');if(saved?.access_token&&saved?.refresh_token)session=saved;}catch{}
