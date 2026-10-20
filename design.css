@@ -118,3 +118,82 @@ button:not(:disabled):active,.primary:active{transform:scale(.97)!important;tran
  .service-card:hover .service-visual img{transform:scale(1.04)}
 }
 @media(prefers-reduced-motion:reduce){.entry-tabs:before,.entry-submit span{transition:none}}
+
+/* Agendamento: cada etapa é um cartão; as etapas lá em cima acendem conforme o cliente escolhe */
+#booking article{background:#fff;border:1px solid #e6e6de;border-radius:18px;padding:24px;margin-bottom:18px}
+#booking article h2{font-size:22px}
+#booking p.muted,.intro p,.team-section p.muted{color:#5f6a5c;font-size:15px}
+.perks{font-size:14px!important;color:#46544a!important;flex-wrap:wrap}
+.eyebrow{font-size:11px!important;color:#8a6a3a!important}
+header .brand small{font-size:10px}
+nav .nav{font-size:15px;color:#5f6a5c}
+header .demo{display:none}
+#runtime{background:#e9eee5;color:#18392c;border-radius:12px;font-size:15px;padding:14px 18px}
+#runtime:empty{display:none}
+.steps{font-size:14px!important;color:#8a6a3a!important}
+.steps b{display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:999px;transition:background .3s,color .3s}
+.steps span{color:#46544a!important}
+.steps i{transition:background .4s}
+#booking:has(.service-card[aria-pressed=true]) .steps b:nth-of-type(1),
+#booking:has(#barberchoice option:checked:not([value=""])) .steps b:nth-of-type(2),
+#booking:has(#timechoice option:checked:not([value=""])) .steps b:nth-of-type(3){background:#18392c;color:#d8b67c!important}
+#booking:has(.service-card[aria-pressed=true]) .steps b:nth-of-type(1) span,
+#booking:has(#barberchoice option:checked:not([value=""])) .steps b:nth-of-type(2) span,
+#booking:has(#timechoice option:checked:not([value=""])) .steps b:nth-of-type(3) span{color:#fff!important}
+#booking:has(.service-card[aria-pressed=true]) .steps i:nth-of-type(1),
+#booking:has(#barberchoice option:checked:not([value=""])) .steps i:nth-of-type(2){background:#18392c}
+/* Data: rótulo e campo embaixo do título, sem ficar espremido ao lado */
+#booking article .row:has(#date){display:block}
+#booking .booking-date-field{display:block;max-width:340px;margin-top:12px}
+
+/* Barbeiro e horário: botões de toque no lugar das listas (choice-chips.js) */
+.choice-chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
+.choice-chips:has(+#timechoice){display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}
+.choice-chip{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:52px;padding:10px 18px;border:2px solid #d9ded5;border-radius:14px;background:#fff;color:#18392c;font:700 17px 'DM Sans',sans-serif;cursor:pointer;transition:border-color .18s,background .18s,color .18s}
+.choice-chip small{font-size:12px;font-weight:500;color:#5f6a5c}
+.choice-chip:not(:disabled):hover{border-color:#9e8151}
+.choice-chip[aria-pressed=true]{background:#18392c;border-color:#18392c;color:#fff}
+.choice-chip[aria-pressed=true] small{color:#d6e4dc}
+.choice-chip:disabled{opacity:.5;cursor:not-allowed}
+.choice-empty{margin:0;padding:14px 16px;border:1px dashed #cfd5cb;border-radius:14px;color:#5f6a5c;font-size:15px}
+
+/* Resumo: acompanha a rolagem no computador; textos legíveis */
+@media(min-width:851px){#booking aside{align-self:start;position:sticky;top:20px}}
+.summary .details p{font-size:14px}
+.summary .details span{color:#5f6a5c}
+.summary .footnote,.summary .help,.note{font-size:13px!important;color:#5f6a5c}
+#confirm:not(:disabled){box-shadow:0 10px 24px #18392c40}
+
+/* Entrada: campo de senha com botão Mostrar (entry-ui.js) */
+.password-field{position:relative;display:block}
+.password-field input{width:100%;padding-right:92px!important}
+.password-toggle{position:absolute;right:6px;top:50%;margin-top:3px;transform:translateY(-50%);min-height:40px!important;padding:0 12px;border:0;border-radius:8px!important;background:transparent;color:#18392c;font-size:14px;font-weight:600;box-shadow:none!important}
+.password-toggle:hover{background:#eef1ec;transform:translateY(-50%)!important}
+.password-toggle:active{transform:translateY(-50%) scale(.95)!important}
+
+@media(prefers-reduced-motion:no-preference){
+ #booking article{animation:ds-rise .5s cubic-bezier(.2,.8,.2,1) both}
+ #booking article:nth-of-type(2){animation-delay:.08s}#booking article:nth-of-type(3){animation-delay:.16s}
+ .choice-chip[aria-pressed=true]{animation:ds-pop-soft .3s cubic-bezier(.3,1.4,.5,1)}
+ .choice-chip{transition:border-color .18s,background .18s,color .18s,transform .18s}
+ .choice-chip:not(:disabled):hover{transform:translateY(-2px)}
+}
+@keyframes ds-pop-soft{0%{transform:scale(.94)}100%{transform:scale(1)}}
+.summary form label,.summary .account-booking{font-size:14px}
+.summary form input{font-size:16px!important}
+.history p{font-size:15px;color:#5f6a5c!important}
+footer{font-size:13px!important;color:#5f6a5c}
+@media(max-width:600px){.steps{gap:4px!important;justify-content:space-between}.steps i{display:none}.steps b{padding:6px 9px;font-size:13px}}
+
+/* Celular: barra fixa de confirmação (booking-bar.js) */
+.booking-bar{display:none}
+@media(max-width:850px){
+ .booking-bar:not([hidden]){position:fixed;z-index:60;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,254,250,.94);border-top:1px solid #e3e4dc;box-shadow:0 -10px 30px #18392c14;backdrop-filter:blur(14px)}
+ .booking-bar p{margin:0;font-size:16px;font-weight:700;color:#18392c;min-width:0}
+ .booking-bar button{flex:0 0 auto;min-height:48px;padding:0 22px;border:0;background:#18392c;color:#fff;font-size:16px}
+ .booking-bar button:disabled{background:#9aa79e}
+ body.has-booking-bar{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+ body.has-booking-bar .install-app{bottom:90px}
+}
+@media(prefers-reduced-motion:no-preference){.booking-bar:not([hidden]){animation:ds-bar-in .35s cubic-bezier(.2,.8,.2,1)}}
+@keyframes ds-bar-in{from{transform:translateY(100%)}to{transform:none}}
