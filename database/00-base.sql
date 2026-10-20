@@ -113,9 +113,7 @@ drop policy if exists services_manage on public.services;
 drop policy if exists customer_profile_self on public.customer_profiles;
 drop policy if exists customer_profile_edit on public.customer_profiles;
 drop policy if exists bookings_customer_read on public.bookings;
-drop policy if exists bookings_read on public.bookings;
 drop policy if exists bookings_cancel on public.bookings;
-drop policy if exists attendances_admin_read on public.attendances;
 create policy barbers_read on public.barbers for select to anon,authenticated using(active or public.is_admin());
 create policy barbers_manage on public.barbers for all to authenticated using(public.is_admin()) with check(public.is_admin());
 create policy barber_details_admin on public.barber_details for all to authenticated using(public.is_admin()) with check(public.is_admin());
@@ -124,9 +122,7 @@ create policy services_manage on public.services for all to authenticated using(
 create policy customer_profile_self on public.customer_profiles for select to authenticated using(id=auth.uid());
 create policy customer_profile_edit on public.customer_profiles for update to authenticated using(id=auth.uid()) with check(id=auth.uid());
 create policy bookings_customer_read on public.bookings for select to authenticated using(customer_id=auth.uid());
-create policy bookings_read on public.bookings for select to authenticated using(public.is_admin());
 create policy bookings_cancel on public.bookings for update to authenticated using(public.is_admin()) with check(public.is_admin());
-create policy attendances_admin_read on public.attendances for select to authenticated using(public.is_admin());
 
 -- Gatilhos ----------------------------------------------------------------------------------------------
 create or replace function public.create_customer_profile()
@@ -201,93 +197,8 @@ begin
  if not found then raise exception 'Barbeiro não encontrado.'; end if;
 end;$$;
 
--- available_slots e book_appointment ficam em horarios-loja.sql (única definição de cada).
-create or replace function public.admin_slots(p_date date,p_service uuid,p_barber uuid)
-returns table(slot text) language sql stable security definer set search_path='' as $$
- select distinct a.slot from public.barbers b
- cross join lateral public.available_slots(p_date,b.id,p_service) a
- where public.is_admin() and b.active and (p_barber is null or b.id=p_barber)
- order by a.slot;
-$$;
-
-create or replace function public.admin_book(p_date date,p_time text,p_service uuid,p_barber uuid,p_customer text,p_phone text)
-returns uuid language plpgsql security definer set search_path='' as $$
-declare candidate uuid; result uuid;
-begin
- if not public.is_admin() then raise exception 'Acesso permitido somente ao chefe.'; end if;
- if p_barber is not null then
-  return public.book_appointment(p_date,p_time,p_barber,p_service,p_customer,p_phone);
- end if;
- select b.id into candidate from public.barbers b
- where b.active and exists(select 1 from public.available_slots(p_date,b.id,p_service) a where a.slot=p_time)
- order by (select count(*) from public.bookings r where r.barber_id=b.id and r.status='confirmed' and r.starts_at::date=p_date),b.name,b.id
- limit 1 for update of b skip locked;
- if candidate is null then raise exception 'Nenhum barbeiro disponível. Atualize os horários e tente novamente.'; end if;
- result:=public.book_appointment(p_date,p_time,candidate,p_service,p_customer,p_phone);
- update public.bookings set no_preference=true where id=result;
- return result;
-end;$$;
-
-create or replace function public.mark_arrival(p_booking uuid)
-returns uuid language plpgsql security definer set search_path='' as $$
-declare reservation public.bookings%rowtype;
-begin
- if not public.is_admin() then raise exception 'Acesso permitido somente ao chefe.'; end if;
- select * into reservation from public.bookings where id=p_booking for update;
- if not found or reservation.status<>'confirmed' then raise exception 'Agendamento não encontrado ou cancelado.'; end if;
- if exists(select 1 from public.attendances where booking_id=p_booking) then return p_booking; end if;
- if reservation.starts_at::date<>(clock_timestamp() at time zone 'America/Manaus')::date then
-  raise exception 'A chegada só pode ser confirmada no dia do agendamento, no horário de Manaus.';
- end if;
- insert into public.attendances(booking_id,base_price,total) values(p_booking,reservation.price,reservation.price);
- update public.bookings set attendance_state='arrived' where id=p_booking;
- return p_booking;
-end;$$;
-
-create or replace function public.save_attendance(p_booking uuid,p_version int,p_extras jsonb,p_discount numeric,p_method text,p_paid boolean,p_notes text,p_finish boolean)
-returns int language plpgsql security definer set search_path='' as $$
-declare visit public.attendances%rowtype; item jsonb; extra_total numeric:=0; amount numeric; quantity int; subtotal numeric; next_version int; booking_status text;
-begin
- if not public.is_admin() then raise exception 'Acesso permitido somente ao chefe.'; end if;
- select status into booking_status from public.bookings where id=p_booking for update;
- if booking_status is distinct from 'confirmed' then raise exception 'Agendamento indisponível.'; end if;
- select * into visit from public.attendances where booking_id=p_booking for update;
- if not found then raise exception 'Confirme a chegada antes de registrar o atendimento.'; end if;
- if visit.finished_at is not null then raise exception 'Este atendimento já foi concluído.'; end if;
- if p_version is distinct from visit.version then raise exception 'Este atendimento foi atualizado em outra tela. Atualize antes de salvar.'; end if;
- if p_extras is null or jsonb_typeof(p_extras)<>'array' then raise exception 'Procedimentos extras inválidos.'; end if;
- if jsonb_array_length(p_extras)>20 then raise exception 'Limite de 20 procedimentos extras por atendimento.'; end if;
- for item in select value from jsonb_array_elements(p_extras) loop
-  if jsonb_typeof(item)<>'object' or jsonb_typeof(item->'name') is distinct from 'string' or length(trim(item->>'name')) not between 1 and 80
-   or jsonb_typeof(item->'price') is distinct from 'number' or jsonb_typeof(item->'quantity') is distinct from 'number' then
-   raise exception 'Preencha nome, valor e quantidade de cada procedimento.';
-  end if;
-  amount:=(item->>'price')::numeric;
-  if amount<0 or amount>100000 or amount<>round(amount,2) then raise exception 'Valor do procedimento inválido.'; end if;
-  if (item->>'quantity')::numeric not between 1 and 99 or (item->>'quantity')::numeric<>trunc((item->>'quantity')::numeric) then
-   raise exception 'A quantidade deve ser um inteiro de 1 a 99.';
-  end if;
-  quantity:=(item->>'quantity')::int;
-  extra_total:=extra_total+amount*quantity;
- end loop;
- subtotal:=visit.base_price+extra_total;
- if p_discount is null or p_discount<0 or p_discount>subtotal or p_discount<>round(p_discount,2) then raise exception 'Desconto inválido. Confira o total dos procedimentos.'; end if;
- if subtotal-p_discount>99999999.99 then raise exception 'Valor total acima do limite.'; end if;
- if p_paid is null or p_finish is null then raise exception 'Informe a situação do pagamento.'; end if;
- if p_paid and (p_method is null or p_method not in ('pix','cash','debit','credit','transfer','courtesy','other')) then raise exception 'Selecione a forma de pagamento.'; end if;
- if p_paid and p_method='courtesy' and subtotal-p_discount<>0 then raise exception 'Cortesia exige total igual a zero.'; end if;
- if p_finish and not p_paid then raise exception 'Confirme o pagamento antes de concluir o atendimento.'; end if;
- if length(coalesce(p_notes,''))>2000 then raise exception 'Use até 2000 caracteres nas observações.'; end if;
- update public.attendances set extras=p_extras,discount=p_discount,total=subtotal-p_discount,
-  payment_method=case when p_paid then p_method else null end,paid=p_paid,
-  paid_at=case when p_paid then coalesce(visit.paid_at,clock_timestamp()) else null end,
-  notes=coalesce(p_notes,''),finished_at=case when p_finish then clock_timestamp() else null end,
-  version=visit.version+1,updated_at=clock_timestamp()
- where booking_id=p_booking returning version into next_version;
- if p_finish then update public.bookings set attendance_state='completed' where id=p_booking; end if;
- return next_version;
-end;$$;
-
+-- available_slots e book_appointment ficam em horarios-loja.sql; admin_slots, admin_book, mark_arrival e
+-- save_attendance (usadas também pela atendente) ficam em equipe-atendente.sql.
 -- Funções do cliente --------------------------------------------------------------------------------
 create or replace function public.customer_claim(p_booking uuid,p_phone text)
 returns uuid language plpgsql security definer set search_path='' as $$
@@ -330,14 +241,10 @@ end;$$;
 
 -- Permissões: só o necessário para cada perfil.
 revoke all on function public.save_barber(uuid,text,text,text),public.save_barber_commission(uuid,numeric),
- public.save_barber_photo(uuid,text),public.admin_slots(date,uuid,uuid),
- public.admin_book(date,text,uuid,uuid,text,text),public.mark_arrival(uuid),
- public.save_attendance(uuid,int,jsonb,numeric,text,boolean,text,boolean),
+ public.save_barber_photo(uuid,text),
  public.customer_claim(uuid,text),public.customer_reschedule(uuid,date,text,uuid) from public,anon;
 grant execute on function public.save_barber(uuid,text,text,text),public.save_barber_commission(uuid,numeric),
- public.save_barber_photo(uuid,text),public.admin_slots(date,uuid,uuid),
- public.admin_book(date,text,uuid,uuid,text,text),public.mark_arrival(uuid),
- public.save_attendance(uuid,int,jsonb,numeric,text,boolean,text,boolean),
+ public.save_barber_photo(uuid,text),
  public.customer_claim(uuid,text),public.customer_reschedule(uuid,date,text,uuid) to authenticated;
 revoke all on function public.create_customer_profile(),public.protect_received_booking() from public,anon,authenticated;
 

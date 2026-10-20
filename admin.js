@@ -377,7 +377,7 @@ $('password').value='';
 $('panel').hidden=false;
 $('login').hidden=true;
 status('Acesso autorizado.');
-await Promise.all([load(),catalog(),loadFinance(),loadBI()]);window.BarberOperations?.loadRequests();
+await Promise.all(window.StaffAuth.role()==='attendant'?[load(),catalog()]:[load(),catalog(),loadFinance(),loadBI()]);
 }catch(e){leave();
 status(e.message)}finally{button.disabled=false}};
 
@@ -507,7 +507,7 @@ status('O banco online ainda não foi conectado.');
 if(api.ready()&&session)(async()=>{try{await window.StaffAuth.check();
 $('panel').hidden=false;
 $('login').hidden=true;
-await Promise.all([load(),catalog(),loadFinance(),loadBI()]);window.BarberOperations?.loadRequests();
+await Promise.all(window.StaffAuth.role()==='attendant'?[load(),catalog()]:[load(),catalog(),loadFinance(),loadBI()]);
 }catch(e){leave();
 status(e.message);
 }})();

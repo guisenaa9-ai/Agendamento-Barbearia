@@ -200,3 +200,4 @@ select{display:block;padding:13px;border:1px solid #aaa;border-radius:6px;width:
 
 .install-app{position:fixed;z-index:50;right:16px;bottom:16px;width:auto!important;border-radius:999px!important;padding:12px 18px!important;background:#18392c!important;color:#fff!important;font-weight:600;box-shadow:0 10px 26px #10261f40}
 .loyalty-note{border:1px solid #e7c9a0;background:#fdf6ea;border-radius:10px;padding:10px 12px;color:#8a5b31;font-weight:600}
+.role-attendant .chefe-only{display:none!important}.attendants-admin{margin-top:18px}

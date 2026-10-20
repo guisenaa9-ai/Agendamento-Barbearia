@@ -3,18 +3,18 @@
 <meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="only light"><link rel="manifest" href="painel.webmanifest"><meta name="theme-color" content="#18392c"><link rel="icon" href="icones/icone-192.png"><link rel="apple-touch-icon" href="icones/icone-180.png"><meta name="apple-mobile-web-app-title" content="Painel"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
 <title>Portal do chefe · Barbearia Daniel Silva</title>
-<link rel="stylesheet" href="admin.css?v=services-52">
-<link rel="stylesheet" href="pole.css?v=services-52">
-<link rel="stylesheet" href="polish.css?v=services-52">
-<link rel="stylesheet" href="cash.css?v=services-52">
-<link rel="stylesheet" href="operations.css?v=services-52">
-<link rel="stylesheet" href="agenda-pro.css?v=services-52">
-<link rel="stylesheet" href="agenda-pro-v2.css?v=services-52">
-<link rel="stylesheet" href="agenda-pro-v3.css?v=services-52">
-<link rel="stylesheet" href="agenda-view.css?v=services-52">
-<link rel="stylesheet" href="agenda-view-v2.css?v=services-52">
-<link rel="stylesheet" href="agenda-cancel.css?v=services-52">
-<link rel="stylesheet" href="attendance.css?v=services-52">
+<link rel="stylesheet" href="admin.css?v=services-53">
+<link rel="stylesheet" href="pole.css?v=services-53">
+<link rel="stylesheet" href="polish.css?v=services-53">
+<link rel="stylesheet" href="cash.css?v=services-53">
+<link rel="stylesheet" href="operations.css?v=services-53">
+<link rel="stylesheet" href="agenda-pro.css?v=services-53">
+<link rel="stylesheet" href="agenda-pro-v2.css?v=services-53">
+<link rel="stylesheet" href="agenda-pro-v3.css?v=services-53">
+<link rel="stylesheet" href="agenda-view.css?v=services-53">
+<link rel="stylesheet" href="agenda-view-v2.css?v=services-53">
+<link rel="stylesheet" href="agenda-cancel.css?v=services-53">
+<link rel="stylesheet" href="attendance.css?v=services-53">
 <body class="staff-page">
 <main>
 <header class="staff-header">
@@ -103,7 +103,7 @@
 <article class="bi-card bi-wide bi-insight"><span class="staff-eyebrow">LEITURA RÁPIDA</span><h4>Resumo para decisão</h4><div id="biinsights" class="bi-insights"></div></article></div>
 </section>
 </section>
-<section id="tab-agenda" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-agenda" hidden><div id="requestbanner" class="request-banner" hidden><span id="requestbannertext"></span><button id="requestbannerbutton" type="button">Ver pedidos</button></div>
+<section id="tab-agenda" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-agenda" hidden>
 <div class="section-intro">
 <h3>Cada cliente, um cuidado especial.</h3>
 <p>Consulte os horários, registre novas reservas e prepare os avisos por WhatsApp.</p>
@@ -152,7 +152,7 @@
 </details>
 <h3>Agenda por barbeiro</h3>
 <div class="agenda-legend" aria-label="Legenda da agenda"><span><i style="background:#4f8061"></i>Confirmado</span><span><i style="background:#c69543"></i>Cliente recebido</span><span><i style="background:#3c6f86"></i>Concluído</span><span><i style="background:#a66052"></i>Cancelado</span></div>
-<details id="blockdetails" class="new-booking"><summary>Fechar agenda: folga, férias, feriado ou horário</summary><div id="requestpanel" class="request-panel" hidden><h4>Pedidos dos barbeiros</h4><div id="requestpending"></div></div><p class="help">Ninguém consegue agendar no período fechado. Se já houver clientes marcados, eles aparecem abaixo com o aviso pronto para enviar no WhatsApp.</p><form id="blockform"><div class="grid"><label>Barbeiro<select id="blockbarber"><option value="">Toda a barbearia</option></select></label><label>Motivo<input id="blockreason" maxlength="120" placeholder="Ex.: Almoço, folga ou férias" required></label><label>Início<input id="blockstart" type="datetime-local" required></label><label>Fim<input id="blockend" type="datetime-local" required></label></div><button>Fechar agenda neste período</button></form><div id="blockaffected" class="block-affected" role="status" hidden></div><div id="blocklist" class="block-list"></div></details><details class="new-booking"><summary>Horário de funcionamento</summary><p class="help">Dias desmarcados ficam fechados. Escolha um barbeiro para dar a ele um horário diferente do da loja. Para folgas e férias, use “Fechar agenda”.</p><form id="hoursform"><div class="grid"><label>De quem<select id="hoursbarber"><option value="">Toda a barbearia</option></select></label><label id="slotlabel">Intervalo entre horários<select id="slotminutes"><option value="15">15 minutos</option><option value="20">20 minutos</option><option value="30">30 minutos</option><option value="45">45 minutos</option><option value="60">1 hora</option></select></label></div><p id="hourshint" class="help"></p><div id="hoursdays" class="hours-days"></div><button>Salvar horário</button> <button id="hoursreset" type="button" hidden>Voltar a usar o horário da loja</button></form></details>
+<details id="blockdetails" class="new-booking chefe-only"><summary>Fechar agenda: folga, férias, feriado ou horário</summary><p class="help">Ninguém consegue agendar no período fechado. Se já houver clientes marcados, eles aparecem abaixo com o aviso pronto para enviar no WhatsApp.</p><form id="blockform"><div class="grid"><label>Barbeiro<select id="blockbarber"><option value="">Toda a barbearia</option></select></label><label>Motivo<input id="blockreason" maxlength="120" placeholder="Ex.: Almoço, folga ou férias" required></label><label>Início<input id="blockstart" type="datetime-local" required></label><label>Fim<input id="blockend" type="datetime-local" required></label></div><button>Fechar agenda neste período</button></form><div id="blockaffected" class="block-affected" role="status" hidden></div><div id="blocklist" class="block-list"></div></details><details class="new-booking chefe-only"><summary>Horário de funcionamento</summary><p class="help">Dias desmarcados ficam fechados. Escolha um barbeiro para dar a ele um horário diferente do da loja. Para folgas e férias, use “Fechar agenda”.</p><form id="hoursform"><div class="grid"><label>De quem<select id="hoursbarber"><option value="">Toda a barbearia</option></select></label><label id="slotlabel">Intervalo entre horários<select id="slotminutes"><option value="15">15 minutos</option><option value="20">20 minutos</option><option value="30">30 minutos</option><option value="45">45 minutos</option><option value="60">1 hora</option></select></label></div><p id="hourshint" class="help"></p><div id="hoursdays" class="hours-days"></div><button>Salvar horário</button> <button id="hoursreset" type="button" hidden>Voltar a usar o horário da loja</button></form></details>
 <p id="count">
 </p>
 <section id="nopreferencesummary" class="no-preference-summary" hidden>
@@ -257,7 +257,7 @@
 </ul>
 </article>
 </div>
-</section>
+<article class="catalog-form attendants-admin"><h3>Atendentes</h3><p class="help">A atendente acessa só Agenda, Atendimentos e Caixa diário. Ela cria a conta pelo site (Primeiro acesso) e, no primeiro login no painel, ativa o código do celular.</p><form id="attendantform"><label>E-mail da atendente<input id="attendantemail" type="email" maxlength="120" required autocomplete="off"></label><button>Liberar acesso</button></form><div id="attendantlist" class="block-list"></div></article></section>
 <section id="tab-atendimentos" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-atendimentos" hidden>
 <div class="section-intro"><h3>Recepção e pagamentos</h3><p>Confirme a chegada, registre procedimentos extras, forma de pagamento e conclusão.</p></div><p id="visitstatus" role="status" tabindex="-1"></p>
 <div id="visitpanel"><div class="visit-filters"><label>Dia de Manaus<input id="visitdate" type="date" required></label><label>Buscar cliente<input id="visitsearch" type="search" placeholder="Nome do cliente"></label><label>Situação<select id="visitstate"><option value="all">Todos</option><option value="scheduled">Aguardando chegada</option><option value="arrived">Em atendimento</option><option value="completed">Concluídos</option><option value="cancelled">Cancelados</option></select></label><button id="visitrefresh">Atualizar</button></div><div id="visitmetrics" class="metrics"></div><div id="visitlist" class="visit-list"></div><p id="visitempty" hidden>Nenhum atendimento encontrado para esses filtros.</p></div>
@@ -281,28 +281,28 @@
 </form>
 </section>
 </div>
-<script src="config.js?v=services-52">
+<script src="config.js?v=services-53">
 </script>
-<script src="api.js?v=services-52">
+<script src="api.js?v=services-53">
 </script>
-<script src="team.js?v=services-52">
+<script src="team.js?v=services-53">
 </script>
-<script src="dashboard.js?v=services-52">
+<script src="dashboard.js?v=services-53">
 </script>
-<script src="finance-model.js?v=services-52"></script>
-<script src="bi-model.js?v=services-52"></script>
-<script src="whatsapp.js?v=services-52">
+<script src="finance-model.js?v=services-53"></script>
+<script src="bi-model.js?v=services-53"></script>
+<script src="whatsapp.js?v=services-53">
 </script>
-<script src="staff-auth.js?v=services-52">
+<script src="staff-auth.js?v=services-53">
 </script>
-<script src="staff-tabs.js?v=services-52">
+<script src="staff-tabs.js?v=services-53">
 </script>
-<script src="service-cards.js?v=services-52"></script><script src="admin.js?v=services-52">
+<script src="service-cards.js?v=services-53"></script><script src="admin.js?v=services-53">
 </script>
-<script src="cash.js?v=services-52"></script>
-<script src="operations.js?v=services-52"></script>
-<script src="agenda-pro.js?v=services-52"></script>
-<script src="attendance-model.js?v=services-52"></script>
-<script src="attendance.js?v=services-52"></script>
-<script src="update-check.js?v=services-52" data-version="services-52"></script><button id="installapp" type="button" class="install-app" hidden>📲 Instalar app</button></body>
+<script src="cash.js?v=services-53"></script>
+<script src="operations.js?v=services-53"></script>
+<script src="agenda-pro.js?v=services-53"></script>
+<script src="attendance-model.js?v=services-53"></script>
+<script src="attendance.js?v=services-53"></script>
+<script src="update-check.js?v=services-53" data-version="services-53"></script><button id="installapp" type="button" class="install-app" hidden>📲 Instalar app</button></body>
 </html>

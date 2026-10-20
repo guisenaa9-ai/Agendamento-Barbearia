@@ -19,7 +19,7 @@ create or replace function public.admin_cancel_booking(p_booking uuid,p_reason t
 returns uuid language plpgsql security definer set search_path='' as $$
 declare reservation public.bookings%rowtype; clean_reason text;
 begin
- if not public.is_admin() then raise exception 'Acesso permitido somente ao chefe.';end if;
+ if not public.is_staff() then raise exception 'Acesso permitido somente à equipe da barbearia.';end if;
  clean_reason:=trim(coalesce(p_reason,''));
  if length(clean_reason) not between 5 and 500 then raise exception 'Informe um motivo entre 5 e 500 caracteres.';end if;
  select * into reservation from public.bookings where id=p_booking for update;

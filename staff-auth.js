@@ -4,11 +4,13 @@ try{const value=JSON.parse(sessionStorage.getItem(key)||'null');if(value?.access
 function set(value){session=value;if(session)session.expires_at=session.expires_at||Date.now()/1000+session.expires_in;try{if(session)sessionStorage.setItem(key,JSON.stringify(session));else sessionStorage.removeItem(key);}catch{}arm();}
 async function token(){if(!session)throw Error('Entre com a conta do chefe.');if(Date.now()/1000>=session.expires_at-45){if(!refreshing)refreshing=api.request('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:{refresh_token:session.refresh_token}}).then(value=>{set(value);return value.access_token;}).catch(()=>{set(null);throw Error('Sua sessão expirou. Entre novamente.');}).finally(()=>refreshing=null);return refreshing;}return session.access_token;}
 async function rpc(name,body){return api.rpc(name,body,await token());}
-async function check(){const allowed=await rpc('is_admin',{});if(!allowed){set(null);throw Error('Acesso permitido somente ao chefe.');}}
+// Chefe vê tudo; atendente só Agenda, Atendimentos e Caixa (staff_role vem de equipe-atendente.sql).
+let role=null;
+async function check(){let value;try{value=await rpc('staff_role',{});}catch(e){if(!/staff_role|schema cache|function/i.test(e.message))throw e;value=await rpc('is_admin',{})?'admin':null;}if(!value){set(null);throw Error('Acesso permitido somente à equipe da barbearia.');}role=value;window.StaffTabs?.setRole(role);return role;}
 async function login(email,password){const value=await api.request('/auth/v1/token?grant_type=password',{method:'POST',body:{email,password}});set(value);try{set(await api.mfa(value));await check();try{await api.rpc('track_kryon_usage',{p_event:'staff_login'},await token());}catch{}return session;}catch(e){set(null);throw e;}}
 async function logout(){const previous=session?.access_token;set(null);if(previous)try{await api.request('/auth/v1/logout',{method:'POST',token:previous});}catch{}}
 // Computador compartilhado na barbearia: o painel sai sozinho após 30 minutos sem uso.
 let idle;function arm(){clearTimeout(idle);if(session)idle=setTimeout(async()=>{await logout();location.reload();},30*60*1000);}
 for(const type of ['pointerdown','keydown'])window.addEventListener(type,arm,{passive:true});arm();
-window.StaffAuth={token,rpc,check,login,logout,clear:()=>set(null),session:()=>session,request:async(path,options={})=>api.request(path,{...options,token:await token()})};
+window.StaffAuth={token,rpc,check,role:()=>role,login,logout,clear:()=>set(null),session:()=>session,request:async(path,options={})=>api.request(path,{...options,token:await token()})};
 })();

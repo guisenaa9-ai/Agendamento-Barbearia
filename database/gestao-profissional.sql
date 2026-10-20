@@ -30,8 +30,8 @@ alter table public.schedule_blocks enable row level security;
 drop policy if exists cash_sessions_admin on public.cash_sessions;
 drop policy if exists cash_movements_admin on public.cash_movements;
 drop policy if exists schedule_blocks_admin on public.schedule_blocks;
-create policy cash_sessions_admin on public.cash_sessions for all to authenticated using(public.is_admin()) with check(public.is_admin());
-create policy cash_movements_admin on public.cash_movements for all to authenticated using(public.is_admin()) with check(public.is_admin());
+create policy cash_sessions_admin on public.cash_sessions for all to authenticated using(public.is_staff()) with check(public.is_staff());
+create policy cash_movements_admin on public.cash_movements for all to authenticated using(public.is_staff()) with check(public.is_staff());
 create policy schedule_blocks_admin on public.schedule_blocks for all to authenticated using(public.is_admin()) with check(public.is_admin());
 revoke all on public.cash_sessions,public.cash_movements,public.schedule_blocks from anon,authenticated;
 grant select,insert,update,delete on public.cash_sessions,public.cash_movements,public.schedule_blocks to authenticated;
@@ -39,7 +39,7 @@ grant select,insert,update,delete on public.cash_sessions,public.cash_movements,
 create or replace function public.mark_no_show(p_booking uuid) returns void language plpgsql security definer set search_path='' as $$
 declare reservation public.bookings%rowtype;
 begin
- if not public.is_admin() then raise exception 'Acesso permitido somente ao chefe.';end if;
+ if not public.is_staff() then raise exception 'Acesso permitido somente à equipe da barbearia.';end if;
  select * into reservation from public.bookings where id=p_booking for update;
  if not found or reservation.status<>'confirmed' then raise exception 'Agendamento não encontrado ou cancelado.';end if;
  if reservation.attendance_state<>'scheduled' then raise exception 'O cliente já foi recebido.';end if;
@@ -54,16 +54,16 @@ grant execute on function public.mark_no_show(uuid) to authenticated;
 create table if not exists public.customer_directory(id uuid primary key default gen_random_uuid(),name text not null check(length(trim(name)) between 1 and 80),phone text not null check(phone ~ '^[0-9]{10,15}$'),email text,created_at timestamptz not null default now(),updated_at timestamptz not null default now(),unique(phone));
 alter table public.customer_directory enable row level security;
 drop policy if exists customer_directory_admin on public.customer_directory;
-create policy customer_directory_admin on public.customer_directory for all to authenticated using(public.is_admin()) with check(public.is_admin());
+create policy customer_directory_admin on public.customer_directory for all to authenticated using(public.is_staff()) with check(public.is_staff());
 revoke all on public.customer_directory from anon,authenticated;
 grant select,insert,update on public.customer_directory to authenticated;
 create or replace function public.admin_search_customers(p_query text)
 returns table(id uuid,name text,phone text,email text,source text) language sql stable security definer set search_path='' as $$
  select x.id,x.name,x.phone,x.email,x.source from (select p.id,p.name,p.phone,u.email::text,'online'::text source from public.customer_profiles p join auth.users u on u.id=p.id union all select d.id,d.name,d.phone,d.email,'presencial'::text from public.customer_directory d) x
- where public.is_admin() and length(trim(coalesce(p_query,'')))>=2 and (x.name ilike '%'||trim(p_query)||'%' or x.phone like '%'||regexp_replace(p_query,'[^0-9]','','g')||'%' or x.email ilike '%'||trim(p_query)||'%') order by x.name nulls last limit 12;
+ where public.is_staff() and length(trim(coalesce(p_query,'')))>=2 and (x.name ilike '%'||trim(p_query)||'%' or x.phone like '%'||regexp_replace(p_query,'[^0-9]','','g')||'%' or x.email ilike '%'||trim(p_query)||'%') order by x.name nulls last limit 12;
 $$;
 create or replace function public.admin_save_customer(p_name text,p_phone text,p_email text) returns uuid language plpgsql security definer set search_path='' as $$
-declare clean_phone text; result uuid; begin if not public.is_admin() then raise exception 'Acesso permitido somente ao chefe.';end if;if p_name is null or length(trim(p_name)) not between 1 and 80 then raise exception 'Informe o nome do cliente.';end if;clean_phone:=regexp_replace(coalesce(p_phone,''),'[^0-9]','','g');if length(clean_phone) not between 10 and 15 then raise exception 'Informe celular com DDD.';end if;if nullif(trim(coalesce(p_email,'')),'') is not null and trim(p_email) !~* '^[^@ ]+@[^@ ]+\.[^@ ]+$' then raise exception 'Confira o e-mail do cliente.';end if;insert into public.customer_directory(name,phone,email) values(trim(p_name),clean_phone,nullif(lower(trim(p_email)),'')) on conflict(phone) do update set name=excluded.name,email=coalesce(excluded.email,public.customer_directory.email),updated_at=now() returning id into result;return result;end;$$;
+declare clean_phone text; result uuid; begin if not public.is_staff() then raise exception 'Acesso permitido somente à equipe da barbearia.';end if;if p_name is null or length(trim(p_name)) not between 1 and 80 then raise exception 'Informe o nome do cliente.';end if;clean_phone:=regexp_replace(coalesce(p_phone,''),'[^0-9]','','g');if length(clean_phone) not between 10 and 15 then raise exception 'Informe celular com DDD.';end if;if nullif(trim(coalesce(p_email,'')),'') is not null and trim(p_email) !~* '^[^@ ]+@[^@ ]+\.[^@ ]+$' then raise exception 'Confira o e-mail do cliente.';end if;insert into public.customer_directory(name,phone,email) values(trim(p_name),clean_phone,nullif(lower(trim(p_email)),'')) on conflict(phone) do update set name=excluded.name,email=coalesce(excluded.email,public.customer_directory.email),updated_at=now() returning id into result;return result;end;$$;
 revoke all on function public.admin_search_customers(text) from public,anon;
 revoke all on function public.admin_save_customer(text,text,text) from public,anon;
 grant execute on function public.admin_search_customers(text) to authenticated;
