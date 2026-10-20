@@ -1,6 +1,8 @@
 # Instalar para uma barbearia nova (modelo A: uma cópia por cliente)
 
 ## 1. Supabase (projeto novo para o cliente)
+Atalho: rode só `instalar-tudo.sql` (itens 1 a 10 abaixo juntos, gerado por `gerar-instalar-tudo.sh`).
+
 No SQL Editor, execute nesta ordem (todos podem ser repetidos sem problema):
 
 1. `00-base.sql` – tabelas, regras de acesso, funções principais e armazenamento de fotos
