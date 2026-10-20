@@ -1,1 +1,1 @@
-{"version": "services-46", "update_popup": true, "features": ["Horário de funcionamento por dia e por barbeiro", "Proteção contra horário duplicado"]}
+{"version": "services-47", "update_popup": true, "features": ["Verificação em duas etapas no painel do chefe", "Saída automática após 30 minutos sem uso"]}

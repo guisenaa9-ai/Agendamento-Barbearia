@@ -119,7 +119,7 @@ begin
    'logins_today',(select count(*) from public.kryon_usage_events e where (e.happened_at at time zone 'America/Manaus')::date=(clock_timestamp() at time zone 'America/Manaus')::date),
    'changes',(select count(*) from public.kryon_booking_events e where (e.happened_at at time zone 'America/Manaus')::date between p_start and p_end),
    'changes_today',(select count(*) from public.kryon_booking_events e where (e.happened_at at time zone 'America/Manaus')::date=(clock_timestamp() at time zone 'America/Manaus')::date),
-   'usage_days',(select count(distinct x.day) from (select (e.happened_at at time zone 'America/Manaus')::date day from public.kryon_usage_events e union all select (e.happened_at at time zone 'America/Manaus')::date from public.kryon_booking_events e) x where x.day between p_start and p_end),
+   'usage_days',(select count(distinct x.day) from (select (e.happened_at at time zone 'America/Manaus')::date as day from public.kryon_usage_events e union all select (e.happened_at at time zone 'America/Manaus')::date from public.kryon_booking_events e) x where x.day between p_start and p_end),
    'last_login_at',(select max(e.happened_at) from public.kryon_usage_events e),
    'last_booking_at',(select max(b.created_at) from public.bookings b),
    'last_change_at',(select max(e.happened_at) from public.kryon_booking_events e),

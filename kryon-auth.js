@@ -5,7 +5,7 @@ function set(value){session=value;if(session)session.expires_at=session.expires_
 async function token(){if(!session)throw Error('Entre no Painel Kryon.');if(Date.now()/1000>=session.expires_at-45){if(!refreshing)refreshing=api.request('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:{refresh_token:session.refresh_token}}).then(value=>{set(value);return value.access_token;}).catch(()=>{set(null);throw Error('Sua sessão expirou. Entre novamente.');}).finally(()=>refreshing=null);return refreshing;}return session.access_token;}
 async function rpc(name,body={}){return api.rpc(name,body,await token());}
 async function check(){if(!await rpc('is_kryon_admin')){set(null);throw Error('Esta conta não possui acesso ao Painel Kryon.');}return true;}
-async function login(email,password){const value=await api.request('/auth/v1/token?grant_type=password',{method:'POST',body:{email,password}});set(value);try{await check();return session;}catch(e){set(null);throw e;}}
+async function login(email,password){const value=await api.request('/auth/v1/token?grant_type=password',{method:'POST',body:{email,password}});set(value);try{set(await api.mfa(value));await check();return session;}catch(e){set(null);throw e;}}
 async function logout(){const previous=session?.access_token;set(null);if(previous)try{await api.request('/auth/v1/logout',{method:'POST',token:previous});}catch{}}
 window.KryonAuth={token,rpc,check,login,logout,clear:()=>set(null),session:()=>session};
 })();
