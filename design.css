@@ -184,3 +184,16 @@ header .demo{display:none}
 .history p{font-size:15px;color:#5f6a5c!important}
 footer{font-size:13px!important;color:#5f6a5c}
 @media(max-width:600px){.steps{gap:4px!important;justify-content:space-between}.steps i{display:none}.steps b{padding:6px 9px;font-size:13px}}
+
+/* Celular: barra fixa de confirmação (booking-bar.js) */
+.booking-bar{display:none}
+@media(max-width:850px){
+ .booking-bar:not([hidden]){position:fixed;z-index:60;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,254,250,.94);border-top:1px solid #e3e4dc;box-shadow:0 -10px 30px #18392c14;backdrop-filter:blur(14px)}
+ .booking-bar p{margin:0;font-size:16px;font-weight:700;color:#18392c;min-width:0}
+ .booking-bar button{flex:0 0 auto;min-height:48px;padding:0 22px;border:0;background:#18392c;color:#fff;font-size:16px}
+ .booking-bar button:disabled{background:#9aa79e}
+ body.has-booking-bar{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+ body.has-booking-bar .install-app{bottom:90px}
+}
+@media(prefers-reduced-motion:no-preference){.booking-bar:not([hidden]){animation:ds-bar-in .35s cubic-bezier(.2,.8,.2,1)}}
+@keyframes ds-bar-in{from{transform:translateY(100%)}to{transform:none}}
