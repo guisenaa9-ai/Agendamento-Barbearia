@@ -288,7 +288,7 @@ for(const table of ['services','barbers']){const values=await request('/rest/v1/
 setBookingOptions(table,values);
 let detailsError=false;
 
-if(table==='barbers'){try{const rows=await request('/rest/v1/barber_details?select=barber_id,cpf,phone,commission_rate');
+if(table==='barbers'){try{const rows=await request('/rest/v1/barber_details?select=barber_id,cpf,phone,commission_rate,login_email');
 privateDetails=new Map(rows.map(r=>[r.barber_id,r]));
 }catch{privateDetails.clear();
 detailsError=true;
@@ -318,6 +318,10 @@ const cpf=document.createElement('small');
 cpf.className='contact-detail';
 cpf.textContent='CPF: '+(detail.cpf?'***.***.***-'+detail.cpf.slice(-2):'Não informado');
 info.append(cpf);
+const access=document.createElement('small');
+access.className='contact-detail';
+access.textContent=detail.login_email?'Área do barbeiro: '+detail.login_email:'Sem acesso à Área do barbeiro';
+info.append(access);
 if(detail.cpf){const reveal=document.createElement('button');
 reveal.type='button';
 reveal.textContent='Mostrar CPF';
@@ -338,6 +342,7 @@ $('barberphone').value=detail.phone||'';
 $('barbercommission').value=detail.commission_rate??40;
 $('barberspecialty').value=r.specialty||'';
 $('barberbio').value=r.bio||'';
+$('barberlogin').value=detail.login_email||'';
 $('savebarber').textContent='Salvar alterações';
 $('resetbarber').hidden=false;
 $('barberform').scrollIntoView({behavior:'smooth',block:'center'});
@@ -435,6 +440,7 @@ button.disabled=true;
 try{const id=await api.rpc('save_barber',{p_id:$('barberid').value||null,p_name:name,p_cpf:cpf||null,p_phone:phone||null},await authorized());
 await api.rpc('save_barber_commission',{p_barber:id,p_rate:commission},await authorized());
 await request('/rest/v1/barbers?id=eq.'+encodeURIComponent(id),{method:'PATCH',body:{specialty:$('barberspecialty').value.trim(),bio:$('barberbio').value.trim()}});
+await api.rpc('admin_set_barber_login',{p_barber:id,p_email:$('barberlogin').value.trim()},await authorized());
 if(photo){status('Enviando foto do barbeiro…');await uploadBarberPhoto(id,photo);}
 $('resetbarber').onclick();
 await catalog();

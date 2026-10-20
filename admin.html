@@ -3,18 +3,18 @@
 <meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1"><link rel="manifest" href="painel.webmanifest"><meta name="theme-color" content="#18392c"><link rel="icon" href="icones/icone-192.png"><link rel="apple-touch-icon" href="icones/icone-180.png"><meta name="apple-mobile-web-app-title" content="Painel"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
 <title>Portal do chefe · Barbearia Daniel Silva</title>
-<link rel="stylesheet" href="admin.css?v=services-50">
-<link rel="stylesheet" href="pole.css?v=services-50">
-<link rel="stylesheet" href="polish.css?v=services-50">
-<link rel="stylesheet" href="cash.css?v=services-50">
-<link rel="stylesheet" href="operations.css?v=services-50">
-<link rel="stylesheet" href="agenda-pro.css?v=services-50">
-<link rel="stylesheet" href="agenda-pro-v2.css?v=services-50">
-<link rel="stylesheet" href="agenda-pro-v3.css?v=services-50">
-<link rel="stylesheet" href="agenda-view.css?v=services-50">
-<link rel="stylesheet" href="agenda-view-v2.css?v=services-50">
-<link rel="stylesheet" href="agenda-cancel.css?v=services-50">
-<link rel="stylesheet" href="attendance.css?v=services-50">
+<link rel="stylesheet" href="admin.css?v=services-51">
+<link rel="stylesheet" href="pole.css?v=services-51">
+<link rel="stylesheet" href="polish.css?v=services-51">
+<link rel="stylesheet" href="cash.css?v=services-51">
+<link rel="stylesheet" href="operations.css?v=services-51">
+<link rel="stylesheet" href="agenda-pro.css?v=services-51">
+<link rel="stylesheet" href="agenda-pro-v2.css?v=services-51">
+<link rel="stylesheet" href="agenda-pro-v3.css?v=services-51">
+<link rel="stylesheet" href="agenda-view.css?v=services-51">
+<link rel="stylesheet" href="agenda-view-v2.css?v=services-51">
+<link rel="stylesheet" href="agenda-cancel.css?v=services-51">
+<link rel="stylesheet" href="attendance.css?v=services-51">
 <body class="staff-page">
 <main>
 <header class="staff-header">
@@ -198,6 +198,7 @@
 <h3>O cuidado começa na escolha.</h3>
 <p>Organize os serviços, valores e tempo de cada atendimento.</p>
 </div>
+<details class="new-booking loyalty-settings"><summary>Programa de fidelidade</summary><p class="help">Desligado, os clientes não veem nada. Ligado, cada atendimento pago conta um ponto pelo celular do cliente; ao completar a meta, ele ganha um atendimento grátis. Para dar o prêmio, registre o atendimento com a forma de pagamento “Cortesia”.</p><form id="loyaltyform"><label class="payment-check"><input id="loyaltyenabled" type="checkbox"> Ativar programa de fidelidade</label><label>Atendimentos para ganhar 1 grátis<input id="loyaltygoal" type="number" min="2" max="50" step="1" value="10" required></label><button>Salvar fidelidade</button></form></details>
 <div class="catalog-screen">
 <article class="catalog-form">
 <h3>Cadastrar serviço</h3>
@@ -239,6 +240,8 @@
 </label>
 <label>Apresentação (aparece para os clientes)<textarea id="barberbio" maxlength="400" rows="3" placeholder="Fale do estilo e da experiência do barbeiro"></textarea>
 </label>
+<label>E-mail de acesso à Área do barbeiro (opcional)<input id="barberlogin" type="email" maxlength="120" placeholder="O barbeiro cria a conta pelo site com este e-mail" autocomplete="off">
+</label>
 <label>Comissão sobre valores pagos (%)<input id="barbercommission" type="number" min="0" max="100" step="0.01" value="40" required>
 </label>
 <label>Foto do barbeiro (opcional)<input id="barberphoto" type="file" accept="image/jpeg,image/png,image/webp">
@@ -258,7 +261,7 @@
 <section id="tab-atendimentos" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-atendimentos" hidden>
 <div class="section-intro"><h3>Recepção e pagamentos</h3><p>Confirme a chegada, registre procedimentos extras, forma de pagamento e conclusão.</p></div><p id="visitstatus" role="status" tabindex="-1"></p>
 <div id="visitpanel"><div class="visit-filters"><label>Dia de Manaus<input id="visitdate" type="date" required></label><label>Buscar cliente<input id="visitsearch" type="search" placeholder="Nome do cliente"></label><label>Situação<select id="visitstate"><option value="all">Todos</option><option value="scheduled">Aguardando chegada</option><option value="arrived">Em atendimento</option><option value="completed">Concluídos</option><option value="cancelled">Cancelados</option></select></label><button id="visitrefresh">Atualizar</button></div><div id="visitmetrics" class="metrics"></div><div id="visitlist" class="visit-list"></div><p id="visitempty" hidden>Nenhum atendimento encontrado para esses filtros.</p></div>
-<section id="visiteditor" class="visit-editor" hidden><div class="row"><h2 id="visitclient"></h2><button id="closevisit" type="button">Fechar</button></div><p id="visitdetails"></p><p id="visittimestamps" class="help"></p><form id="visitform"><h3>Procedimentos extras</h3><p class="help">Informe os procedimentos realmente realizados e seus valores.</p><div class="extra-shortcuts"><button id="addhydration" type="button">+ Hidratação</button><button id="addbrush" type="button">+ Escova</button><button id="addextra" type="button">+ Outro procedimento</button></div><div id="visitextras"></div><div class="grid"><section><h3>Valores</h3><p class="bill-line"><span>Serviço agendado</span><strong id="baseamount"></strong></p><p class="bill-line"><span>Procedimentos extras</span><strong id="extraamount"></strong></p><label>Desconto (R$)<input id="visitdiscount" type="number" min="0" step="0.01" value="0" required></label><p class="bill-total"><span>Total do atendimento</span><strong id="totalamount"></strong></p></section><section><h3>Pagamento</h3><label class="payment-check"><input id="visitpaid" type="checkbox"> Pagamento recebido</label><label>Forma de pagamento<select id="visitmethod"><option value="">Selecione</option><option value="pix">Pix</option><option value="cash">Dinheiro</option><option value="debit">Cartão de débito</option><option value="credit">Cartão de crédito</option><option value="transfer">Transferência</option><option value="courtesy">Cortesia</option><option value="other">Outro</option></select></label></section></div><label>Observações<textarea id="visitnotes" maxlength="2000" rows="3"></textarea></label><p id="visiterror" role="alert"></p><div class="extra-shortcuts"><button id="savevisit" type="submit">Salvar atendimento</button><button id="finishvisit" type="button">Concluir atendimento e pagamento</button></div></form></section>
+<section id="visiteditor" class="visit-editor" hidden><div class="row"><h2 id="visitclient"></h2><button id="closevisit" type="button">Fechar</button></div><p id="visitdetails"></p><p id="visittimestamps" class="help"></p><p id="visitloyalty" class="loyalty-note" hidden></p><form id="visitform"><h3>Procedimentos extras</h3><p class="help">Informe os procedimentos realmente realizados e seus valores.</p><div class="extra-shortcuts"><button id="addhydration" type="button">+ Hidratação</button><button id="addbrush" type="button">+ Escova</button><button id="addextra" type="button">+ Outro procedimento</button></div><div id="visitextras"></div><div class="grid"><section><h3>Valores</h3><p class="bill-line"><span>Serviço agendado</span><strong id="baseamount"></strong></p><p class="bill-line"><span>Procedimentos extras</span><strong id="extraamount"></strong></p><label>Desconto (R$)<input id="visitdiscount" type="number" min="0" step="0.01" value="0" required></label><p class="bill-total"><span>Total do atendimento</span><strong id="totalamount"></strong></p></section><section><h3>Pagamento</h3><label class="payment-check"><input id="visitpaid" type="checkbox"> Pagamento recebido</label><label>Forma de pagamento<select id="visitmethod"><option value="">Selecione</option><option value="pix">Pix</option><option value="cash">Dinheiro</option><option value="debit">Cartão de débito</option><option value="credit">Cartão de crédito</option><option value="transfer">Transferência</option><option value="courtesy">Cortesia</option><option value="other">Outro</option></select></label></section></div><label>Observações<textarea id="visitnotes" maxlength="2000" rows="3"></textarea></label><p id="visiterror" role="alert"></p><div class="extra-shortcuts"><button id="savevisit" type="submit">Salvar atendimento</button><button id="finishvisit" type="button">Concluir atendimento e pagamento</button></div></form></section>
 </section>
 </div>
 </div>
@@ -278,28 +281,28 @@
 </form>
 </section>
 </div>
-<script src="config.js?v=services-50">
+<script src="config.js?v=services-51">
 </script>
-<script src="api.js?v=services-50">
+<script src="api.js?v=services-51">
 </script>
-<script src="team.js?v=services-50">
+<script src="team.js?v=services-51">
 </script>
-<script src="dashboard.js?v=services-50">
+<script src="dashboard.js?v=services-51">
 </script>
-<script src="finance-model.js?v=services-50"></script>
-<script src="bi-model.js?v=services-50"></script>
-<script src="whatsapp.js?v=services-50">
+<script src="finance-model.js?v=services-51"></script>
+<script src="bi-model.js?v=services-51"></script>
+<script src="whatsapp.js?v=services-51">
 </script>
-<script src="staff-auth.js?v=services-50">
+<script src="staff-auth.js?v=services-51">
 </script>
-<script src="staff-tabs.js?v=services-50">
+<script src="staff-tabs.js?v=services-51">
 </script>
-<script src="service-cards.js?v=services-50"></script><script src="admin.js?v=services-50">
+<script src="service-cards.js?v=services-51"></script><script src="admin.js?v=services-51">
 </script>
-<script src="cash.js?v=services-50"></script>
-<script src="operations.js?v=services-50"></script>
-<script src="agenda-pro.js?v=services-50"></script>
-<script src="attendance-model.js?v=services-50"></script>
-<script src="attendance.js?v=services-50"></script>
-<script src="update-check.js?v=services-50" data-version="services-50"></script><button id="installapp" type="button" class="install-app" hidden>📲 Instalar app</button></body>
+<script src="cash.js?v=services-51"></script>
+<script src="operations.js?v=services-51"></script>
+<script src="agenda-pro.js?v=services-51"></script>
+<script src="attendance-model.js?v=services-51"></script>
+<script src="attendance.js?v=services-51"></script>
+<script src="update-check.js?v=services-51" data-version="services-51"></script><button id="installapp" type="button" class="install-app" hidden>📲 Instalar app</button></body>
 </html>
