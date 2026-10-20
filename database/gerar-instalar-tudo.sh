@@ -7,3 +7,10 @@ cd "$(dirname "$0")"
   echo; echo "-- ===== $f.sql ====="; cat "$f.sql"
  done
 } > instalar-tudo.sql
+# Banco que já está em uso (criado antes destes arquivos): só as atualizações, na ordem certa.
+{
+ echo "-- GERADO por gerar-instalar-tudo.sh. Atualiza um banco que já está em uso. Pode rodar mais de uma vez."
+ for f in painel-kryon horarios-loja sem-horario-duplicado barbeiro-fidelidade lgpd seguranca-permissoes; do
+  echo; echo "-- ===== $f.sql ====="; cat "$f.sql"
+ done
+} > atualizar-banco-existente.sql

@@ -839,6 +839,11 @@ commit;
 -- Área do barbeiro (cada um vê só a própria agenda e comissão) e programa de fidelidade
 -- (desligado até o chefe ativar no painel). Execute depois de horarios-loja.sql. Repetível.
 begin;
+do $$ begin
+ if to_regclass('public.shop_settings') is null then
+  raise exception 'Rode antes o horarios-loja.sql (ou use atualizar-banco-existente.sql, que já roda tudo na ordem).';
+ end if;
+end $$;
 
 -- Área do barbeiro --------------------------------------------------------------------------------
 alter table public.barbers add column if not exists user_id uuid unique references auth.users(id) on delete set null;

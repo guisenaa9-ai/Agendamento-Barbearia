@@ -1,6 +1,8 @@
 # Instalar para uma barbearia nova (modelo A: uma cópia por cliente)
 
 ## 1. Supabase (projeto novo para o cliente)
+Banco que já está em uso: rode só `atualizar-banco-existente.sql` (todas as atualizações, na ordem).
+
 Atalho: rode só `instalar-tudo.sql` (itens 1 a 11 abaixo juntos, gerado por `gerar-instalar-tudo.sh`).
 
 No SQL Editor, execute nesta ordem (todos podem ser repetidos sem problema):
