@@ -1,0 +1,7 @@
+// Barbeiro e horário viram botões de toque. O <select> continua sendo a fonte do valor (booking.js lê e preenche ele).
+(function(){
+function chips(selectId,label){const select=document.getElementById(selectId);if(!select)return;const root=document.createElement('div');root.className='choice-chips';root.setAttribute('role','group');root.setAttribute('aria-label',label);select.before(root);select.classList.add('service-native');document.querySelector(`label[for="${selectId}"]`)?.classList.add('service-native');
+function sync(){const options=[...select.options].filter(o=>o.value);root.replaceChildren(...options.map(o=>{const button=document.createElement('button'),[main,...rest]=o.text.split(' · ');button.type='button';button.className='choice-chip';button.disabled=select.disabled||o.disabled;button.setAttribute('aria-pressed',String(select.value===o.value));button.textContent=main;if(rest.length){const small=document.createElement('small');small.textContent=rest.join(' · ');button.append(small);}button.onclick=()=>{select.value=o.value;select.dispatchEvent(new Event('change',{bubbles:true}));sync();};return button;}));if(!options.length){const hint=document.createElement('p');hint.className='choice-empty';hint.textContent=select.options[0]?.text||'';root.append(hint);}}
+select.addEventListener('change',sync);new MutationObserver(sync).observe(select,{attributes:true,childList:true,subtree:true});sync();}
+chips('barberchoice','Escolha o barbeiro');chips('timechoice','Escolha o horário');
+})();

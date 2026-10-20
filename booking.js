@@ -74,7 +74,7 @@ return;
 }book.href='#booking';
 $('barberchoice').value=b.id;
 $('timechoice').value='';
-slots();
+$('barberchoice').dispatchEvent(new Event('change'));
 };
 copy.append(name,specialty,bio,book);
 card.append(copy);
@@ -104,6 +104,7 @@ $('canceldeadline').textContent='Consulte sua conta para cancelar ou alterar at�
 $('confirmation').hidden=false;
 $('confirmation').scrollIntoView({behavior:'smooth',block:'center'});
 $('timechoice').value='';
+$('timechoice').dispatchEvent(new Event('change'));
 }catch(ex){$('error').textContent=$('barberchoice').value==='any'&&/barbeiro|customer_book|schema cache|function/i.test(String(ex.message))?'A reserva sem preferência ainda precisa ser ativada no sistema da barbearia. Tente novamente após a atualização ou escolha um barbeiro específico.':ex.message;
 }finally{busy=false;
 await slots();
