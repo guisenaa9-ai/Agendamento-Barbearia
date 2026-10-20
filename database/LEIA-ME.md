@@ -3,7 +3,7 @@
 ## 1. Supabase (projeto novo para o cliente)
 Banco que já está em uso: rode só `atualizar-banco-existente.sql` (todas as atualizações, na ordem).
 
-Atalho: rode só `instalar-tudo.sql` (itens 1 a 11 abaixo juntos, gerado por `gerar-instalar-tudo.sh`).
+Atalho: rode só `instalar-tudo.sql` (itens 1 a 12 abaixo juntos, gerado por `gerar-instalar-tudo.sh`).
 
 No SQL Editor, execute nesta ordem (todos podem ser repetidos sem problema):
 
@@ -16,9 +16,10 @@ No SQL Editor, execute nesta ordem (todos podem ser repetidos sem problema):
 7. `painel-kryon.sql` – troque o e-mail do monitor Kryon dentro do arquivo antes de rodar
 8. `sem-horario-duplicado.sql` – impede duas reservas no mesmo horário para o mesmo barbeiro
 9. `barbeiro-fidelidade.sql` – área do barbeiro e programa de fidelidade (desligado até o chefe ativar)
-10. `lgpd.sql` – permite ao cliente excluir a própria conta (exigência da LGPD)
-11. `seguranca-permissoes.sql` – tira de visitantes e clientes as funções que são só do chefe ou de uso interno
-12. `seguranca-2fa.sql` – exige o código do celular (verificação em duas etapas) para o chefe e a Kryon. Rode **depois** que o chefe já entrou uma vez e ativou o código pelo QR Code
+10. `barbeiro-pedidos-avisos.sql` – barbeiro pede folga (o chefe aprova) e vê avisos de agendamento
+11. `lgpd.sql` – permite ao cliente excluir a própria conta (exigência da LGPD)
+12. `seguranca-permissoes.sql` – tira de visitantes e clientes as funções que são só do chefe ou de uso interno
+13. `seguranca-2fa.sql` – exige o código do celular (verificação em duas etapas) para o chefe e a Kryon. Rode **depois** que o chefe já entrou uma vez e ativou o código pelo QR Code
 
 Depois, crie o usuário do chefe em Authentication → Users e torne-o administrador:
 ```sql
