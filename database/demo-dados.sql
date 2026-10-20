@@ -6,11 +6,15 @@ do $$
 declare
  hoje date:=(now() at time zone 'America/Manaus')::date;
  agora timestamp:=now() at time zone 'America/Manaus';
- chefe uuid:=(select user_id from public.admins limit 1);
+ chefe uuid;
  nomes text[]:=array['Lucas Almeida','Pedro Henrique','Mateus Oliveira','Gabriel Souza','Rafael Lima','João Victor','Thiago Santos','Bruno Ferreira','Felipe Rocha','André Costa','Vinícius Melo','Caio Martins','Diego Ribeiro','Gustavo Araújo','Leonardo Pinto','Marcelo Dias','Rodrigo Nunes','Samuel Barros','Igor Teixeira','Daniel Moura'];
  metodos text[]:=array['pix','pix','pix','cash','credit','debit'];
  b record; s record; d date; h int; inicio timestamp; sorte float; cliente int; reserva uuid;
 begin
+ if to_regclass('public.business_hours') is null or to_regclass('public.kryon_admins') is null then
+  raise exception 'Estrutura incompleta: rode antes, na ordem, os arquivos do LEIA-ME.md (00-base.sql até seguranca-2fa.sql).';
+ end if;
+ chefe:=(select user_id from public.admins limit 1);
  if exists(select 1 from public.bookings) then
   raise exception 'Este banco já tem reservas. Rode a demonstração só num projeto novo e vazio.';
  end if;
