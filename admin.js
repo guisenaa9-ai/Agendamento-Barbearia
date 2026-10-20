@@ -336,6 +336,8 @@ $('barbername').value=r.name;
 $('barbercpf').value=detail.cpf||'';
 $('barberphone').value=detail.phone||'';
 $('barbercommission').value=detail.commission_rate??40;
+$('barberspecialty').value=r.specialty||'';
+$('barberbio').value=r.bio||'';
 $('savebarber').textContent='Salvar alterações';
 $('resetbarber').hidden=false;
 $('barberform').scrollIntoView({behavior:'smooth',block:'center'});
@@ -432,6 +434,7 @@ const button=$('savebarber');
 button.disabled=true;
 try{const id=await api.rpc('save_barber',{p_id:$('barberid').value||null,p_name:name,p_cpf:cpf||null,p_phone:phone||null},await authorized());
 await api.rpc('save_barber_commission',{p_barber:id,p_rate:commission},await authorized());
+await request('/rest/v1/barbers?id=eq.'+encodeURIComponent(id),{method:'PATCH',body:{specialty:$('barberspecialty').value.trim(),bio:$('barberbio').value.trim()}});
 if(photo){status('Enviando foto do barbeiro…');await uploadBarberPhoto(id,photo);}
 $('resetbarber').onclick();
 await catalog();

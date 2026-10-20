@@ -49,19 +49,7 @@ end;$$;
 revoke all on function public.mark_no_show(uuid) from public,anon;
 grant execute on function public.mark_no_show(uuid) to authenticated;
 
-create or replace function public.available_slots(p_date date,p_barber uuid,p_service uuid)
-returns table(slot text) language sql stable security definer set search_path='' as $$
-select to_char(t,'HH24:MI') from public.services s
-cross join generate_series(p_date+time '09:00',p_date+time '18:30',interval '30 minutes') t
-where s.id=p_service and s.active
-and p_date between (now() at time zone 'America/Manaus')::date and (now() at time zone 'America/Manaus')::date+60
-and t>now() at time zone 'America/Manaus' and t+make_interval(mins=>s.duration)<=p_date+time '19:00'
-and exists(select 1 from public.barbers b where b.active and (p_barber is null or b.id=p_barber)
- and not exists(select 1 from public.bookings r where r.barber_id=b.id and r.status='confirmed' and not r.no_show and tsrange(r.starts_at,r.ends_at,'[)')&&tsrange(t,t+make_interval(mins=>s.duration),'[)'))
- and not exists(select 1 from public.schedule_blocks x where (x.barber_id is null or x.barber_id=b.id) and tsrange(x.starts_at,x.ends_at,'[)')&&tsrange(t,t+make_interval(mins=>s.duration),'[)'))
-) order by t;
-$$;
-grant execute on function public.available_slots(date,uuid,uuid) to anon,authenticated;
+-- available_slots fica em horarios-loja.sql (expediente por dia e por barbeiro).
 
 create table if not exists public.customer_directory(id uuid primary key default gen_random_uuid(),name text not null check(length(trim(name)) between 1 and 80),phone text not null check(phone ~ '^[0-9]{10,15}$'),email text,created_at timestamptz not null default now(),updated_at timestamptz not null default now(),unique(phone));
 alter table public.customer_directory enable row level security;

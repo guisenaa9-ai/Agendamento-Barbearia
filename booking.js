@@ -42,7 +42,7 @@ if(current!==generation)return;
 availableRows=result;
 options('timechoice',result.map(r=>({id:r.slot,label:r.slot+(any?' · '+r.barbers.length+' disponível(is)':'')})),'Selecione um horário');
 if(result.some(r=>r.slot===previous))$('timechoice').value=previous;
-$('datehint').textContent=result.length?'Horários de Manaus · Das 9h às 19h':'Sem horários. Escolha outra data ou barbeiro.';
+$('datehint').textContent=result.length?'Horários de Manaus':'Sem horários. Escolha outra data ou barbeiro.';
 summary();
 $('confirm').disabled=!canBook||busy||!$('timechoice').value;
 }catch(e){if(current===generation)$('datehint').textContent=e.message;
@@ -55,7 +55,7 @@ $('confirm').disabled=!canBook||busy||!$('timechoice').value;
 };
 
 function renderTeam(team){$('teamcards').replaceChildren();
-for(const b of team){const p=window.BarberTeam.profile(b.name),card=document.createElement('article');
+for(const b of team){const p=window.BarberTeam.profile(b),card=document.createElement('article');
 card.className='team-card';
 card.append(window.BarberTeam.portrait(b.name,b.photo_url));
 const copy=document.createElement('div');
@@ -142,7 +142,7 @@ options('timechoice',[],'Agenda não ativada');
 return}
 await account();
 
-try{[services,barbers]=await Promise.all([api.request('/rest/v1/services?active=eq.true&select=*&order=name'),api.request('/rest/v1/barbers?active=eq.true&select=id,name,photo_url&order=name')]);
+try{[services,barbers]=await Promise.all([api.request('/rest/v1/services?active=eq.true&select=*&order=name'),api.request('/rest/v1/barbers?active=eq.true&select=id,name,photo_url,specialty,bio&order=name')]);
 renderTeam(barbers);
 window.ServiceCards?.render(services);
 options('servicechoice',services.map(s=>({id:s.id,label:`${s.name} — ${api.money(s.price)} — ${s.duration} min`})),'Selecione um corte');
