@@ -96,3 +96,5 @@ details form{max-width:550px}
 .customer-page #myarea{padding:20px}
 }
 
+.delete-account{background:#fff!important;color:#9b473b!important;border:1px solid #e1c8c1!important;box-shadow:none!important;margin-top:6px}
+.install-app{position:fixed;z-index:50;right:16px;bottom:16px;width:auto!important;border-radius:999px!important;padding:12px 18px!important;background:#18392c!important;color:#fff!important;font-weight:600;box-shadow:0 10px 26px #10261f40}

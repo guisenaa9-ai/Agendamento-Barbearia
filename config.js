@@ -3,4 +3,6 @@ window.BARBER_CONFIG={url:'https://nqshsvhrgrkzpivuhtxa.supabase.co',publicKey:'
 // Site Key PÚBLICA do Cloudflare Turnstile. A Secret Key fica só no Supabase. Vazio = sem CAPTCHA.
 captchaSiteKey:'0x4AAAAAAFcQRJ9QC1A0mivW',
 // Nome exibido no site, no painel e no WhatsApp, sem a palavra "Barbearia" (o site já escreve).
-shopName:'Daniel Silva'};
+shopName:'Daniel Silva',
+// Canal para dúvidas sobre dados pessoais (LGPD), ex.: WhatsApp ou e-mail da barbearia.
+contact:''};

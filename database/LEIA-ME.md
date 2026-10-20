@@ -11,8 +11,9 @@ No SQL Editor, execute nesta ordem (todos podem ser repetidos sem problema):
 6. `servicos-visuais.sql`
 7. `painel-kryon.sql` – troque o e-mail do monitor Kryon dentro do arquivo antes de rodar
 8. `sem-horario-duplicado.sql` – impede duas reservas no mesmo horário para o mesmo barbeiro
-9. `seguranca-permissoes.sql` – tira de visitantes e clientes as funções que são só do chefe ou de uso interno
-10. `seguranca-2fa.sql` – exige o código do celular (verificação em duas etapas) para o chefe e a Kryon. Rode **depois** que o chefe já entrou uma vez e ativou o código pelo QR Code
+9. `lgpd.sql` – permite ao cliente excluir a própria conta (exigência da LGPD)
+10. `seguranca-permissoes.sql` – tira de visitantes e clientes as funções que são só do chefe ou de uso interno
+11. `seguranca-2fa.sql` – exige o código do celular (verificação em duas etapas) para o chefe e a Kryon. Rode **depois** que o chefe já entrou uma vez e ativou o código pelo QR Code
 
 Depois, crie o usuário do chefe em Authentication → Users e torne-o administrador:
 ```sql
@@ -29,6 +30,9 @@ Só o `config.js` muda de um cliente para outro:
 - `url` e `publicKey`: do projeto Supabase do cliente (Settings → API; nunca a service_role)
 - `captchaSiteKey`: Site Key do Turnstile com o hostname do cliente
 - `shopName`: nome sem a palavra "Barbearia"
+- `contact`: WhatsApp ou e-mail da barbearia para dúvidas sobre dados pessoais (aparece em Termos e privacidade)
+
+E troque o nome da barbearia em `manifest.webmanifest` e `painel.webmanifest` (nome do app instalado no celular).
 
 Publique no GitHub Pages (Settings → Pages → branch e pasta raiz).
 
