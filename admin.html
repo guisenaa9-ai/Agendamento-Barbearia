@@ -49,15 +49,13 @@
 <p class="staff-nav-label">SUA BARBEARIA</p>
 <div class="staff-nav" role="tablist" aria-label="Seções do portal do chefe">
 <button id="nav-dashboard" role="tab" type="button" aria-selected="true" aria-controls="tab-dashboard">
-<span aria-hidden="true">◫</span>Dashboard</button>
+<span aria-hidden="true">◫</span>Dashboard e BI</button>
 <button id="nav-agenda" role="tab" type="button" aria-selected="false" aria-controls="tab-agenda" tabindex="-1">
 <span aria-hidden="true">▦</span>Agenda</button>
 <button id="nav-financeiro" role="tab" type="button" aria-selected="false" aria-controls="tab-financeiro" tabindex="-1">
 <span aria-hidden="true">R$</span>Financeiro</button>
 <button id="nav-caixa" role="tab" type="button" aria-selected="false" aria-controls="tab-caixa" tabindex="-1">
 <span aria-hidden="true">▣</span>Caixa diário</button>
-<button id="nav-bi" role="tab" type="button" aria-selected="false" aria-controls="tab-bi" tabindex="-1">
-<span aria-hidden="true">↗</span>BI e indicadores</button>
 <button id="nav-servicos" role="tab" type="button" aria-selected="false" aria-controls="tab-servicos" tabindex="-1">
 <span aria-hidden="true">✂</span>Serviços</button>
 <button id="nav-barbeiros" role="tab" type="button" aria-selected="false" aria-controls="tab-barbeiros" tabindex="-1">
@@ -95,6 +93,14 @@
 <ol id="ranking" class="ranking">
 </ol>
 </div>
+</section>
+<section class="bi-section" aria-label="Análise do período">
+<div class="section-intro"><h3>Análise do período</h3><p>Receita recebida, serviços e horários mais procurados no intervalo escolhido.</p></div>
+<div class="bi-filters"><label>Data inicial<input id="bistart" type="date"></label><label>Data final<input id="biend" type="date"></label><button id="birefresh" type="button">Atualizar análise</button></div>
+<p id="biperiod" class="help"></p><div id="bimetrics" class="metrics bi-metrics"></div>
+<div class="bi-grid"><article class="bi-card"><div class="bi-card-title"><div><span class="staff-eyebrow">DEMANDA</span><h4>Serviços mais procurados</h4></div></div><div id="biservices" class="bi-bars"></div></article>
+<article class="bi-card"><div class="bi-card-title"><div><span class="staff-eyebrow">MOVIMENTO</span><h4>Horários mais ocupados</h4></div></div><div id="bihours" class="bi-bars"></div></article>
+<article class="bi-card bi-wide bi-insight"><span class="staff-eyebrow">LEITURA RÁPIDA</span><h4>Resumo para decisão</h4><div id="biinsights" class="bi-insights"></div></article></div>
 </section>
 </section>
 <section id="tab-agenda" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-agenda" hidden>
@@ -181,15 +187,6 @@
 <p id="financeempty" hidden>Nenhum atendimento pago encontrado no período.</p>
 <h3 class="finance-detail-title">Detalhamento por barbeiro e serviço</h3>
 <div id="financedetails" class="finance-details"></div>
-</section>
-<section id="tab-bi" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-bi" hidden>
-<div class="section-intro"><h3>Inteligência da barbearia</h3><p>Entenda o movimento, a receita e o desempenho da equipe para tomar decisões com dados.</p></div>
-<div class="bi-filters"><label>Data inicial<input id="bistart" type="date"></label><label>Data final<input id="biend" type="date"></label><button id="birefresh" type="button">Atualizar análise</button></div>
-<p id="biperiod" class="help"></p><div id="bimetrics" class="metrics bi-metrics"></div>
-<div class="bi-grid"><article class="bi-card"><div class="bi-card-title"><div><span class="staff-eyebrow">DEMANDA</span><h4>Serviços mais procurados</h4></div></div><div id="biservices" class="bi-bars"></div></article>
-<article class="bi-card"><div class="bi-card-title"><div><span class="staff-eyebrow">MOVIMENTO</span><h4>Horários mais ocupados</h4></div></div><div id="bihours" class="bi-bars"></div></article>
-<article class="bi-card bi-wide"><div class="bi-card-title"><div><span class="staff-eyebrow">EQUIPE</span><h4>Desempenho dos barbeiros</h4></div><span class="help">Receita recebida e atendimentos</span></div><div id="bistaff" class="bi-staff"></div></article>
-<article class="bi-card bi-wide bi-insight"><span class="staff-eyebrow">LEITURA RÁPIDA</span><h4>Resumo para decisão</h4><div id="biinsights" class="bi-insights"></div></article></div>
 </section>
 <section id="tab-caixa" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-caixa" hidden>
 <div class="section-intro"><h3>Controle de caixa</h3><p>Registre abertura, despesas, retiradas e fechamento. Os pagamentos dos atendimentos entram automaticamente no resumo.</p></div>
@@ -291,14 +288,14 @@
 </script>
 <script src="staff-auth.js?v=services-39">
 </script>
-<script src="staff-tabs.js?v=foto-separada-20261016-10">
+<script src="staff-tabs.js?v=services-42">
 </script>
-<script src="service-cards.js?v=services-39"></script><script src="admin.js?v=services-39">
+<script src="service-cards.js?v=services-39"></script><script src="admin.js?v=services-42">
 </script>
 <script src="cash.js?v=services-40"></script>
 <script src="operations.js?v=services-41"></script>
 <script src="agenda-pro.js?v=agenda-20261017-21"></script>
 <script src="attendance-model.js?v=integrado-20261017-17"></script>
 <script src="attendance.js?v=integrado-20261017-17"></script>
-<script src="update-check.js?v=services-39" data-version="services-41"></script></body>
+<script src="update-check.js?v=services-39" data-version="services-42"></script></body>
 </html>
