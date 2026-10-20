@@ -7,6 +7,8 @@ do $$
 declare conflitos int;
 begin
  if exists(select 1 from pg_constraint where conname='bookings_no_overlap') then return; end if;
+ -- A proteção antiga também bloqueava o horário de quem faltou; a nova libera, igual à busca de horários.
+ alter table public.bookings drop constraint if exists bookings_barber_id_tsrange_excl;
  select count(*) into conflitos from public.bookings a join public.bookings b
   on a.barber_id=b.barber_id and a.id<b.id
   and a.status='confirmed' and b.status='confirmed' and not a.no_show and not b.no_show

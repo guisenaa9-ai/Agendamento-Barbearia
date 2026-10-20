@@ -3,7 +3,7 @@
 ## 1. Supabase (projeto novo para o cliente)
 No SQL Editor, execute nesta ordem (todos podem ser repetidos sem problema):
 
-1. `00-base.sql` – tabelas e funções principais (reservas, barbeiros, serviços, login do chefe)
+1. `00-base.sql` – tabelas, regras de acesso, funções principais e armazenamento de fotos
 2. `gestao-profissional.sql` – caixa, faltas, bloqueios, clientes presenciais
 3. `horarios-loja.sql` – horário de funcionamento por dia e por barbeiro
 4. `sem-preferencia-cliente.sql` – reserva "sem preferência" e limite de reservas por cliente
