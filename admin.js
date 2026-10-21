@@ -154,10 +154,10 @@ $('whatsapptestlabel').hidden=!test;
 $('whatsappmode').textContent=test?'Modo teste: os avisos serão abertos somente para o número de teste informado.':'Os botões abrirão a conversa com o cliente de cada reserva.';
 };
 
-async function allBookings(query){let results=[];
+async function allBookings(query,columns='*'){let results=[];
 for(let offset=0;
 ;
-offset+=500){const page=await request('/rest/v1/bookings?select=*&order=starts_at,id'+query+'&limit=500&offset='+offset);
+offset+=500){const page=await request('/rest/v1/bookings?select='+columns+'&order=starts_at,id'+query+'&limit=500&offset='+offset);
 results.push(...page);
 if(page.length<500)return results;
 }}
@@ -189,21 +189,17 @@ track.append(bar);
 item.append(line,track);
 $('ranking').append(item);
 }}
-async function loadFinance(){const run=++financeLoading,start=$('financestart').value,end=$('financeend').value;
+// Faturamento e BI usam o mesmo período: baixa uma vez e reaproveita por 2 minutos (o botão Atualizar força de novo).
+let periodCache=null;
+function periodData(start,end,fresh){const key=start+'|'+end;if(!fresh&&periodCache?.key===key&&Date.now()-periodCache.at<120000)return periodCache.data;const data=(async()=>{const [bookings,barbers]=await Promise.all([allBookings('&starts_at=gte.'+encodeURIComponent(start+'T00:00:00')+'&starts_at=lt.'+encodeURIComponent(end+'T23:59:59.999999'),'id,barber_id,barber_name,service_name,price,status,starts_at'),request('/rest/v1/barbers?select=id,name&order=name')]),chunks=[];for(let i=0;i<bookings.length;i+=80)chunks.push(bookings.slice(i,i+80).map(r=>r.id).join(','));
+// Cada reserva tem no máximo um atendimento, então 80 ids cabem numa página; os lotes vão juntos, não em fila.
+const attendances=(await Promise.all(chunks.map(ids=>request('/rest/v1/attendances?select=booking_id,total,paid&booking_id=in.('+ids+')')))).flat();return {bookings,barbers,attendances};})(),entry={key,at:Date.now(),data};periodCache=entry;data.catch(()=>{if(periodCache===entry)periodCache=null;});return data;}
+async function loadFinance(fresh){const run=++financeLoading,start=$('financestart').value,end=$('financeend').value;
 if(!start||!end||start>end){status('Confira as datas do relatório financeiro.');
 return;
 }$('financerefresh').disabled=true;
-try{const [bookings,barbers,details]=await Promise.all([allBookings('&starts_at=gte.'+encodeURIComponent(start+'T00:00:00')+'&starts_at=lt.'+encodeURIComponent(end+'T23:59:59.999999')),request('/rest/v1/barbers?select=id,name&order=name'),request('/rest/v1/barber_details?select=barber_id,commission_rate')]);
-const attendances=[];
-for(let i=0;
-i<bookings.length;
-i+=80){const ids=bookings.slice(i,i+80).map(r=>r.id).join(',');
-if(ids)for(let offset=0;
-;
-offset+=500){const page=await request('/rest/v1/attendances?select=booking_id,total,paid&booking_id=in.('+ids+')&limit=500&offset='+offset);
-attendances.push(...page);
-if(page.length<500)break;
-}}if(run!==financeLoading||!session)return;
+try{const [{bookings,barbers,attendances},details]=await Promise.all([periodData(start,end,!!fresh),request('/rest/v1/barber_details?select=barber_id,commission_rate')]);
+if(run!==financeLoading||!session)return;
 const rates=new Map(details.map(r=>[r.barber_id,Number(r.commission_rate)]));
 financeReport=window.BarberFinance.summarize(bookings,attendances,barbers,rates);
 renderFinance(start,end);
@@ -269,7 +265,7 @@ a.remove();
 URL.revokeObjectURL(url);
 }
 function renderBIBars(container,rows,suffix=''){container.replaceChildren();const max=rows[0]?.value||0;if(!rows.length){const empty=document.createElement('p');empty.className='bi-empty';empty.textContent='Sem dados no período selecionado.';container.append(empty);return;}for(const row of rows.slice(0,8)){const item=document.createElement('div'),head=document.createElement('div'),name=document.createElement('strong'),value=document.createElement('span'),track=document.createElement('div'),fill=document.createElement('div');head.className='bi-bar-head';track.className='bi-bar-track';fill.className='bi-bar-fill';name.textContent=row.name;value.textContent=row.value+suffix;fill.style.width=(max?row.value/max*100:0)+'%';head.append(name,value);track.append(fill);item.append(head,track);container.append(item);}}
-async function loadBI(){const run=++biLoading,start=$('bistart').value,end=$('biend').value;if(!start||!end||start>end){status('Confira as datas do BI.');return;}$('birefresh').disabled=true;try{const [bookings,barbers]=await Promise.all([allBookings('&starts_at=gte.'+encodeURIComponent(start+'T00:00:00')+'&starts_at=lt.'+encodeURIComponent(end+'T23:59:59.999999')),request('/rest/v1/barbers?select=id,name&order=name')]),attendances=[];for(let i=0;i<bookings.length;i+=80){const ids=bookings.slice(i,i+80).map(r=>r.id).join(',');if(ids){const rows=await request('/rest/v1/attendances?select=booking_id,total,paid&booking_id=in.('+ids+')');attendances.push(...rows);}}if(run!==biLoading||!session)return;const data=window.BarberBI.summarize(bookings,attendances,barbers);$('biperiod').textContent='Análise de '+start.split('-').reverse().join('/')+' a '+end.split('-').reverse().join('/')+' · Horário de Manaus';$('bimetrics').replaceChildren();for(const [label,value] of [['Receita recebida',api.money(data.gross)],['Ticket médio',api.money(data.averageTicket)],['Reservas confirmadas',data.confirmed],['Taxa de cancelamento',data.cancellationRate.toLocaleString('pt-BR',{maximumFractionDigits:1})+'%']]){const card=document.createElement('div'),text=document.createElement('span'),strong=document.createElement('strong');card.className='metric';text.textContent=label;strong.textContent=value;card.append(text,strong);$('bimetrics').append(card);}renderBIBars($('biservices'),data.services);renderBIBars($('bihours'),data.hours);$('biinsights').replaceChildren();const insights=[data.topService?'Serviço mais procurado: '+data.topService.name+' ('+data.topService.value+').':'Ainda não há serviço líder.',data.peakHour?'Maior procura por volta de '+data.peakHour.name+', com '+data.peakHour.value+' reserva(s).':'Ainda não há horário de pico.',data.staff[0]?.count?'Destaque da equipe: '+data.staff[0].name+', com '+data.staff[0].count+' atendimento(s).':'Ainda não há destaque da equipe.'];for(const insight of insights){const p=document.createElement('p');p.textContent=insight;$('biinsights').append(p);}status('BI atualizado.');}catch(e){status(e.message+' O BI usa os dados de agenda e atendimentos já cadastrados.');}finally{if(run===biLoading)$('birefresh').disabled=false;}}
+async function loadBI(fresh){const run=++biLoading,start=$('bistart').value,end=$('biend').value;if(!start||!end||start>end){status('Confira as datas do BI.');return;}$('birefresh').disabled=true;try{const {bookings,barbers,attendances}=await periodData(start,end,!!fresh);if(run!==biLoading||!session)return;const data=window.BarberBI.summarize(bookings,attendances,barbers);$('biperiod').textContent='Análise de '+start.split('-').reverse().join('/')+' a '+end.split('-').reverse().join('/')+' · Horário de Manaus';$('bimetrics').replaceChildren();for(const [label,value] of [['Receita recebida',api.money(data.gross)],['Ticket médio',api.money(data.averageTicket)],['Reservas confirmadas',data.confirmed],['Taxa de cancelamento',data.cancellationRate.toLocaleString('pt-BR',{maximumFractionDigits:1})+'%']]){const card=document.createElement('div'),text=document.createElement('span'),strong=document.createElement('strong');card.className='metric';text.textContent=label;strong.textContent=value;card.append(text,strong);$('bimetrics').append(card);}renderBIBars($('biservices'),data.services);renderBIBars($('bihours'),data.hours);$('biinsights').replaceChildren();const insights=[data.topService?'Serviço mais procurado: '+data.topService.name+' ('+data.topService.value+').':'Ainda não há serviço líder.',data.peakHour?'Maior procura por volta de '+data.peakHour.name+', com '+data.peakHour.value+' reserva(s).':'Ainda não há horário de pico.',data.staff[0]?.count?'Destaque da equipe: '+data.staff[0].name+', com '+data.staff[0].count+' atendimento(s).':'Ainda não há destaque da equipe.'];for(const insight of insights){const p=document.createElement('p');p.textContent=insight;$('biinsights').append(p);}status('BI atualizado.');}catch(e){status(e.message+' O BI usa os dados de agenda e atendimentos já cadastrados.');}finally{if(run===biLoading)$('birefresh').disabled=false;}}
 async function uploadBarberPhoto(id,file){if(!file)return null;
 if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw Error('Use uma foto JPG, PNG ou WebP.');
 if(file.size>3145728)throw Error('A foto deve ter no máximo 3 MB.');

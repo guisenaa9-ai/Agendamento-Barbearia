@@ -22,5 +22,6 @@ async function loadAttendants(){try{const rows=await api.rpc('admin_list_attenda
 $('attendantform').onsubmit=async e=>{e.preventDefault();try{await api.rpc('admin_set_attendant',{p_email:$('attendantemail').value.trim(),p_allow:true},await window.StaffAuth.token());e.target.reset();status('Acesso liberado. A atendente entra pelo painel com o e-mail e a senha dela.');await loadAttendants();}catch(ex){status(ex.message);}};
 window.addEventListener('stafftabchange',e=>{if(e.detail.name==='barbeiros'&&window.StaffAuth.role()==='admin')loadAttendants();});
 window.BarberOperations={loadBlocks,markNoShow:async id=>{await api.rpc('mark_no_show',{p_booking:id},await window.StaffAuth.token());status('Falta registrada no histórico do cliente.');}};
-window.addEventListener('stafftabchange',e=>{if(e.detail.name==='agenda')loadBlocks().then(loadHours);});if(location.hash==='#agenda'&&window.StaffAuth.session())loadBlocks().then(loadHours);
+// Bloqueios e horários mudam pouco: ao voltar para a Agenda só recarrega se passaram 2 minutos (salvar já recarrega; passar pela Equipe também, por causa de barbeiro novo).
+let agendaLoadedAt=0;window.addEventListener('stafftabchange',e=>{if(e.detail.name==='barbeiros')agendaLoadedAt=0;if(e.detail.name==='agenda'&&Date.now()-agendaLoadedAt>120000){agendaLoadedAt=Date.now();loadBlocks().then(loadHours);}});if(location.hash==='#agenda'&&window.StaffAuth.session()){agendaLoadedAt=Date.now();loadBlocks().then(loadHours);}
 })();

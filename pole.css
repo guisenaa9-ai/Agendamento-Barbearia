@@ -1,20 +1,22 @@
-/* Poste de barbeiro: o elemento desenha o tubo de vidro (20px no centro) e a base cromada;
+/* Poste de barbeiro: o elemento desenha a base cromada e o <i> de dentro o tubo de vidro (20px no centro);
    :before é a cúpula de cima e :after a esfera dourada. A sombra segue o desenho (drop-shadow). */
 .barber-pole{position:relative;display:inline-block;flex:0 0 auto;width:32px;height:48px;margin:17px 1px 2px;border-radius:0 0 6px 6px;isolation:isolate;
  background:
   /* base cromada */
-  linear-gradient(180deg,#b9c6c9 0,#fdfefe 28%,#a3b3b6 60%,#5d7175 100%) 50% 100%/100% 8px no-repeat,
-  /* sombra da cúpula sobre o vidro */
-  linear-gradient(180deg,#0b1f2459 0,#0b1f2400 5px) 50% 0/20px 40px no-repeat,
-  /* vidro: bordas escuras e reflexo vertical, por cima das listras */
-  linear-gradient(90deg,#0b1f24b3 0,#0b1f2433 13%,#fff0 24%,#ffffffd9 33%,#fff0 45%,#0b1f2414 70%,#0b1f24a6 100%) 50% 0/20px 40px no-repeat,
-  /* espiral: ladrilho 20x20 a 45° com 2 ciclos completos, então emenda sem corte */
-  linear-gradient(45deg,#d1203a 0 12.5%,#fbfbf8 12.5% 25%,#1c5cb8 25% 37.5%,#fbfbf8 37.5% 50%,#d1203a 50% 62.5%,#fbfbf8 62.5% 75%,#1c5cb8 75% 87.5%,#fbfbf8 87.5%) 50% 0/20px 20px repeat-y;
- filter:drop-shadow(0 6px 6px #10261f38);
- animation:barber-pole-spin 1.6s linear infinite}
+  linear-gradient(180deg,#b9c6c9 0,#fdfefe 28%,#a3b3b6 60%,#5d7175 100%) 50% 100%/100% 8px no-repeat;
+ filter:drop-shadow(0 6px 6px #10261f38)}
 .barber-pole:before{content:"";position:absolute;z-index:1;left:0;right:0;top:-9px;height:10px;border-radius:50% 50% 3px 3px/100% 100% 3px 3px;
  background:linear-gradient(180deg,#fdfefe 0,#dbe4e6 45%,#8fa2a6 78%,#5d7175 100%)}
 .barber-pole:after{content:"";position:absolute;z-index:2;left:50%;top:-17px;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;
  background:radial-gradient(circle at 36% 30%,#fffaf0 0,#f2d494 22%,#c49242 58%,#7a5419 100%)}
-@keyframes barber-pole-spin{to{background-position:50% 100%,50% 0,50% 0,50% 20px}}
-@media(prefers-reduced-motion:reduce){.barber-pole{animation:none}}
+.barber-pole i{position:absolute;left:6px;top:0;width:20px;height:40px;overflow:hidden}
+/* espiral: ladrilho 20x20 a 45° com 2 ciclos completos; desce 20px e emenda sem corte.
+   Gira com transform (a placa de vídeo move sozinha, sem redesenhar a página a cada quadro). */
+.barber-pole i:before{content:"";position:absolute;left:0;right:0;top:-20px;height:60px;will-change:transform;
+ background:linear-gradient(45deg,#d1203a 0 12.5%,#fbfbf8 12.5% 25%,#1c5cb8 25% 37.5%,#fbfbf8 37.5% 50%,#d1203a 50% 62.5%,#fbfbf8 62.5% 75%,#1c5cb8 75% 87.5%,#fbfbf8 87.5%) 0 0/20px 20px repeat-y;
+ animation:barber-pole-spin 1.6s linear infinite}
+/* vidro por cima das listras: sombra da cúpula, bordas escuras e reflexo vertical */
+.barber-pole i:after{content:"";position:absolute;inset:0;
+ background:linear-gradient(180deg,#0b1f2459 0,#0b1f2400 5px),linear-gradient(90deg,#0b1f24b3 0,#0b1f2433 13%,#fff0 24%,#ffffffd9 33%,#fff0 45%,#0b1f2414 70%,#0b1f24a6 100%)}
+@keyframes barber-pole-spin{to{transform:translateY(20px)}}
+@media(prefers-reduced-motion:reduce){.barber-pole i:before{animation:none}}
