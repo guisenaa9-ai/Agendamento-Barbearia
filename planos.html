@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="only light"><meta name="theme-color" content="#18392c"><link rel="icon" href="icones/icone-192.png"><link rel="apple-touch-icon" href="icones/icone-180.png">
+<title>Planos · Sistema de agendamento para barbearias</title>
+<style>
+:root{--ink:#18392c;--muted:#5d6b62;--line:#e1e4d8;--bg:#f7f6f2;--gold:#a47d48}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,sans-serif}
+main{max-width:1080px;margin:0 auto;padding:32px 16px 64px}
+small.kicker{color:var(--gold);letter-spacing:.14em;font-weight:700;font-size:11px}
+h1{font:34px/1.2 Georgia,serif;margin:8px 0 6px}.lead{color:var(--muted);max-width:620px;margin:0 0 32px}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
+.plan{position:relative;background:#fffefa;border:1px solid var(--line);border-radius:18px;padding:26px}
+.plan.featured{border:2px solid var(--ink);box-shadow:0 18px 44px #10261f22}
+.badge{position:absolute;top:-13px;left:26px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:999px}
+.plan h2{font:24px Georgia,serif;margin:0}.plan .for{color:var(--muted);font-size:14px;margin:4px 0 16px}
+.price{font:700 36px/1 system-ui;margin:0}.price span{font:500 15px system-ui;color:var(--muted)}
+.limit{display:inline-block;margin:14px 0 6px;background:#edf2eb;color:#28513e;border-radius:8px;padding:6px 10px;font-weight:600;font-size:14px}
+ul{list-style:none;padding:0;margin:12px 0 0}li{padding:9px 0 9px 28px;border-top:1px solid var(--line);position:relative;font-size:15px}
+li::before{content:"✓";position:absolute;left:4px;color:var(--gold);font-weight:700}li.plus{font-weight:600}li.plus::before{content:"+"}
+.note{color:var(--muted);font-size:14px;margin-top:28px}
+@media(max-width:820px){.plans{grid-template-columns:1fr;gap:28px}h1{font-size:28px}}
+</style><link rel="stylesheet" href="design.css?v=services-58">
+<main>
+<small class="kicker">SISTEMA DE AGENDAMENTO PARA BARBEARIAS</small>
+<h1>Escolha o plano da sua barbearia</h1>
+<p class="lead">Todos os planos incluem o site de agendamento online da sua barbearia. Quanto maior o plano, mais barbeiros e mais ferramentas de gestão.</p>
+<div class="plans">
+<section class="plan" aria-labelledby="p1">
+<h2 id="p1">Essencial</h2><p class="for">Para quem está começando a agenda online.</p>
+<p class="price">R$ 79<span>/mês</span></p>
+<span class="limit">Até 2 barbeiros</span>
+<ul>
+<li>Agendamento online e conta do cliente</li>
+<li>Agenda por barbeiro</li>
+<li>Cadastro de serviços e valores</li>
+<li>Aviso ao cliente pelo WhatsApp (envio manual)</li>
+</ul>
+</section>
+<section class="plan featured" aria-labelledby="p2">
+<span class="badge">RECOMENDADO</span>
+<h2 id="p2">Plus</h2><p class="for">Para a barbearia com equipe e caixa.</p>
+<p class="price">R$ 149<span>/mês</span></p>
+<span class="limit">Até 6 barbeiros</span>
+<ul>
+<li>Tudo do Essencial</li>
+<li class="plus">Área do barbeiro com comissões</li>
+<li class="plus">Financeiro, comissões e controle de caixa</li>
+<li class="plus">Recepção, atendentes e pagamentos</li>
+<li class="plus">Distribuição automática de clientes</li>
+</ul>
+</section>
+<section class="plan" aria-labelledby="p3">
+<h2 id="p3">Pro</h2><p class="for">Para quem quer acompanhar os números de perto.</p>
+<p class="price">R$ 249<span>/mês</span></p>
+<span class="limit">Barbeiros ilimitados</span>
+<ul>
+<li>Tudo do Plus</li>
+<li class="plus">Análise do período e ranking de barbeiros</li>
+<li class="plus">Procedimentos extras no atendimento</li>
+<li class="plus">Suporte prioritário</li>
+</ul>
+</section>
+</div>
+<p class="note">Valores mensais por barbearia. Mude de plano quando quiser.</p>
+</main>
+<script src="update-check.js?v=services-58" data-version="services-58"></script>
+</html>
