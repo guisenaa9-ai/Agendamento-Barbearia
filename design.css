@@ -228,3 +228,44 @@ footer{font-size:13px!important;color:#5f6a5c}
 @media(prefers-reduced-motion:no-preference){#barberday-list .my-booking.is-next{animation:ds-rise .5s cubic-bezier(.2,.8,.2,1) both,ds-next 2.4s 1s ease-in-out 2}}
 @keyframes ds-next{50%{box-shadow:0 14px 34px #18392c24,0 0 0 6px #c4924233}}
 .barber-daynav label{margin:0!important}.barber-daynav input{margin:6px 0 0!important}
+
+/* Painel do chefe: textos pequenos legíveis (mín. 11–13px) e cinzas com contraste ≥ 4,5:1 */
+.staff-brand div>span,.attendance-page .staff-brand-copy>span{font-size:10px}
+.staff-header-note,.attendance-page .staff-header-note{font-size:11px!important;color:#5f6a5c}
+.staff-nav-label,.sidebar-caption{font-size:11px;color:#5f6a5c}
+.staff-eyebrow{font-size:11px!important;color:#8a6a3a}
+.staff-nav button{font-size:15px;color:#46544a}
+.staff-filters button,.staff-filters label{font-size:14px}
+.staff-logout{font-size:14px!important}
+.finance-table th{font-size:12px}
+.finance-service-table th,.finance-service-table td{font-size:13px}
+.agenda-day-heading{font-size:13px!important}
+.agenda-legend span{font-size:13px}
+.agenda-day .reservation-code p{font-size:13px}
+.booking-state,.visit-badge,.cash-movement-type,.availability-result>p{font-size:12px}
+.slot-button,.no-show-button,.block-item button,.cash-delete{font-size:13px!important}
+.section-intro p,.staff-tabpanel>p,.staff-tabpanel .help{color:#5f6a5c}
+
+/* Ações secundárias deixam de competir com a principal */
+#financecsv,#financeprint{background:#fff!important;color:#18392c!important;border:1px solid #c9d1c6!important;box-shadow:none}
+.catalog-actions button{background:#fff!important;color:#18392c!important;border:1px solid #c9d1c6!important;box-shadow:none}
+.catalog-actions button:first-child{background:#18392c!important;color:#fff!important;border-color:#18392c!important}
+/* O último botão é sempre Desativar/Ativar: vermelho discreto para não ser tocado por engano */
+.catalog-actions button:last-child:not(:first-child){color:#9b473b!important;border-color:#e1c8c1!important}
+.no-show-button{background:#fff!important;color:#8a5b31!important;border:1px solid #e3cdb0!important}
+/* Tabelas do detalhamento rolam dentro do cartão em vez de vazar */
+.finance-detail-card{overflow-x:auto}
+.finance-details{grid-template-columns:minmax(0,1fr)!important}
+
+/* Celular: menu do painel vira uma faixa que rola de lado e fica presa no topo */
+@media(max-width:760px){
+ .staff-sidebar{position:sticky!important;top:0;z-index:40;min-width:0;max-width:100vw;margin:0 -16px;padding:8px 16px!important;background:rgba(245,243,237,.94)!important;backdrop-filter:blur(12px);border-bottom:1px solid #e3e4dc!important;min-height:0}
+ .staff-nav{display:flex!important;flex-flow:row nowrap!important;width:auto!important;max-width:100%;gap:6px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity}
+ .staff-nav::-webkit-scrollbar{display:none}
+ .staff-nav button,.attendance-nav-link{flex:0 0 auto;width:auto!important;min-height:44px;padding:10px 14px!important;white-space:nowrap;scroll-snap-align:start;background:#fff;border:1px solid #e3e4dc!important}
+ .staff-nav button[aria-selected=true]{border-color:#18392c!important}
+ .staff-nav-label,.sidebar-caption{display:none}
+ .staff-shell{grid-template-columns:minmax(0,1fr)!important}.staff-content{min-width:0}.finance-table-wrap{overflow-x:auto}
+ .hours-day{flex-wrap:wrap}.hours-day input{min-width:0}
+}
+@media print{.finance-table-wrap{overflow:visible!important}}

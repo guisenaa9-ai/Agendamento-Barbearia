@@ -22,7 +22,9 @@ async function mfa(session){const token=session.access_token,user=await request(
 // Botão "Instalar app" aparece quando o navegador permite instalar (Android e computador).
 window.addEventListener('beforeinstallprompt',e=>{const button=document.getElementById('installapp');if(!button)return;e.preventDefault();button.hidden=false;button.onclick=async()=>{button.hidden=true;e.prompt();await e.userChoice;};});
 // Mensagens de status viram aviso flutuante que some sozinho (estilo em design.css).
-function toasts(){for(const id of ['status','accountstatus','barberstatus']){const el=document.getElementById(id);if(!el)continue;let timer;el.classList.add('ds-toast','ds-hide');new MutationObserver(()=>{clearTimeout(timer);if(!el.textContent.trim()){el.classList.add('ds-hide');return;}el.classList.remove('ds-hide');timer=setTimeout(()=>el.classList.add('ds-hide'),el.textContent.length>70?8000:4500);}).observe(el,{childList:true,characterData:true,subtree:true});}}
+// Recarga de rotina (troca de aba) não vira aviso: os números novos na tela já são a confirmação.
+const quiet=/^(BI|Caixa|Dados|Relatório financeiro) atualizad[oa]s?\.$/;
+function toasts(){for(const id of ['status','accountstatus','barberstatus']){const el=document.getElementById(id);if(!el)continue;let timer;el.classList.add('ds-toast','ds-hide');new MutationObserver(()=>{clearTimeout(timer);if(!el.textContent.trim()||quiet.test(el.textContent.trim())){el.classList.add('ds-hide');return;}el.classList.remove('ds-hide');timer=setTimeout(()=>el.classList.add('ds-hide'),el.textContent.length>70?8000:4500);}).observe(el,{childList:true,characterData:true,subtree:true});}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',toasts);else toasts();
 // Impede que outro site carregue estas páginas escondidas dentro dele (clickjacking).
 if(window.top!==window.self){document.documentElement.style.display='none';try{window.top.location=window.location.href;}catch{}}
