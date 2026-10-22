@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="only light"><meta name="theme-color" content="#18392c"><meta name="robots" content="noindex"><link rel="icon" href="icones/icone-192.png">
+<title>Demonstração · Barbearia Daniel Silva</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap">
+<style>
+/* Layout: cabeçalho verde da barbearia e duas colunas de telas (cliente / equipe). Visual único, claro, igual ao site. */
+:root{
+ --green:#18392c;--green-2:#28513e;--gold:#c49242;--gold-ink:#8a6a3a;--paper:#fffefa;--cream:#f5f3ed;--ink:#172820;--muted:#5f6a5c;--line:#e3e4dc;--on-green:#f8f4e8;--on-green-muted:#cdd8cf;
+ --display:'Playfair Display',Georgia,serif;--body:'DM Sans',system-ui,-apple-system,sans-serif;
+ color-scheme:light}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.55 var(--body)}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
+.hero{background:var(--green);color:var(--on-green);border-radius:20px;padding:32px clamp(20px,4vw,44px);display:grid;gap:14px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:220px;transform:rotate(24deg);background:repeating-linear-gradient(45deg,#d1203a 0 12px,#fbfbf8 12px 24px,#1c5cb8 24px 36px,#fbfbf8 36px 48px);opacity:.16;border-radius:60px}
+.eyebrow{font-size:12px;letter-spacing:2px;font-weight:700;text-transform:uppercase;color:var(--gold)}
+h1{font:500 clamp(32px,5vw,46px)/1.12 var(--display);margin:0;text-wrap:balance;max-width:18ch}
+h1 em{color:#d8b67c}
+.hero>*{position:relative;z-index:1}
+@media(max-width:600px){.hero:after{right:-70px;top:-50px;opacity:.1}}
+.hero p{margin:0;max-width:60ch;color:var(--on-green-muted)}
+.notice{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-top:6px;font-size:14px;color:var(--on-green-muted)}
+.notice b{color:var(--on-green)}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:24px}
+.group{display:grid;gap:12px;align-content:start}
+.group h2{font:500 26px/1.2 var(--display);margin:8px 0 0;color:var(--green)}
+.group>p{margin:0;color:var(--muted);font-size:15px}
+.screen{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 18px;background:var(--paper);border:1px solid var(--line);border-radius:16px;color:inherit;text-decoration:none;transition:border-color .18s,transform .18s,box-shadow .18s}
+.screen:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 12px 28px #18392c14}
+.screen:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:#edf2eb;color:var(--green);font-size:20px}
+.screen strong{display:block;font-size:17px;color:var(--green)}
+.screen span.try{display:block;font-size:14px;color:var(--muted);margin-top:2px}
+.arrow{color:var(--gold-ink);font-size:20px}
+.foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+*{box-sizing:border-box}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;font:600 15px var(--body);min-height:44px;padding:0 18px;border-radius:12px;border:1px solid #c9d1c6;background:var(--paper);color:var(--green);text-decoration:none}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.screen{transition:none}.screen:hover{transform:none}}
+</style>
+<body>
+<div class="wrap">
+ <header class="hero">
+  <span class="eyebrow">Barbearia Daniel Silva · Manaus</span>
+  <h1>Todas as telas, <em>prontas para testar.</em></h1>
+  <p>Cada tela é o site de verdade, com clientes, barbeiros e pagamentos fictícios no lugar do banco. Pode agendar, confirmar chegada, registrar pagamento e cancelar à vontade.</p>
+  <div class="notice"><span><b>Nada é salvo de verdade</b> e nenhuma mensagem é enviada.</span><span>As mudanças valem até fechar a aba.</span></div>
+ </header>
+
+ <div class="groups">
+  <section class="group" aria-labelledby="g-cliente">
+   <h2 id="g-cliente">Para o cliente</h2>
+   <p>O caminho de quem quer cortar o cabelo.</p>
+   <a class="screen" href="index.html?demo"><span class="icon" aria-hidden="true">✦</span><span><strong>Entrada e cadastro</strong><span class="try">Entre com qualquer e-mail e senha</span></span><span class="arrow" aria-hidden="true">›</span></a>
+   <a class="screen" href="agendar.html?demo"><span class="icon" aria-hidden="true">✂</span><span><strong>Agendar horário</strong><span class="try">Escolha serviço, barbeiro e horário</span></span><span class="arrow" aria-hidden="true">›</span></a>
+   <a class="screen" href="conta.html?demo"><span class="icon" aria-hidden="true">◷</span><span><strong>Minha conta</strong><span class="try">Reservas, fidelidade e cancelamento</span></span><span class="arrow" aria-hidden="true">›</span></a>
+  </section>
+  <section class="group" aria-labelledby="g-equipe">
+   <h2 id="g-equipe">Para a equipe</h2>
+   <p>O dia a dia de quem atende e de quem cuida do negócio.</p>
+   <a class="screen" href="barbeiro.html?demo"><span class="icon" aria-hidden="true">♙</span><span><strong>Área do barbeiro</strong><span class="try">Agenda de Daniel, próximo cliente e comissão</span></span><span class="arrow" aria-hidden="true">›</span></a>
+   <a class="screen" href="admin.html?demo"><span class="icon" aria-hidden="true">▦</span><span><strong>Painel do chefe</strong><span class="try">Dashboard, agenda, financeiro, caixa e equipe</span></span><span class="arrow" aria-hidden="true">›</span></a>
+   <a class="screen" href="atendimentos.html?demo"><span class="icon" aria-hidden="true">✓</span><span><strong>Atendimentos</strong><span class="try">Confirmar chegada e registrar pagamento</span></span><span class="arrow" aria-hidden="true">›</span></a>
+  </section>
+ </div>
+
+ <div class="foot">
+  <span>Os dados giram em torno de hoje: 20 dias de histórico e a próxima semana de reservas.</span>
+  <span class="actions"><a class="btn" href="demo.html?demo=novo">Recomeçar com dados novos</a><a class="btn" href="demo.html?demo=sair">Sair da demonstração</a></span>
+ </div>
+</div>
+
+<script src="demo-mock.js?v=services-61"></script>
+</body>
+</html>
