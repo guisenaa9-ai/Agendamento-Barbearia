@@ -3,7 +3,7 @@
 (function(){
 const store=(()=>{try{return sessionStorage}catch{return null}})();
 const params=new URLSearchParams(location.search);
-try{if(params.has('demo'))store.setItem('demo-mode','1');if(params.get('demo')==='novo')store.removeItem('demo-db');if(params.get('demo')==='sair'){store.clear();return;}}catch{}
+try{if(params.has('demo'))store.setItem('demo-mode','1');if(params.get('demo')==='novo')store.removeItem('demo-db');if(params.get('demo')==='sair'){store.clear();return;}if(params.has('demo')&&params.get('demo')!=='novo')store.setItem('demo-role',params.get('demo')==='atendente'?'attendant':'admin');}catch{}
 if(store?.getItem('demo-mode')!=='1')return;
 // Sem CAPTCHA na demonstração: o config.js real é carregado depois e passa por aqui
 let config;Object.defineProperty(window,'BARBER_CONFIG',{configurable:true,get:()=>config,set:v=>{config={...v,captchaSiteKey:''};}});
@@ -24,7 +24,7 @@ function seed(){
   for(let i=0;i<count;i++){const s=services[(i+d+40)%3],b=barbers[(i+d+40)%3],h=9+Math.floor(i*1.2),m=i%2?'30':'00',id='demo-'+(n++),past=d<0||(d===0&&i<3),cancelled=(i+d+40)%9===4;
    const state=cancelled?null:past?'completed':d===0&&i===3?'arrived':'scheduled';
    bookings.push({id,customer:names[(i*5+d+40)%12],phone:'929'+String(91234000+n),customer_id:null,service_id:s.id,service_name:s.name,barber_id:b.id,barber_name:b.name,price:s.price,starts_at:`${date}T${String(h).padStart(2,'0')}:${m}:00`,ends_at:`${date}T${String(h+1).padStart(2,'0')}:${m}:00`,status:cancelled?'cancelled':'confirmed',attendance_state:state,no_show:false,cancellation_reason:cancelled?'Imprevisto no trabalho':null,cancellation_source:cancelled?'customer':null,created_at:`${date}T08:00:00`});
-   if(state==='completed')attendances.push({booking_id:id,total:s.price,paid:true,payment_method:['pix','cash','credit','debit'][n%4],extras:[],arrived_at:`${date}T${String(h).padStart(2,'0')}:${m}:00`});}}
+   if(state==='completed')attendances.push({booking_id:id,total:s.price,paid:true,payment_method:['pix','cash','credit','debit'][n%4],extras:[],arrived_at:`${date}T${String(h).padStart(2,'0')}:${m}:00-04:00`});}}
  // Reservas do cliente da demonstração
  for(const [d,h,s,b] of [[2,'10:00',0,0],[9,'15:30',2,1],[-12,'11:00',0,0],[-26,'16:00',1,1]]){const sv=services[s],bb=barbers[b];bookings.push({id:'demo-me-'+d,customer:'Guilherme',phone:'92991230000',customer_id:'u1',service_id:sv.id,service_name:sv.name,barber_id:bb.id,barber_name:bb.name,price:sv.price,starts_at:`${day(d)}T${h}:00`,ends_at:`${day(d)}T${h}:00`,status:'confirmed',attendance_state:d<0?'completed':'scheduled',no_show:false,created_at:`${day(d-3)}T08:00:00`});}
  return {barbers,services,bookings,attendances,cash_movements:[],cash_sessions:[],schedule_blocks:[],
@@ -36,7 +36,7 @@ const db=get('demo-db')||seed();const save=()=>put('demo-db',db);save();
 function filter(rows,params){return rows.filter(r=>{for(const [k,v] of params){if(['select','order','limit','offset','on_conflict'].includes(k))continue;const i=v.indexOf('.'),op=v.slice(0,i),val=decodeURIComponent(v.slice(i+1)),x=r[k]==null?'':String(r[k]).slice(0,Math.max(val.length,10));
  if(op==='eq'&&String(r[k])!==val&&!(val==='true'&&r[k]===true)&&!(val==='false'&&r[k]===false))return false;if(op==='neq'&&String(r[k])===val)return false;if(op==='gte'&&!(x>=val.slice(0,19)))return false;if(op==='gt'&&!(x>val.slice(0,19)))return false;if(op==='lte'&&!(x<=val.slice(0,19)))return false;if(op==='lt'&&!(x<val.slice(0,19)))return false;if(op==='in'&&!val.replace(/[()]/g,'').split(',').includes(String(r[k])))return false;}return true;});}
 const slots=['09:00','09:40','10:20','11:00','13:00','13:40','14:20','15:00','16:20','17:00'];
-const rpc={staff_role:()=>'admin',is_admin:()=>true,track_kryon_usage:()=>null,
+const rpc={staff_role:()=>store?.getItem('demo-role')||'admin',is_admin:()=>true,track_kryon_usage:()=>null,
  available_options:()=>slots.map(slot=>({slot,barbers:db.barbers.map(b=>b.name)})),available_slots:()=>slots.map(slot=>({slot})),admin_slots:()=>slots.map(slot=>({slot})),
  customer_book:p=>book(p),customer_book_with_assignment:p=>{const id=book({...p,p_barber:'b2'});return [{booking_id:id,barber_name:'Lucas Rocha'}];},admin_book:p=>book({...p,customer:p.p_customer}),
  customer_cancel:p=>cancel(p.p_id||p.p_booking),admin_cancel_booking:p=>cancel(p.p_id||p.p_booking),customer_change_slots:()=>slots.map(slot=>({slot})),customer_reschedule:()=>null,customer_claim:()=>null,customer_delete_account:()=>null,
