@@ -55,3 +55,4 @@ Copie todos os arquivos deste repositório, menos o `config.js` dele, e rode no 
    (atendimentos pagos, faltas, cancelamentos), 7 dias de agenda, uma folga e o caixa da semana.
    O script recusa rodar em banco que já tenha reservas.
 3. Publique uma cópia do site com o `config.js` apontando para o projeto da demo (`shopName` pode ser o nome fictício).
+   Para a demo entrar sem o app autenticador, acrescente `mfa:false` no `config.js` e rode no banco da demo o "desfazer" do `seguranca-2fa.sql` (e o `is_attendant` sem a linha do aal). Nunca no banco de um cliente.
