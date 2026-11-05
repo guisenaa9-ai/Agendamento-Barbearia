@@ -11,7 +11,7 @@ declare
  metodos text[]:=array['pix','pix','pix','cash','credit','debit'];
  b record; s record; d date; h int; inicio timestamp; sorte float; cliente int; reserva uuid;
 begin
- if to_regclass('public.business_hours') is null or to_regclass('public.kryon_admins') is null then
+ if to_regclass('public.business_hours') is null or to_regclass('public.booking_events') is null then
   raise exception 'Estrutura incompleta: rode antes, na ordem, os arquivos do LEIA-ME.md (00-base.sql até seguranca-2fa.sql).';
  end if;
  chefe:=(select user_id from public.admins limit 1);

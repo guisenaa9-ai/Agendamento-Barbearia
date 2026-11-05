@@ -36,7 +36,7 @@ const db=get('demo-db')||seed();const save=()=>put('demo-db',db);save();
 function filter(rows,params){return rows.filter(r=>{for(const [k,v] of params){if(['select','order','limit','offset','on_conflict'].includes(k))continue;const i=v.indexOf('.'),op=v.slice(0,i),val=decodeURIComponent(v.slice(i+1)),x=r[k]==null?'':String(r[k]).slice(0,Math.max(val.length,10));
  if(op==='eq'&&String(r[k])!==val&&!(val==='true'&&r[k]===true)&&!(val==='false'&&r[k]===false))return false;if(op==='neq'&&String(r[k])===val)return false;if(op==='gte'&&!(x>=val.slice(0,19)))return false;if(op==='gt'&&!(x>val.slice(0,19)))return false;if(op==='lte'&&!(x<=val.slice(0,19)))return false;if(op==='lt'&&!(x<val.slice(0,19)))return false;if(op==='in'&&!val.replace(/[()]/g,'').split(',').includes(String(r[k])))return false;}return true;});}
 const slots=['09:00','09:40','10:20','11:00','13:00','13:40','14:20','15:00','16:20','17:00'];
-const rpc={staff_role:()=>store?.getItem('demo-role')||'admin',is_admin:()=>true,track_kryon_usage:()=>null,
+const rpc={staff_role:()=>store?.getItem('demo-role')||'admin',is_admin:()=>true,
  available_options:()=>slots.map(slot=>({slot,barbers:db.barbers.map(b=>b.name)})),available_slots:()=>slots.map(slot=>({slot})),admin_slots:()=>slots.map(slot=>({slot})),
  customer_book:p=>book(p),customer_book_with_assignment:p=>{const id=book({...p,p_barber:'b2'});return [{booking_id:id,barber_name:'Lucas Rocha'}];},admin_book:p=>book({...p,customer:p.p_customer}),
  customer_cancel:p=>cancel(p.p_id||p.p_booking),admin_cancel_booking:p=>cancel(p.p_id||p.p_booking),customer_change_slots:()=>slots.map(slot=>({slot})),customer_reschedule:()=>null,customer_claim:()=>null,customer_delete_account:()=>null,

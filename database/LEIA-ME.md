@@ -14,13 +14,13 @@ No SQL Editor, execute nesta ordem (todos podem ser repetidos sem problema):
 4. `sem-preferencia-cliente.sql` – reserva "sem preferência" e limite de reservas por cliente
 5. `cancelamento-com-motivo.sql`
 6. `servicos-visuais.sql`
-7. `painel-kryon.sql` – troque o e-mail do monitor Kryon dentro do arquivo antes de rodar
+7. `historico-agenda.sql` – histórico da agenda, usado nos avisos do barbeiro
 8. `sem-horario-duplicado.sql` – impede duas reservas no mesmo horário para o mesmo barbeiro
 9. `barbeiro-fidelidade.sql` – área do barbeiro e programa de fidelidade (desligado até o chefe ativar)
 10. `barbeiro-avisos.sql` – barbeiro vê avisos de novos agendamentos e cancelamentos
 11. `lgpd.sql` – permite ao cliente excluir a própria conta (exigência da LGPD)
 12. `seguranca-permissoes.sql` – tira de visitantes e clientes as funções que são só do chefe ou de uso interno
-13. `seguranca-2fa.sql` – exige o código do celular (verificação em duas etapas) para o chefe e a Kryon. Rode **depois** que o chefe já entrou uma vez e ativou o código pelo QR Code
+13. `seguranca-2fa.sql` – exige o código do celular (verificação em duas etapas) para o chefe. Rode **depois** que o chefe já entrou uma vez e ativou o código pelo QR Code
 
 Depois, crie o usuário do chefe em Authentication → Users e torne-o administrador:
 ```sql

@@ -11,7 +11,7 @@ begin
  update public.bookings set status='cancelled',cancellation_source='client',cancelled_at=clock_timestamp()
  where customer_id=me and status='confirmed' and attendance_state='scheduled'
  and starts_at>clock_timestamp() at time zone 'America/Manaus';
- update public.kryon_booking_events e set customer='Cliente removido' from public.bookings b where b.id=e.booking_id and b.customer_id=me;
+ update public.booking_events e set customer='Cliente removido' from public.bookings b where b.id=e.booking_id and b.customer_id=me;
  update public.bookings set customer='Cliente removido',phone='' where customer_id=me;
  delete from auth.users where id=me; -- perfil apaga junto (on delete cascade)
 end;$$;
