@@ -9,7 +9,7 @@ let role=null,checking=null;
 // Pedidos simultâneos (painel e Atendimentos abrindo juntos) dividem a mesma consulta.
 function check(){return checking??=verify().finally(()=>checking=null);}
 async function verify(){let value;try{value=await rpc('staff_role',{});}catch(e){if(!/staff_role|schema cache|function/i.test(e.message))throw e;value=await rpc('is_admin',{})?'admin':null;}if(!value){set(null);throw Error('Acesso permitido somente à equipe da barbearia.');}role=value;window.StaffTabs?.setRole(role);return role;}
-async function login(email,password){const value=await api.request('/auth/v1/token?grant_type=password',{method:'POST',body:{email,password}});set(value);try{set(await api.mfa(value));await check();try{await api.rpc('track_kryon_usage',{p_event:'staff_login'},await token());}catch{}return session;}catch(e){set(null);throw e;}}
+async function login(email,password){const value=await api.request('/auth/v1/token?grant_type=password',{method:'POST',body:{email,password}});set(value);try{set(await api.mfa(value));await check();return session;}catch(e){set(null);throw e;}}
 async function logout(){const previous=session?.access_token;set(null);if(previous)try{await api.request('/auth/v1/logout',{method:'POST',token:previous});}catch{}}
 // Computador compartilhado na barbearia: o painel sai sozinho após 30 minutos sem uso.
 let idle;function arm(){clearTimeout(idle);if(session)idle=setTimeout(async()=>{await logout();location.reload();},30*60*1000);}
