@@ -9,7 +9,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-app
 main{max-width:1080px;margin:0 auto;padding:32px 16px 64px}
 small.kicker{color:var(--gold);letter-spacing:.14em;font-weight:700;font-size:11px}
 h1{font:34px/1.2 Georgia,serif;margin:8px 0 6px}.lead{color:var(--muted);max-width:620px;margin:0 0 32px}
-.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
 .plan{position:relative;background:#fffefa;border:1px solid var(--line);border-radius:18px;padding:26px}
 .plan.featured{border:2px solid var(--ink);box-shadow:0 18px 44px #10261f22}
 .badge{position:absolute;top:-13px;left:26px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:999px}
@@ -24,11 +24,11 @@ li::before{content:"✓";position:absolute;left:4px;color:var(--gold);font-weigh
 <main>
 <small class="kicker">SISTEMA DE AGENDAMENTO PARA BARBEARIAS</small>
 <h1>Escolha o plano da sua barbearia</h1>
-<p class="lead">Todos os planos incluem o site de agendamento online da sua barbearia. Quanto maior o plano, mais barbeiros e mais ferramentas de gestão.</p>
+<p class="lead">Todos os planos incluem o site de agendamento online da sua barbearia. O Pro libera barbeiros ilimitados e as ferramentas de gestão.</p>
 <div class="plans">
 <section class="plan" aria-labelledby="p1">
 <h2 id="p1">Essencial</h2><p class="for">Para quem está começando a agenda online.</p>
-<p class="price">R$ 79<span>/mês</span></p>
+<p class="price">R$ 89,90<span>/mês</span></p>
 <span class="limit">Até 2 barbeiros</span>
 <ul>
 <li>Agendamento online e conta do cliente</li>
@@ -37,25 +37,17 @@ li::before{content:"✓";position:absolute;left:4px;color:var(--gold);font-weigh
 <li>Aviso ao cliente pelo WhatsApp (envio manual)</li>
 </ul>
 </section>
-<section class="plan featured" aria-labelledby="p2">
+<section class="plan featured" aria-labelledby="p3">
 <span class="badge">RECOMENDADO</span>
-<h2 id="p2">Plus</h2><p class="for">Para a barbearia com equipe e caixa.</p>
-<p class="price">R$ 149<span>/mês</span></p>
-<span class="limit">Até 6 barbeiros</span>
+<h2 id="p3">Pro</h2><p class="for">Para a barbearia com equipe, caixa e números de perto.</p>
+<p class="price">R$ 109,90<span>/mês</span></p>
+<span class="limit">Barbeiros ilimitados</span>
 <ul>
 <li>Tudo do Essencial</li>
 <li class="plus">Área do barbeiro com comissões</li>
 <li class="plus">Financeiro, comissões e controle de caixa</li>
 <li class="plus">Recepção, atendentes e pagamentos</li>
 <li class="plus">Distribuição automática de clientes</li>
-</ul>
-</section>
-<section class="plan" aria-labelledby="p3">
-<h2 id="p3">Pro</h2><p class="for">Para quem quer acompanhar os números de perto.</p>
-<p class="price">R$ 249<span>/mês</span></p>
-<span class="limit">Barbeiros ilimitados</span>
-<ul>
-<li>Tudo do Plus</li>
 <li class="plus">Análise do período e ranking de barbeiros</li>
 <li class="plus">Procedimentos extras no atendimento</li>
 <li class="plus">Suporte prioritário</li>
