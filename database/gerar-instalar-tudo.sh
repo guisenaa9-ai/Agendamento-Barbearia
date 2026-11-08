@@ -10,7 +10,7 @@ cd "$(dirname "$0")"
 # Banco que já está em uso (criado antes destes arquivos): só as atualizações, na ordem certa.
 {
  echo "-- GERADO por gerar-instalar-tudo.sh. Atualiza um banco que já está em uso. Pode rodar mais de uma vez."
- for f in historico-agenda horarios-loja sem-horario-duplicado equipe-atendente gestao-profissional cancelamento-com-motivo barbeiro-fidelidade barbeiro-avisos lgpd seguranca-permissoes; do
+ for f in historico-agenda horarios-loja sem-horario-duplicado equipe-atendente gestao-profissional sem-preferencia-cliente cancelamento-com-motivo barbeiro-fidelidade barbeiro-avisos lgpd seguranca-permissoes; do
   echo; echo "-- ===== $f.sql ====="; cat "$f.sql"
  done
 } > atualizar-banco-existente.sql
