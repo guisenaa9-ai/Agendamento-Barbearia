@@ -14,3 +14,7 @@ cd "$(dirname "$0")"
   echo; echo "-- ===== $f.sql ====="; cat "$f.sql"
  done
 } > atualizar-banco-existente.sql
+# Trava: nenhum arquivo gerado pode recriar is_admin() sem exigir o código do celular (aal2).
+for f in instalar-tudo.sql atualizar-banco-existente.sql; do
+ awk '/function public\.is_admin\(\)/{n++;w=4} w&&/aal2/{ok++;w=0} w{w--} END{exit n!=ok}' "$f" || { echo "ERRO: $f recria is_admin() sem exigir aal2" >&2; exit 1; }
+done

@@ -94,9 +94,11 @@ create table if not exists public.attendances(
 );
 
 -- Acesso (RLS) ----------------------------------------------------------------------------------------
+-- Chefe só tem acesso com o código do celular (aal2). O cadastro do código usa a API de Auth, não depende disto.
 create or replace function public.is_admin()
 returns boolean language sql stable security definer set search_path='' as $$
- select exists(select 1 from public.admins where user_id=auth.uid());
+ select exists(select 1 from public.admins where user_id=auth.uid())
+  and coalesce(auth.jwt()->>'aal','aal1')='aal2';
 $$;
 
 alter table public.admins enable row level security;
