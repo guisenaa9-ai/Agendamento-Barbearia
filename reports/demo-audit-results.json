@@ -1,0 +1,172 @@
+{
+  "time": "2026-11-18T02:58:42.198Z",
+  "scope": "Isolated demo simulator, no production requests",
+  "passed": 41,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Catalogo publico: servicos e barbeiros ativos",
+      "status": "PASS"
+    },
+    {
+      "name": "Login ficticio retorna sessao",
+      "status": "PASS"
+    },
+    {
+      "name": "Perfil de atendente separado do chefe",
+      "status": "PASS"
+    },
+    {
+      "name": "Perfil: alteracao de nome e telefone persiste",
+      "status": "PASS"
+    },
+    {
+      "name": "Agendamento especifico cria reserva",
+      "status": "PASS"
+    },
+    {
+      "name": "Reserva nova respeita duracao do servico",
+      "status": "PASS"
+    },
+    {
+      "name": "Reserva sem preferencia registra origem",
+      "status": "PASS"
+    },
+    {
+      "name": "Horario reservado deixa de aparecer como livre",
+      "status": "PASS"
+    },
+    {
+      "name": "Dia fechado nao oferece horarios",
+      "status": "PASS"
+    },
+    {
+      "name": "Bloqueio retira horarios da disponibilidade",
+      "status": "PASS"
+    },
+    {
+      "name": "Remarcacao altera horario e barbeiro",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancelamento do cliente altera status",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancelamento pela loja guarda motivo e origem",
+      "status": "PASS"
+    },
+    {
+      "name": "Cadastro presencial guarda cliente",
+      "status": "PASS"
+    },
+    {
+      "name": "Reserva pelo painel guarda telefone informado",
+      "status": "PASS"
+    },
+    {
+      "name": "Chegada cria ficha de atendimento editavel",
+      "status": "PASS"
+    },
+    {
+      "name": "Fichas existentes possuem valor base e versao",
+      "status": "PASS"
+    },
+    {
+      "name": "Salvar parcial nao conclui atendimento",
+      "status": "PASS"
+    },
+    {
+      "name": "Pagamento respeita extras desconto e meio",
+      "status": "PASS"
+    },
+    {
+      "name": "Registro de falta persiste",
+      "status": "PASS"
+    },
+    {
+      "name": "Caixa: abertura e fechamento atualizam mesmo dia",
+      "status": "PASS"
+    },
+    {
+      "name": "Caixa: adicionar e excluir lancamento",
+      "status": "PASS"
+    },
+    {
+      "name": "Servicos: criar editar e desativar",
+      "status": "PASS"
+    },
+    {
+      "name": "Equipe: salvar barbeiro",
+      "status": "PASS"
+    },
+    {
+      "name": "Equipe: alterar comissao",
+      "status": "PASS"
+    },
+    {
+      "name": "Equipe: adicionar atendente",
+      "status": "PASS"
+    },
+    {
+      "name": "Fidelidade respeita configuracao salva",
+      "status": "PASS"
+    },
+    {
+      "name": "Area barbeiro respeita periodo do relatorio",
+      "status": "PASS"
+    },
+    {
+      "name": "Exclusao de conta remove perfil ficticio",
+      "status": "PASS"
+    },
+    {
+      "name": "Paginar reservas respeita limite e deslocamento",
+      "status": "PASS"
+    },
+    {
+      "name": "Horarios individuais nao alteram expediente geral",
+      "status": "PASS"
+    },
+    {
+      "name": "Calculo monetario valida extras e desconto",
+      "status": "PASS"
+    },
+    {
+      "name": "Financeiro soma pagamentos e comissoes",
+      "status": "PASS"
+    },
+    {
+      "name": "BI confere receita com financeiro",
+      "status": "PASS"
+    },
+    {
+      "name": "Respostas do simulador incluem nosniff",
+      "status": "PASS"
+    },
+    {
+      "name": "Cadastro de cliente guarda nome e telefone informados",
+      "status": "PASS"
+    },
+    {
+      "name": "Cadastro de servico pelo formulario fica ativo",
+      "status": "PASS"
+    },
+    {
+      "name": "Login da equipe recebe fator MFA esperado pelo frontend",
+      "status": "PASS"
+    },
+    {
+      "name": "Foto do barbeiro aceita corpo binario",
+      "status": "PASS"
+    },
+    {
+      "name": "Reservas rejeitam data ISO inexistente",
+      "status": "PASS"
+    },
+    {
+      "name": "Recuperar reserva usa codigo compativel com formulario UUID",
+      "status": "PASS"
+    }
+  ]
+}
