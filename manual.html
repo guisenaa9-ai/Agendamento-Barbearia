@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#18392c"><link rel="icon" href="icones/icone-192.png">
+<title>Manual do sistema · Barbearia Daniel Silva</title>
+<link rel="stylesheet" href="manual.css?v=services-64">
+<body class="manual-page"><a class="manual-skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="manual-header"><a class="manual-brand" href="admin.html"><span>DS</span>Barbearia Daniel Silva</a><a href="admin.html">Voltar para o painel</a></header>
+<main id="conteudo" class="manual-wrap">
+<p class="manual-meta">Manual do sistema · para a equipe · Atualizado em 18 de novembro de 2026</p>
+<h1>Como o sistema funciona</h1>
+<p class="manual-lead">O mapa mostra o caminho de um atendimento, da conta do cliente até o pagamento no balcão, e as áreas do painel que cuidam de cada parte. Clique em qualquer caixa para ler o passo a passo. Todos os horários seguem o fuso de Manaus.</p>
+
+<section class="org" aria-labelledby="org-titulo">
+<p class="org-title" id="org-titulo">Mapa do sistema</p>
+<p class="org-hint">Clique numa caixa para abrir a explicação.</p>
+
+<p class="org-lane">Caminho do cliente (site da barbearia)</p>
+<div class="org-row">
+ <a class="org-node" href="#conta"><span class="org-step">1</span><b>Conta</b><span>Cria a conta com e-mail e celular</span></a><span class="org-arrow" aria-hidden="true">→</span>
+ <a class="org-node" href="#agendar"><span class="org-step">2</span><b>Agendar</b><span>Serviço, barbeiro, dia e horário</span></a><span class="org-arrow" aria-hidden="true">→</span>
+ <a class="org-node" href="#reservas"><span class="org-step">3</span><b>Minhas reservas</b><span>Altera, cancela e vê a fidelidade</span></a><span class="org-arrow" aria-hidden="true">→</span>
+ <a class="org-node" href="#atendimentos"><span class="org-step">4</span><b>Na cadeira</b><span>Chegada, extras e pagamento no balcão</span></a>
+</div>
+
+<div class="org-link"><span>cada reserva aparece no painel</span></div>
+
+<p class="org-lane">Painel da equipe</p>
+<div class="org-tree">
+ <a class="org-node dark" href="#painel"><b>Painel</b><span>Entra com e-mail, senha e código</span></a>
+ <div class="org-children">
+  <div><a class="org-node" href="#agenda"><b>Agenda</b><span>Horários, reservas no balcão e folgas</span></a></div>
+  <div><a class="org-node" href="#atendimentos"><b>Atendimentos</b><span>Chegada, extras e pagamento</span></a></div>
+  <div><a class="org-node" href="#caixa"><b>Caixa diário</b><span>Abertura, despesas e fechamento</span></a></div>
+  <div class="org-node org-group"><a class="org-group-link" href="#dashboard"><b>Números</b><span>Só o chefe vê</span></a><span class="org-sub"><a href="#dashboard">Dashboard e BI</a><a href="#financeiro">Financeiro</a></span></div>
+  <div><a class="org-node" href="#servicos"><b>Serviços</b><span>Preços, duração, fotos e fidelidade</span><span class="org-tag">Só chefe</span></a></div>
+  <div><a class="org-node" href="#barbeiros"><b>Barbeiros</b><span>Equipe, comissão e atendentes</span><span class="org-tag">Só chefe</span></a></div>
+ </div>
+</div>
+
+<div class="org-link"><span>o barbeiro acompanha pelo celular</span></div>
+<div class="org-row org-row-short">
+ <a class="org-node" href="#area-barbeiro"><b>Área do barbeiro</b><span>Agenda do dia, novidades e comissão</span></a>
+ <a class="org-node" href="#seguranca"><b>Acesso e segurança</b><span>Senha, código, tema e app</span></a>
+ <a class="org-node" href="#faq"><b>Perguntas frequentes</b><span>Situações do dia a dia</span></a>
+</div>
+<ul class="org-legend"><li><i></i>Etapa ou área</li><li><i class="l-dark"></i>Entrada do painel</li><li><span class="org-tag">Só chefe</span> a atendente não vê</li></ul>
+</section>
+
+<section class="manual-section" id="conta" data-desc="Cria a conta com e-mail, celular e senha" data-group="cliente" aria-labelledby="conta-t"><h2 id="conta-t">1 · Conta do cliente</h2>
+<div class="m-intro"><p><strong>Para que serve:</strong> o cliente precisa de uma conta para reservar, alterar e cancelar os próprios horários.</p>
+<p><strong>Quem usa:</strong> clientes. A equipe não cria contas de cliente; no balcão, usa o cadastro presencial da Agenda.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Passo a passo (cliente)</h3>
+<ol><li>
+Abrir o site da barbearia e tocar em "Primeiro acesso".
+</li><li>
+Preencher nome, e-mail, celular com DDD e senha (mínimo de 8 caracteres), e repetir a senha.
+</li><li>
+Se quiser avisos pelo WhatsApp, marcar a opção de avisos. Tocar em "Criar conta e agendar".
+</li><li>
+Se o site pedir confirmação, abrir o link que chegou no e-mail para ativar a conta.
+</li></ol>
+</div>
+<div class="m-step" data-kind="info"><h3>Erros comuns e solução</h3>
+<ul><li>
+<em>O cliente esqueceu a senha.</em> Na tela de entrada, tocar em "Esqueci minha senha". Chega um link no e-mail para criar uma senha nova.
+</li><li>
+<em>O e-mail de confirmação não chegou.</em> Pedir para olhar a caixa de spam e conferir se digitou o e-mail certo.
+</li></ul>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="agendar" data-desc="Escolhe serviço, barbeiro, dia e horário" data-group="cliente" aria-labelledby="agendar-t"><h2 id="agendar-t">2 · Agendar</h2>
+<div class="m-intro"><p><strong>Para que serve:</strong> o cliente reserva o próprio horário pelo site, sem ligar para a barbearia.</p>
+<p><strong>Quem usa:</strong> clientes, na página "Agendar horário".</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Passo a passo (cliente)</h3>
+<ol><li>
+Escolher o serviço. O preço e a duração aparecem no cartão.
+</li><li>
+Escolher o barbeiro ou "Sem preferência" para ver os horários de toda a equipe.
+</li><li>
+Escolher a data e um dos horários disponíveis.
+</li><li>
+Conferir o resumo e tocar em "Confirmar agendamento". Aparece o código da reserva, que pode ser copiado.
+</li></ol>
+</div>
+<div class="m-step" data-kind="info"><h3>Como os horários são calculados</h3>
+<ul><li>
+Só aparecem horários dentro do expediente da loja ou do barbeiro, com tempo suficiente para a duração do serviço.
+</li><li>
+Horários já reservados, fechados em "Fechar agenda" ou que já passaram não aparecem.
+</li><li>
+O intervalo entre um horário e outro é o escolhido pelo chefe em "Horário de funcionamento".
+</li><li>
+Com "Sem preferência", o sistema escolhe o barbeiro livre com menos reservas no dia. Essas reservas aparecem no painel na lista "Sem preferência".
+</li></ul>
+<p><strong>O que acontece depois:</strong> a reserva aparece na hora na Agenda do painel e na Área do barbeiro. Nenhuma mensagem é enviada sozinha.</p>
+</div>
+<div class="m-step" data-kind="info"><h3>Erros comuns e solução</h3>
+<ul><li>
+<em>"Esse horário acabou de ser reservado por outra pessoa."</em> Outro cliente confirmou o mesmo horário segundos antes. Escolher outro horário.
+</li><li>
+<em>Nenhum horário aparece no dia.</em> O dia está fechado, todos os horários estão ocupados ou a agenda foi fechada para folga ou feriado.
+</li></ul>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="reservas" data-desc="Altera, cancela e acompanha a fidelidade" data-group="cliente" aria-labelledby="reservas-t"><h2 id="reservas-t">3 · Minhas reservas</h2>
+<div class="m-intro"><p><strong>Para que serve:</strong> o cliente acompanha as próprias reservas, troca dia, horário ou barbeiro, cancela e vê o cartão fidelidade.</p>
+<p><strong>Quem usa:</strong> clientes, em "Minha conta".</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Alterar uma reserva</h3>
+<ol><li>Na reserva, tocar em "Alterar dia, horário ou barbeiro".</li>
+<li>Escolher a nova data, o barbeiro e o novo horário.</li>
+<li>Tocar em "Confirmar alteração". O horário antigo fica livre para outros clientes.</li></ol>
+<p>O serviço e o valor continuam os mesmos. Para trocar o serviço, cancelar e fazer uma reserva nova.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Cancelar uma reserva</h3>
+<ol><li>Na reserva, tocar em "Cancelar reserva" e confirmar.</li></ol>
+<p>Alterar e cancelar só é possível até 1 hora antes do atendimento. Depois disso, o cliente precisa falar com a barbearia.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Vincular uma reserva antiga</h3>
+<ol><li>Em "Já agendei antes de criar a conta", digitar o código da reserva e o celular usado no agendamento.</li>
+<li>Tocar em "Vincular reserva". Ela passa a aparecer na lista.</li></ol>
+</div>
+<div class="m-step" data-kind="info"><h3>Cartão fidelidade</h3>
+<p>Quando o chefe liga a fidelidade, o cartão aparece em "Minha conta". Cada atendimento pago conta um ponto pelo celular do cliente. Ao completar a meta, o cliente ganha um atendimento grátis e avisa no balcão.</p>
+</div>
+<div class="m-step" data-kind="info"><h3>Dados e exclusão da conta</h3>
+<p>Em "Meus dados", o cliente muda nome, celular e o aviso pelo WhatsApp. Em "Excluir minha conta", ele apaga a conta: os horários futuros são cancelados e o nome e o celular saem do histórico. Não dá para desfazer.</p>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="painel" data-desc="Entrada com e-mail, senha e código do celular" data-group="painel" aria-labelledby="painel-t"><h2 id="painel-t">Painel da equipe</h2>
+<div class="m-intro"><p><strong>Para que serve:</strong> é onde a barbearia trabalha no dia a dia: agenda, recepção, pagamentos, caixa, números e equipe.</p>
+<p><strong>Quem usa:</strong> o chefe vê todas as abas. A atendente vê só Agenda, Atendimentos, Caixa diário e este Manual.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Entrar no painel</h3>
+<ol><li>
+Abrir o Portal do chefe e digitar e-mail e senha.
+</li><li>
+No primeiro acesso, escanear o QR Code com o Google Authenticator ou o Microsoft Authenticator no celular.
+</li><li>
+Digitar o código de 6 dígitos que aparece no app. Nas próximas vezes, basta abrir o app e digitar o código.
+</li><li>
+Escolher a aba no menu lateral. No celular, o menu fica no topo e desliza para o lado.
+</li></ol>
+</div>
+<div class="m-step" data-kind="info"><h3>Erros comuns e solução</h3>
+<ul><li>
+<em>"Código incorreto ou expirado."</em> O código muda a cada 30 segundos. Digitar o código novo e conferir se o horário do celular está certo.
+</li><li>
+<em>"Acesso permitido somente à equipe da barbearia."</em> A conta não foi liberada. O chefe libera atendentes na aba Barbeiros.
+</li></ul>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="agenda" data-desc="Horários livres, reservas no balcão e folgas" data-group="painel" aria-labelledby="agenda-t"><h2 id="agenda-t">Agenda</h2>
+<div class="m-intro"><p><strong>Para que serve:</strong> ver as reservas de cada barbeiro, marcar clientes no balcão ou por telefone, cancelar, registrar faltas e organizar folgas e o horário de funcionamento.</p>
+<p><strong>Quem usa:</strong> chefe e atendente.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Encontrar um horário livre</h3>
+<ol><li>Em "Consulta rápida", digitar o nome do barbeiro (ou deixar vazio para todos) e escolher a data.</li>
+<li>Tocar em "Buscar horários livres". Cada horário vira um botão.</li>
+<li>Tocar no horário para já abrir o agendamento presencial com barbeiro, data e hora preenchidos.</li></ol>
+</div>
+<div class="m-step" data-kind="flow"><h3>Registrar agendamento presencial</h3>
+<ol><li>Tocar em "+ Registrar agendamento presencial".</li>
+<li>Em "Cliente", digitar pelo menos 2 letras e escolher o cliente na lista. Se ele não existir, preencher nome e celular e tocar em "+ Cadastrar novo cliente".</li>
+<li>Escolher serviço, barbeiro (ou "Sem preferência"), data e horário.</li>
+<li>Tocar em "Confirmar agendamento".</li></ol>
+</div>
+<div class="m-step" data-kind="flow"><h3>Cancelar pela loja</h3>
+<ol><li>Na reserva, tocar em "Cancelar horário".</li>
+<li>Escrever o motivo que o cliente vai receber (pelo menos 5 caracteres).</li>
+<li>Tocar em "Cancelar e avisar pelo WhatsApp". O horário é liberado e o WhatsApp abre com a mensagem pronta; o envio só acontece quando você tocar em Enviar.</li></ol>
+</div>
+<div class="m-step" data-kind="flow"><h3>Fechar a agenda (folga, férias, feriado)</h3>
+<ol><li>Em "Fechar agenda", escolher o barbeiro ou "Toda a barbearia", o motivo, o início e o fim.</li>
+<li>Tocar em "Fechar agenda neste período". Ninguém consegue agendar nesse intervalo.</li>
+<li>Se já houver clientes marcados, eles aparecem na lista com o aviso pronto para enviar pelo WhatsApp.</li></ol>
+</div>
+<div class="m-step" data-kind="flow"><h3>Horário de funcionamento</h3>
+<ol><li>Em "De quem", escolher "Toda a barbearia" ou um barbeiro.</li>
+<li>Marcar os dias abertos e o horário de abrir e fechar. Dia desmarcado fica fechado.</li>
+<li>Escolher o intervalo entre horários (15, 20, 30, 45 minutos ou 1 hora) e tocar em "Salvar horário".</li></ol>
+<p>Um barbeiro com horário próprio volta a seguir o da loja em "Voltar a usar o horário da loja".</p>
+</div>
+<div class="m-step" data-kind="info"><h3>Bom saber</h3>
+<ul><li>
+As cores da agenda mostram a situação: Confirmado, Cliente recebido, Concluído e Cancelado.
+</li><li>
+Depois do horário marcado, aparece o botão "Registrar falta" para quem não veio. A falta fica no histórico e libera o horário.
+</li><li>
+Em "WhatsApp: envio manual e teste", dá para mandar os avisos para um número de teste antes de usar com clientes.
+</li></ul>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="atendimentos" data-desc="Chegada, procedimentos extras e pagamento" data-group="painel" aria-labelledby="atendimentos-t"><h2 id="atendimentos-t">Atendimentos</h2>
+<div class="m-intro"><p><strong>Para que serve:</strong> receber o cliente no balcão, registrar o que foi feito, o pagamento e concluir o atendimento.</p>
+<p><strong>Quem usa:</strong> chefe e atendente.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Passo a passo</h3>
+<ol><li>
+Na aba Atendimentos, conferir o dia. Para achar alguém, digitar o nome em "Buscar cliente".
+</li><li>
+Quando o cliente chegar, tocar em "Confirmar chegada". Só funciona no dia da reserva.
+</li><li>
+Tocar em "Registrar procedimentos e pagamento" para abrir a ficha. Se fez algo a mais, tocar em "+ Hidratação", "+ Escova" ou "+ Outro procedimento" e ajustar valor e quantidade.
+</li><li>
+Se houver desconto, preencher "Desconto (R$)". O total se atualiza sozinho.
+</li><li>
+Marcar "Pagamento recebido" e escolher a forma: Pix, Dinheiro, Cartão de débito, Cartão de crédito, Transferência, Cortesia ou Outro.
+</li><li>
+Tocar em "Concluir atendimento e pagamento" e confirmar. Para guardar sem concluir, usar "Salvar atendimento".
+</li></ol>
+</div>
+<div class="m-step" data-kind="info"><h3>O que acontece depois</h3>
+<p>O pagamento entra no Caixa diário, no Financeiro e na comissão do barbeiro. Atendimento concluído não pode mais ser editado.</p>
+<p><strong>Fidelidade:</strong> a ficha avisa quando o cliente tem atendimento grátis. Para usar o prêmio, deixar o total em R$ 0,00 (com desconto) e escolher a forma "Cortesia".</p>
+</div>
+<div class="m-step" data-kind="info"><h3>Erros comuns e solução</h3>
+<ul><li>
+<em>"Confirme a chegada antes de registrar o atendimento."</em> Tocar primeiro em "Confirmar chegada".
+</li><li>
+<em>"Este atendimento foi atualizado em outra tela."</em> Outra pessoa salvou a mesma ficha. Fechar a ficha, tocar em "Atualizar" e abrir de novo.
+</li><li>
+<em>"Cortesia exige total igual a zero."</em> Lançar o desconto do valor inteiro antes de escolher Cortesia.
+</li><li>
+<em>O botão "Confirmar chegada" está apagado.</em> A reserva é de outro dia. Conferir a data no topo da aba.
+</li></ul>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="caixa" data-desc="Abertura, despesas, retiradas e fechamento" data-group="painel" aria-labelledby="caixa-t"><h2 id="caixa-t">Caixa diário</h2>
+<div class="m-intro"><p><strong>Para que serve:</strong> controlar o dinheiro da gaveta: abertura, despesas, retiradas, reforços e a conferência no fim do dia.</p>
+<p><strong>Quem usa:</strong> chefe e atendente.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Abrir o caixa</h3>
+<ol><li>Escolher o dia e preencher "Valor de abertura (R$)".</li>
+<li>Tocar em "Salvar caixa".</li></ol>
+</div>
+<div class="m-step" data-kind="flow"><h3>Lançar uma movimentação</h3>
+<ol><li>Em "Novo lançamento", escolher o tipo: Despesa, Retirada, Reforço de caixa ou Outra entrada.</li>
+<li>Preencher categoria, descrição, valor e forma.</li>
+<li>Tocar em "Adicionar lançamento". Um lançamento errado sai em "Excluir".</li></ol>
+</div>
+<div class="m-step" data-kind="flow"><h3>Fechar o caixa</h3>
+<ol><li>Contar o dinheiro da gaveta e preencher "Valor contado no fechamento (R$)".</li>
+<li>Se precisar, escrever uma observação e tocar em "Salvar caixa".</li></ol>
+</div>
+<div class="m-step" data-kind="info"><h3>Bom saber</h3>
+<p>Os pagamentos em dinheiro dos atendimentos entram sozinhos no resumo da gaveta. Pix e cartões aparecem separados, porque não passam pela gaveta. Salvar o caixa de novo no mesmo dia atualiza os valores; não cria outro caixa.</p>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="dashboard" data-desc="Ranking, receita e horários mais procurados" data-group="painel" data-role="chefe" aria-labelledby="dashboard-t"><h2 id="dashboard-t">Dashboard e BI</h2>
+<p class="manual-who">Só chefe</p>
+<div class="m-intro"><p><strong>Para que serve:</strong> ver em poucos segundos como a barbearia está indo: quem atende mais, quanto entrou e o que os clientes mais procuram.</p>
+<p><strong>Quem usa:</strong> só o chefe.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Passo a passo</h3>
+<ol><li>
+Na "Visão geral", escolher o dia no topo para ver a agenda daquele dia e o ranking "Quem tem mais agendamentos".
+</li><li>
+Em "Análise do período", escolher a data inicial e a final e tocar em "Atualizar análise".
+</li><li>
+Ler a receita recebida, o ticket médio, os serviços mais procurados, os horários mais ocupados e o "Resumo para decisão".
+</li></ol>
+</div>
+<div class="m-step" data-kind="info"><h3>Bom saber</h3>
+<p>Cancelamentos não contam no ranking. A receita conta só atendimentos com pagamento registrado; reserva sem pagamento não entra.</p>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="financeiro" data-desc="Faturamento e comissão de cada barbeiro" data-group="painel" data-role="chefe" aria-labelledby="financeiro-t"><h2 id="financeiro-t">Financeiro</h2>
+<p class="manual-who">Só chefe</p>
+<div class="m-intro"><p><strong>Para que serve:</strong> fechar o faturamento e calcular a comissão de cada barbeiro num período.</p>
+<p><strong>Quem usa:</strong> só o chefe.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Passo a passo</h3>
+<ol><li>
+Escolher a data inicial e a final e tocar em "Gerar relatório".
+</li><li>
+Conferir, por barbeiro, os atendimentos pagos, o faturamento, a porcentagem e o valor da comissão e o líquido da barbearia.
+</li><li>
+Ver o "Detalhamento por barbeiro e serviço" logo abaixo.
+</li><li>
+Para guardar ou mandar ao contador, tocar em "Baixar CSV" (abre no Excel) ou em "Imprimir".
+</li></ol>
+</div>
+<div class="m-step" data-kind="info"><h3>Bom saber</h3>
+<p>A comissão é calculada sobre os valores pagos, com a porcentagem cadastrada na aba Barbeiros. Os valores são das vendas registradas: não descontam taxas da maquininha nem impostos.</p>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="servicos" data-desc="Preço, duração, fotos e fidelidade" data-group="painel" data-role="chefe" aria-labelledby="servicos-t"><h2 id="servicos-t">Serviços</h2>
+<p class="manual-who">Só chefe</p>
+<div class="m-intro"><p><strong>Para que serve:</strong> definir o que a barbearia oferece, quanto custa e quanto tempo leva. A duração define quanto tempo a agenda reserva.</p>
+<p><strong>Quem usa:</strong> só o chefe.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Cadastrar ou editar um serviço</h3>
+<ol><li>Em "Cadastrar serviço", preencher nome, preço, duração em minutos e a descrição.</li>
+<li>Se quiser, escolher uma foto do corte (JPG, PNG ou WebP de até 3 MB).</li>
+<li>Tocar em "Cadastrar serviço". Para mudar depois, tocar em "Editar serviço / foto" na lista e em "Salvar serviço".</li></ol>
+<p>"Desativar" tira o serviço do site sem apagar o histórico. "Ativar" traz de volta.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Programa de fidelidade</h3>
+<ol><li>Marcar "Ativar programa de fidelidade".</li>
+<li>Definir quantos atendimentos pagos dão 1 grátis (de 2 a 50).</li>
+<li>Tocar em "Salvar fidelidade". Desligado, os clientes não veem nada.</li></ol>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="barbeiros" data-desc="Equipe, comissão, fotos e atendentes" data-group="painel" data-role="chefe" aria-labelledby="barbeiros-t"><h2 id="barbeiros-t">Barbeiros</h2>
+<p class="manual-who">Só chefe</p>
+<div class="m-intro"><p><strong>Para que serve:</strong> cadastrar a equipe, a comissão de cada um, a apresentação que aparece para os clientes e quem pode entrar no painel.</p>
+<p><strong>Quem usa:</strong> só o chefe.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Cadastrar um barbeiro</h3>
+<ol><li>Tocar em "+ Criar novo barbeiro" e preencher o nome. CPF e celular são opcionais e só o chefe vê.</li>
+<li>Escrever a especialidade e a apresentação, que aparecem para os clientes, e escolher uma foto se quiser.</li>
+<li>Preencher a comissão sobre valores pagos (%).</li>
+<li>Para o barbeiro usar a Área do barbeiro, preencher o e-mail de acesso. Tocar em "Cadastrar barbeiro".</li></ol>
+<p>Para mudar depois, tocar em "Editar dados". "Desativar" tira o barbeiro do agendamento sem apagar o histórico.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Liberar uma atendente</h3>
+<ol><li>A atendente cria a conta pelo site, em "Primeiro acesso".</li>
+<li>Em "Atendentes", digitar o e-mail dela e tocar em "Liberar acesso".</li>
+<li>No primeiro login no painel, ela ativa o código do celular. Para tirar o acesso, tocar em "Remover acesso".</li></ol>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="area-barbeiro" data-desc="Agenda do dia, novidades e comissão" data-group="barbeiro" aria-labelledby="area-barbeiro-t"><h2 id="area-barbeiro-t">Área do barbeiro</h2>
+<div class="m-intro"><p><strong>Para que serve:</strong> o barbeiro acompanha a própria agenda e a própria comissão pelo celular, sem acesso ao resto do painel.</p>
+<p><strong>Quem usa:</strong> cada barbeiro, com o e-mail que o chefe cadastrou.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Primeiro acesso</h3>
+<ol><li>O barbeiro passa um e-mail ao chefe, que preenche em "E-mail de acesso à Área do barbeiro".</li>
+<li>O barbeiro cria a conta pelo site com esse mesmo e-mail.</li>
+<li>Na tela de entrada, tocar em "Sou barbeiro: acessar minha agenda" e entrar com e-mail e senha.</li></ol>
+</div>
+<div class="m-step" data-kind="flow"><h3>No dia a dia</h3>
+<ol><li>Em "Novidades", ver reservas novas, alteradas e canceladas dos últimos 7 dias. Tocar na lista para marcar como vistas.</li>
+<li>Em "Minha agenda", passar os dias com ‹ e › e tocar em "Falar com o cliente" para abrir o WhatsApp.</li>
+<li>Em "Minhas comissões", escolher o período e tocar em "Atualizar".</li></ol>
+<p>Contam só os atendimentos já pagos, com a porcentagem cadastrada pelo chefe.</p>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="seguranca" data-desc="Senha, código no celular, tema e app" data-group="ajuda" aria-labelledby="seguranca-t"><h2 id="seguranca-t">Acesso e segurança</h2>
+<div class="m-intro"><p><strong>Para que serve:</strong> manter o painel seguro e confortável de usar todos os dias.</p>
+<p><strong>Quem usa:</strong> toda a equipe.</p>
+</div>
+<div class="m-step" data-kind="info"><h3>Verificação em duas etapas</h3>
+<p>Além da senha, o painel pede o código de 6 dígitos do app autenticador. Mesmo que alguém descubra a senha, não entra sem o celular. Trocou de celular? Peça ao responsável técnico para refazer o cadastro do código.</p>
+</div>
+<div class="m-step" data-kind="info"><h3>Sair do painel</h3>
+<p>Em computador compartilhado, tocar sempre em "Sair" no fim do expediente.</p>
+</div>
+<div class="m-step" data-kind="info"><h3>Tema claro ou escuro</h3>
+<p>O botão no topo do painel troca entre claro e escuro. A escolha fica salva no aparelho.</p>
+</div>
+<div class="m-step" data-kind="info"><h3>Instalar como aplicativo</h3>
+<p>Tocar em "📲 Instalar app" no canto da tela. O painel ganha um ícone no celular ou no computador e abre sem precisar procurar o site.</p>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<section class="manual-section" id="faq" data-desc="Situações do dia a dia" data-group="ajuda" aria-labelledby="faq-t"><h2 id="faq-t">Perguntas frequentes</h2>
+<div class="m-step" data-kind="faq"><h3>O cliente quer trocar de horário em cima da hora.</h3>
+<p>Pelo site, ele só altera até 1 hora antes. No balcão, cancele a reserva na Agenda e registre um agendamento presencial no horário novo.</p>
+</div>
+<div class="m-step" data-kind="faq"><h3>O cliente não veio.</h3>
+<p>Depois do horário, toque em "Registrar falta" na Agenda. O horário fica livre e a falta fica no histórico.</p>
+</div>
+<div class="m-step" data-kind="faq"><h3>Concluí o atendimento com o valor errado.</h3>
+<p>Atendimento concluído não pode ser editado. Lance a diferença no Caixa diário, em "Novo lançamento", e anote o motivo na descrição.</p>
+</div>
+<div class="m-step" data-kind="faq"><h3>O cliente chegou, mas não tem reserva.</h3>
+<p>Na Agenda, use "Registrar agendamento presencial" no horário de agora e depois confirme a chegada em Atendimentos.</p>
+</div>
+<div class="m-step" data-kind="faq"><h3>As mensagens de WhatsApp saem sozinhas?</h3>
+<p>Não. O sistema abre o WhatsApp com a mensagem pronta, e o envio só acontece quando você tocar em Enviar.</p>
+</div>
+<div class="m-step" data-kind="faq"><h3>Os números do Financeiro são o dinheiro que tenho no banco?</h3>
+<p>Não. São os pagamentos registrados nos atendimentos. Taxas da maquininha e impostos não estão descontados.</p>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
+<nav class="manual-legal" aria-label="Documentos da barbearia"><a href="#seguranca">Acesso e segurança</a><a href="#faq">Perguntas frequentes</a><a href="privacidade.html">Termos e privacidade</a></nav>
+</main>
+</body></html>

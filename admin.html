@@ -3,11 +3,11 @@
 <meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="only light"><link rel="manifest" href="painel.webmanifest"><meta name="theme-color" content="#18392c"><link rel="icon" href="icones/icone-192.png"><link rel="apple-touch-icon" href="icones/icone-180.png"><meta name="apple-mobile-web-app-title" content="Painel"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
 <title>Portal do chefe · Barbearia Daniel Silva</title>
-<link rel="stylesheet" href="admin.css?v=services-62">
-<link rel="stylesheet" href="pole.css?v=services-62">
-<link rel="stylesheet" href="polish.css?v=services-62">
-<link rel="stylesheet" href="painel.css?v=services-62">
-<link rel="stylesheet" href="attendance.css?v=services-62"><link rel="stylesheet" href="design.css?v=services-62"><script src="tema.js?v=services-62"></script>
+<link rel="stylesheet" href="admin.css?v=services-64">
+<link rel="stylesheet" href="pole.css?v=services-64">
+<link rel="stylesheet" href="polish.css?v=services-64">
+<link rel="stylesheet" href="painel.css?v=services-64">
+<link rel="stylesheet" href="attendance.css?v=services-64"><link rel="stylesheet" href="design.css?v=services-64"><link rel="stylesheet" href="manual.css?v=services-64"><script src="tema.js?v=services-64"></script>
 <body class="staff-page">
 <main>
 <header class="staff-header">
@@ -55,6 +55,8 @@
 <span aria-hidden="true">♙</span>Barbeiros</button>
 <button id="nav-atendimentos" role="tab" type="button" aria-selected="false" aria-controls="tab-atendimentos" tabindex="-1">
 <span aria-hidden="true">✓</span>Atendimentos</button>
+<button id="nav-manual" role="tab" type="button" aria-selected="false" aria-controls="tab-manual" tabindex="-1">
+<span aria-hidden="true">?</span>Manual</button>
 </div>
 <p class="sidebar-caption">Uma agenda organizada.<br>Mais tempo para atender bem.</p>
 </aside>
@@ -250,7 +252,8 @@
 </ul>
 </article>
 </div>
-<article class="catalog-form attendants-admin"><h3>Atendentes</h3><p class="help">A atendente acessa só Agenda, Atendimentos e Caixa diário. Ela cria a conta pelo site (Primeiro acesso) e, no primeiro login no painel, ativa o código do celular.</p><form id="attendantform"><label>E-mail da atendente<input id="attendantemail" type="email" maxlength="120" required autocomplete="off"></label><button>Liberar acesso</button></form><div id="attendantlist" class="block-list"></div></article></section>
+<article class="catalog-form attendants-admin"><h3>Atendentes</h3><p class="help">A atendente acessa só Agenda, Atendimentos, Caixa diário e o Manual. Ela cria a conta pelo site (Primeiro acesso) e, no primeiro login no painel, ativa o código do celular.</p><form id="attendantform"><label>E-mail da atendente<input id="attendantemail" type="email" maxlength="120" required autocomplete="off"></label><button>Liberar acesso</button></form><div id="attendantlist" class="block-list"></div></article></section>
+<section id="tab-manual" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-manual" hidden><div id="manual-app"></div></section>
 <section id="tab-atendimentos" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-atendimentos" hidden>
 <div class="section-intro"><h3>Recepção e pagamentos</h3><p>Confirme a chegada, registre procedimentos extras, forma de pagamento e conclusão.</p></div><p id="visitstatus" role="status" tabindex="-1"></p>
 <div id="visitpanel"><div class="visit-filters"><label>Dia de Manaus<input id="visitdate" type="date" required></label><label>Buscar cliente<input id="visitsearch" type="search" placeholder="Nome do cliente"></label><label>Situação<select id="visitstate"><option value="all">Todos</option><option value="scheduled">Aguardando chegada</option><option value="arrived">Em atendimento</option><option value="completed">Concluídos</option><option value="cancelled">Cancelados</option></select></label><button id="visitrefresh">Atualizar</button></div><div id="visitmetrics" class="metrics"></div><div id="visitlist" class="visit-list"></div><p id="visitempty" hidden>Nenhum atendimento encontrado para esses filtros.</p></div>
@@ -274,28 +277,29 @@
 </form>
 </section>
 </div>
-<script src="demo-mock.js?v=services-62"></script><script src="config.js?v=services-62">
+<script src="demo-mock.js?v=services-64"></script><script src="config.js?v=services-64">
 </script>
-<script src="api.js?v=services-62">
+<script src="api.js?v=services-64">
 </script>
-<script src="team.js?v=services-62">
+<script src="team.js?v=services-64">
 </script>
-<script src="dashboard.js?v=services-62">
+<script src="dashboard.js?v=services-64">
 </script>
-<script src="finance-model.js?v=services-62"></script>
-<script src="bi-model.js?v=services-62"></script>
-<script src="whatsapp.js?v=services-62">
+<script src="finance-model.js?v=services-64"></script>
+<script src="bi-model.js?v=services-64"></script>
+<script src="whatsapp.js?v=services-64">
 </script>
-<script src="staff-auth.js?v=services-62">
+<script src="staff-auth.js?v=services-64">
 </script>
-<script src="staff-tabs.js?v=services-62">
+<script src="staff-tabs.js?v=services-64">
 </script>
-<script src="service-cards.js?v=services-62"></script><script src="admin.js?v=services-62">
+<script src="service-cards.js?v=services-64"></script><script src="admin.js?v=services-64">
 </script>
-<script src="cash.js?v=services-62"></script>
-<script src="operations.js?v=services-62"></script>
-<script src="agenda-pro.js?v=services-62"></script>
-<script src="attendance-model.js?v=services-62"></script>
-<script src="attendance.js?v=services-62"></script>
-<script src="update-check.js?v=services-62" data-version="services-62"></script><button id="installapp" type="button" class="install-app" hidden>📲 Instalar app</button></body>
+<script src="cash.js?v=services-64"></script>
+<script src="operations.js?v=services-64"></script>
+<script src="agenda-pro.js?v=services-64"></script>
+<script src="attendance-model.js?v=services-64"></script>
+<script src="attendance.js?v=services-64"></script>
+<script src="manual-app.js?v=services-64"></script>
+<script src="update-check.js?v=services-64" data-version="services-64"></script><button id="installapp" type="button" class="install-app" hidden>📲 Instalar app</button></body>
 </html>
