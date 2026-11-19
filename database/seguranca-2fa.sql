@@ -1,5 +1,5 @@
 -- Exige verificação em duas etapas (código do app autenticador) para o chefe.
--- Antes de rodar: entre uma vez em admin.html e ative a verificação pelo QR Code.
+-- O 00-base.sql já faz isto; este arquivo serve para banco instalado antes dessa mudança.
 -- Sem o código, a senha sozinha não dá acesso a nenhum dado da barbearia.
 begin;
 create or replace function public.is_admin()

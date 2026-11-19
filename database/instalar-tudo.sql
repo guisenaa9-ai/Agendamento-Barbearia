@@ -94,9 +94,11 @@ create table if not exists public.attendances(
 );
 
 -- Acesso (RLS) ----------------------------------------------------------------------------------------
+-- Chefe só tem acesso com o código do celular (aal2). O cadastro do código usa a API de Auth, não depende disto.
 create or replace function public.is_admin()
 returns boolean language sql stable security definer set search_path='' as $$
- select exists(select 1 from public.admins where user_id=auth.uid());
+ select exists(select 1 from public.admins where user_id=auth.uid())
+  and coalesce(auth.jwt()->>'aal','aal1')='aal2';
 $$;
 
 alter table public.admins enable row level security;
@@ -625,6 +627,8 @@ returns uuid language plpgsql security definer set search_path='' as $$
 declare profile public.customer_profiles%rowtype; result uuid; candidate uuid;
 begin
  if auth.uid() is null then raise exception 'Entre na sua conta para agendar.';end if;
+ -- Uma reserva por vez para cada cliente: sem isso, chamadas simultâneas passam do limite abaixo.
+ perform pg_advisory_xact_lock(hashtextextended('customer_book:'||auth.uid()::text,0));
  select * into profile from public.customer_profiles where id=auth.uid();
  if not found or profile.name is null or profile.phone is null then raise exception 'Complete nome e celular na sua conta antes de agendar.';end if;
  -- Limite contra abuso: uma conta não pode lotar a agenda.
