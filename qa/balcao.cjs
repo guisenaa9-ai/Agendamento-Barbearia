@@ -1,0 +1,25 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const nodes=new Map(),events={};
+function node(id){if(!nodes.has(id))nodes.set(id,{hidden:false,value:'all',setAttribute(k,v){this[k]=v;},append(){},click(){this.onclick();},focus(){},scrollIntoView(){},closest(){return node('details');}});return nodes.get(id);}
+const ctx={document:{getElementById:node,querySelector:node,body:{classList:{toggle(){}}}},location:{pathname:'/admin.html',search:'?demo=atendente',hash:''},history:{replaceState(a,b,url){ctx.url=url;}},CustomEvent:class{constructor(type,options){this.type=type;this.detail=options.detail;}}};
+ctx.window={addEventListener(type,fn){events[type]=fn;},dispatchEvent(){}};
+vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname,'../staff-tabs.js'),'utf8'),ctx);
+const tabs=ctx.window.StaffTabs;
+tabs.setRole('attendant');
+assert.equal(node('tab-atendimentos').hidden,false);
+assert.equal(node('staffpagetitle').textContent,'Balcão do dia');
+assert.equal(node('visitstate').value,'active');
+assert.equal(node('nav-financeiro').hidden,true);
+ctx.location.hash='#financeiro';events.hashchange();
+assert.equal(node('tab-financeiro').hidden,true);
+assert.equal(node('tab-atendimentos').hidden,false);
+node('nav-atendimentos').onkeydown({key:'ArrowRight',preventDefault(){}});
+assert.equal(node('nav-agenda')['aria-selected'],'true');
+assert.equal(ctx.url,'/admin.html?demo=atendente#agenda');
+node('desknewbooking').click();assert.equal(node('details').open,true);
+ctx.location.hash='';tabs.setRole('admin');
+assert.equal(node('nav-financeiro').hidden,false);
+assert.equal(node('tab-dashboard').hidden,false);
+assert.equal(node('desknewbooking').hidden,true);
+assert.equal(node('visitstate').value,'all');
+console.log('OK: entrada por perfil, abas restritas, teclado, novo agendamento e portal gerencial.');
