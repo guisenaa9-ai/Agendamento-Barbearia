@@ -1,0 +1,146 @@
+﻿[
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\demo-desktop.png",
+        "data":  {
+                     "title":  "Demonstração · Barbearia Daniel Silva",
+                     "url":  "http://127.0.0.1:8765/demo.html",
+                     "width":  1366,
+                     "contentWidth":  1366,
+                     "text":  "BARBEARIA DANIEL SILVA · MANAUS\nTodas as telas, prontas para testar.\n\nCada tela é o site de verdade, com clientes, barbeiros e pagamentos fictícios no lugar do banco. Pode agendar, confirmar chegada, registrar pagamento e cancelar à vontade.\n\nNada é salvo de verdade e nenhuma mensagem é enviada.\nAs mudanças valem até fechar a aba.\nPara o cliente\n\nO caminho de quem quer cortar o cabelo.\n\n✦\nEntrada e cadastro\nEntre com qualquer e-mail e senha\n›\n✂\nAgendar horário\nEscolha serviço, barbeiro e horário\n›\n◷\nMinha conta\nReservas, fidelidade e cancelamento\n›\nPara a equipe\n\nO dia a dia de quem atende e de quem cuida do negócio.\n\n♙\nÁrea do barbeiro\nAgenda de Daniel, próximo cliente e comissão\n›\n▦\nPainel do chefe\nAcesso completo: dashboard, financeiro, equipe e mais\n›\n✓\nPainel do atendente\nMesmo painel, só Agenda, Atendimentos e Caixa\n›\nOs dados giram em torno de hoje: 20 dias de histórico e a próxima semana de reservas.\nRecomeçar com dados novos\nSair da demonstração"
+                 },
+        "page":  "demo.html",
+        "size":  "desktop"
+    },
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\demo-mobile.png",
+        "data":  {
+                     "title":  "Demonstração · Barbearia Daniel Silva",
+                     "url":  "http://127.0.0.1:8765/demo.html",
+                     "width":  390,
+                     "contentWidth":  375,
+                     "text":  "BARBEARIA DANIEL SILVA · MANAUS\nTodas as telas, prontas para testar.\n\nCada tela é o site de verdade, com clientes, barbeiros e pagamentos fictícios no lugar do banco. Pode agendar, confirmar chegada, registrar pagamento e cancelar à vontade.\n\nNada é salvo de verdade e nenhuma mensagem é enviada.\nAs mudanças valem até fechar a aba.\nPara o cliente\n\nO caminho de quem quer cortar o cabelo.\n\n✦\nEntrada e cadastro\nEntre com qualquer e-mail e senha\n›\n✂\nAgendar horário\nEscolha serviço, barbeiro e horário\n›\n◷\nMinha conta\nReservas, fidelidade e cancelamento\n›\nPara a equipe\n\nO dia a dia de quem atende e de quem cuida do negócio.\n\n♙\nÁrea do barbeiro\nAgenda de Daniel, próximo cliente e comissão\n›\n▦\nPainel do chefe\nAcesso completo: dashboard, financeiro, equipe e mais\n›\n✓\nPainel do atendente\nMesmo painel, só Agenda, Atendimentos e Caixa\n›\nOs dados giram em torno de hoje: 20 dias de histórico e a próxima semana de reservas.\nRecomeçar com dados novos\nSair da demonstração"
+                 },
+        "page":  "demo.html",
+        "size":  "mobile"
+    },
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\agendar-desktop.png",
+        "data":  {
+                     "title":  "Barbearia Daniel Silva — Agendamento",
+                     "url":  "http://127.0.0.1:8765/agendar.html?demo",
+                     "width":  1366,
+                     "contentWidth":  1351,
+                     "text":  "BARBEARIA DANIEL SILVA\nSEU ESTILO. SEU TEMPO.\nAgendar horário\nMeus agendamentos\nSobre nós\n\nEscolha serviço, barbeiro, data e horário. Horário de Manaus.\n\nBARBEARIA \u0026 ESTILO\nSeu próximo corte.\nNo seu tempo.\n\nEscolha seu estilo, encontre seu barbeiro e reserve\num momento só seu.\n\n✓ Sem filas\n✓ Agendamento rápido\n✓ Seu estilo em boas mãos\nAgendar horário\nMeus agendamentos\n01\nServiço\n02\nProfissional\n03\nData e horário\nEscolha seu serviço\n\nEscolha o serviço ideal para você.\n\n✂\nBarba completa\nToalha quente, navalha e hidratação.\n30 min\nR$ 30,00\nEscolher serviço\n✂\nCorte + barba\nO combo completo, com desconto.\n70 min\nR$ 65,00\nEscolher serviço\n✂\nCorte masculino\nTesoura ou máquina, lavagem e finalização.\n40 min\nR$ 40,00\nEscolher serviço\n✂\nSobrancelha\nAcabamento na navalha.\n15 min\nR$ 15,00\nEscolher serviço\n\nToque no card para escolher seu serviço.\n\nServiço\nSelecione um corte\nBarba completa — R$ 30,00 — 30 min\nCorte + barba — R$ 65,00 — 70 min\nCorte masculino — R$ 40,00 — 40 min\nSobrancelha — R$ 15,00 — 15 min\nCom quem vamos?\n\nEscolha seu barbeiro ou “Sem preferência” para consultar a disponibilidade de toda a equipe.\n\nBarbeiro\nSem preferência\nDaniel Silva\nLucas Rocha\nPedro Alves\nSelecione um barbeiro\nSem preferência\nDaniel Silva\nLucas Rocha\nPedro Alves\nReserve seu momento\nEscolha a data\n\nHorários disponíveis\n\nHorário\n\nSelecione serviço, barbeiro e data\n\nSelecione serviço, barbeiro e data\n\nQUASE NA CADEIRA\nSeu agendamento\n✂\nSelecione um serviço\n\nProfissional\nSelecione um barbeiro\n\nData\n17/11/2026\n\nHorário\nSelecione um horário\n\nTotal\n—\nEntrar / Criar conta / Meus agendamentos\n\nAgendando para Guilherme. Sua reserva ficará na sua conta.\n\nSeu nome\nCelular\nConfirmar agendamento\n↗\n\nApós confirmar, sua reserva aparece no painel da barbearia. Nenhuma mensagem será enviada.\n\n✧\nUm bom corte muda o seu dia.\nA gente cuida do resto.\nSOBRE NÓS\nBarbearia Daniel Silva\n\nNa Barbearia Daniel Silva, cuidamos do seu visual com atenção e respeito ao seu estilo. Aqui, você encontra um ambiente acolhedor para renovar o corte e a autoestima. Agende seu horário e venha fazer parte da nossa história.\n\nQUEM CUIDA DO SEU ESTILO\nConheça nossos barbeiros\n\nConheça os profissionais da nossa equipe e escolha com quem deseja agendar.\n\nDS\nDaniel Silva\nDegradê e navalhado\n\nFundador da casa, 12 anos de tesoura.\n\nAgendar com Daniel ↗\nLR\nLucas Rocha\nBarba e toalha quente\n\nEspecialista em barba desenhada.\n\nAgendar com Lucas ↗\nPA\nPedro Alves\nCorte social e infantil\n\nPaciência de sobra com a criançada.\n\nAgendar com Pedro ↗\n✂ BARBEARIA DANIEL SILVA\nFeito para valorizar seu tempo.\nHorário de Manaus · Termos e privacidade\nDemonstração com dados fictícios · voltar às telas"
+                 },
+        "page":  "agendar.html?demo",
+        "size":  "desktop"
+    },
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\agendar-mobile.png",
+        "data":  {
+                     "title":  "Barbearia Daniel Silva — Agendamento",
+                     "url":  "http://127.0.0.1:8765/agendar.html?demo",
+                     "width":  390,
+                     "contentWidth":  375,
+                     "text":  "BARBEARIA DANIEL SILVA\nSEU ESTILO. SEU TEMPO.\nAgendar horário\nMeus agendamentos\nSobre nós\n\nEscolha serviço, barbeiro, data e horário. Horário de Manaus.\n\nBARBEARIA \u0026 ESTILO\nSeu próximo corte.\nNo seu tempo.\n\nEscolha seu estilo, encontre seu barbeiro e reserve\num momento só seu.\n\n✓ Sem filas\n✓ Agendamento rápido\n✓ Seu estilo em boas mãos\nAgendar horário\nMeus agendamentos\n01\nServiço\n02\nProfissional\n03\nData e horário\nEscolha seu serviço\n\nEscolha o serviço ideal para você.\n\n✂\nBarba completa\nToalha quente, navalha e hidratação.\n30 min\nR$ 30,00\nEscolher serviço\n✂\nCorte + barba\nO combo completo, com desconto.\n70 min\nR$ 65,00\nEscolher serviço\n✂\nCorte masculino\nTesoura ou máquina, lavagem e finalização.\n40 min\nR$ 40,00\nEscolher serviço\n✂\nSobrancelha\nAcabamento na navalha.\n15 min\nR$ 15,00\nEscolher serviço\n\nToque no card para escolher seu serviço.\n\nServiço\nSelecione um corte\nBarba completa — R$ 30,00 — 30 min\nCorte + barba — R$ 65,00 — 70 min\nCorte masculino — R$ 40,00 — 40 min\nSobrancelha — R$ 15,00 — 15 min\nCom quem vamos?\n\nEscolha seu barbeiro ou “Sem preferência” para consultar a disponibilidade de toda a equipe.\n\nBarbeiro\nSem preferência\nDaniel Silva\nLucas Rocha\nPedro Alves\nSelecione um barbeiro\nSem preferência\nDaniel Silva\nLucas Rocha\nPedro Alves\nReserve seu momento\nEscolha a data\n\nHorários disponíveis\n\nHorário\n\nSelecione serviço, barbeiro e data\n\nSelecione serviço, barbeiro e data\n\nQUASE NA CADEIRA\nSeu agendamento\n✂\nSelecione um serviço\n\nProfissional\nSelecione um barbeiro\n\nData\n17/11/2026\n\nHorário\nSelecione um horário\n\nTotal\n—\nEntrar / Criar conta / Meus agendamentos\n\nAgendando para Guilherme. Sua reserva ficará na sua conta.\n\nSeu nome\nCelular\nConfirmar agendamento\n↗\n\nApós confirmar, sua reserva aparece no painel da barbearia. Nenhuma mensagem será enviada.\n\n✧\nUm bom corte muda o seu dia.\nA gente cuida do resto.\nSOBRE NÓS\nBarbearia Daniel Silva\n\nNa Barbearia Daniel Silva, cuidamos do seu visual com atenção e respeito ao seu estilo. Aqui, você encontra um ambiente acolhedor para renovar o corte e a autoestima. Agende seu horário e venha fazer parte da nossa história.\n\nQUEM CUIDA DO SEU ESTILO\nConheça nossos barbeiros\n\nConheça os profissionais da nossa equipe e escolha com quem deseja agendar.\n\nDS\nDaniel Silva\nDegradê e navalhado\n\nFundador da casa, 12 anos de tesoura.\n\nAgendar com Daniel ↗\nLR\nLucas Rocha\nBarba e toalha quente\n\nEspecialista em barba desenhada.\n\nAgendar com Lucas ↗\nPA\nPedro Alves\nCorte social e infantil\n\nPaciência de sobra com a criançada.\n\nAgendar com Pedro ↗\n✂ BARBEARIA DANIEL SILVA\nFeito para valorizar seu tempo.\nHorário de Manaus · Termos e privacidade\n\nEscolha serviço, barbeiro e horário\n\nConfirmar\nDemonstração com dados fictícios · voltar às telas"
+                 },
+        "page":  "agendar.html?demo",
+        "size":  "mobile"
+    },
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\conta-desktop.png",
+        "data":  {
+                     "title":  "Minha conta · Barbearia Daniel Silva",
+                     "url":  "http://127.0.0.1:8765/conta.html?demo",
+                     "width":  1366,
+                     "contentWidth":  1351,
+                     "text":  "DS\nBARBEARIA\nDANIEL SILVA\nCuidado que faz parte do seu estilo.\nMeus agendamentos\n+ Novo agendamento\nSair\n\nOlá, Guilherme.\n\nCartão fidelidade\n\n4 de 10 atendimentos para ganhar o próximo grátis.\n\nVocê pode cancelar ou alterar dia, horário e barbeiro até 1 hora antes do atendimento. O serviço e o valor da reserva são mantidos na alteração.\n\nAtualizar reservas\nCorte + barba\n\n26/11/2026 · 15:30 às 15:30 (Manaus)\n\nLucas Rocha · R$ 65,00\n\nConfirmado\n\nCódigo: demo-me-9\nAlterar dia, horário ou barbeiro\nCancelar reserva\nCorte masculino\n\n19/11/2026 · 10:00 às 10:00 (Manaus)\n\nDaniel Silva · R$ 40,00\n\nConfirmado\n\nCódigo: demo-me-2\nAlterar dia, horário ou barbeiro\nCancelar reserva\nCorte masculino\n\n17/11/2026 · 09:40 às 09:40 (Manaus)\n\nDaniel Silva · R$ 40,00\n\nConfirmado\n\nCódigo: demo-new-1794969752287\nAlterar dia, horário ou barbeiro\nCancelar reserva\nCorte masculino\n\n05/11/2026 · 11:00 às 11:00 (Manaus)\n\nDaniel Silva · R$ 40,00\n\nAtendimento concluído\n\nCódigo: demo-me--12\nBarba completa\n\n22/10/2026 · 16:00 às 16:00 (Manaus)\n\nLucas Rocha · R$ 30,00\n\nAtendimento concluído\n\nCódigo: demo-me--26\nJá agendei antes de criar a conta\nMeus dados\nDemonstração com dados fictícios · voltar às telas"
+                 },
+        "page":  "conta.html?demo",
+        "size":  "desktop"
+    },
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\conta-mobile.png",
+        "data":  {
+                     "title":  "Minha conta · Barbearia Daniel Silva",
+                     "url":  "http://127.0.0.1:8765/conta.html?demo",
+                     "width":  390,
+                     "contentWidth":  375,
+                     "text":  "DS\nBARBEARIA\nDANIEL SILVA\nMeus agendamentos\n+ Novo agendamento\nSair\n\nOlá, Guilherme.\n\nCartão fidelidade\n\n4 de 10 atendimentos para ganhar o próximo grátis.\n\nVocê pode cancelar ou alterar dia, horário e barbeiro até 1 hora antes do atendimento. O serviço e o valor da reserva são mantidos na alteração.\n\nAtualizar reservas\nCorte + barba\n\n26/11/2026 · 15:30 às 15:30 (Manaus)\n\nLucas Rocha · R$ 65,00\n\nConfirmado\n\nCódigo: demo-me-9\nAlterar dia, horário ou barbeiro\nCancelar reserva\nCorte masculino\n\n19/11/2026 · 10:00 às 10:00 (Manaus)\n\nDaniel Silva · R$ 40,00\n\nConfirmado\n\nCódigo: demo-me-2\nAlterar dia, horário ou barbeiro\nCancelar reserva\nCorte masculino\n\n17/11/2026 · 09:40 às 09:40 (Manaus)\n\nDaniel Silva · R$ 40,00\n\nConfirmado\n\nCódigo: demo-new-1794969752287\nAlterar dia, horário ou barbeiro\nCancelar reserva\nCorte masculino\n\n05/11/2026 · 11:00 às 11:00 (Manaus)\n\nDaniel Silva · R$ 40,00\n\nAtendimento concluído\n\nCódigo: demo-me--12\nBarba completa\n\n22/10/2026 · 16:00 às 16:00 (Manaus)\n\nLucas Rocha · R$ 30,00\n\nAtendimento concluído\n\nCódigo: demo-me--26\nJá agendei antes de criar a conta\nMeus dados\nDemonstração com dados fictícios · voltar às telas"
+                 },
+        "page":  "conta.html?demo",
+        "size":  "mobile"
+    },
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\barbeiro-desktop.png",
+        "data":  {
+                     "title":  "(4) Área do barbeiro · Barbearia Daniel Silva",
+                     "url":  "http://127.0.0.1:8765/barbeiro.html?demo",
+                     "width":  1366,
+                     "contentWidth":  1351,
+                     "text":  "DS\nBARBEARIA\nDANIEL SILVA\nCuidado que faz parte do seu estilo.\n☾\nTema escuro\nAgenda de Daniel\nSair\nNovidades\n4 novas\n\nToque na lista para marcar como vistas.\n\n📅 Novo agendamento · João Pedro · Corte masculino · 17/11 às 11:00 (17/11, 22:44)\n\n📅 Novo agendamento · Pedro Henrique · Corte masculino · 17/11 às 15:30 (17/11, 21:14)\n\n🔁 Remarcou · Diego Martins · Corte masculino · 18/11 às 10:30 (17/11, 19:44)\n\n📅 Novo agendamento · Bruno Costa · Corte masculino · 19/11 às 09:00 (17/11, 18:14)\n\n‹\nDia\nHoje\n›\n\n3 clientes\n\n09:40 – 09:40 · Guilherme\n\nCorte masculino\n\nAguardando\n\nFalar com o cliente\n11:00 – 12:00 · João Pedro\n\nCorte masculino\n\nConcluído\n\nFalar com o cliente\n15:30 – 16:30 · Pedro Henrique\n\nCorte masculino\n\nAguardando\n\nFalar com o cliente\nMinhas comissões\nDe\nAté\nAtualizar\nAtendimentos pagos\n35\nFaturamento\nR$ 1.400,00\nSua comissão (50%)\nR$ 700,00\n\nContam os atendimentos já pagos. Valores calculados pela sua porcentagem de comissão cadastrada pelo chefe.\n\nDemonstração com dados fictícios · voltar às telas"
+                 },
+        "page":  "barbeiro.html?demo",
+        "size":  "desktop"
+    },
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\barbeiro-mobile.png",
+        "data":  {
+                     "title":  "(4) Área do barbeiro · Barbearia Daniel Silva",
+                     "url":  "http://127.0.0.1:8765/barbeiro.html?demo",
+                     "width":  390,
+                     "contentWidth":  375,
+                     "text":  "DS\nBARBEARIA\nDANIEL SILVA\n☾\nTema escuro\nAgenda de Daniel\nSair\nNovidades\n4 novas\n\nToque na lista para marcar como vistas.\n\n📅 Novo agendamento · João Pedro · Corte masculino · 17/11 às 11:00 (17/11, 22:44)\n\n📅 Novo agendamento · Pedro Henrique · Corte masculino · 17/11 às 15:30 (17/11, 21:14)\n\n🔁 Remarcou · Diego Martins · Corte masculino · 18/11 às 10:30 (17/11, 19:44)\n\n📅 Novo agendamento · Bruno Costa · Corte masculino · 19/11 às 09:00 (17/11, 18:14)\n\n‹\nDia\nHoje\n›\n\n3 clientes\n\n09:40 – 09:40 · Guilherme\n\nCorte masculino\n\nAguardando\n\nFalar com o cliente\n11:00 – 12:00 · João Pedro\n\nCorte masculino\n\nConcluído\n\nFalar com o cliente\n15:30 – 16:30 · Pedro Henrique\n\nCorte masculino\n\nAguardando\n\nFalar com o cliente\nMinhas comissões\nDe\nAté\nAtualizar\nAtendimentos pagos\n35\nFaturamento\nR$ 1.400,00\nSua comissão (50%)\nR$ 700,00\n\nContam os atendimentos já pagos. Valores calculados pela sua porcentagem de comissão cadastrada pelo chefe.\n\nDemonstração com dados fictícios · voltar às telas"
+                 },
+        "page":  "barbeiro.html?demo",
+        "size":  "mobile"
+    },
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\planos-desktop.png",
+        "data":  {
+                     "title":  "Planos · Sistema de agendamento para barbearias",
+                     "url":  "http://127.0.0.1:8765/planos.html",
+                     "width":  1366,
+                     "contentWidth":  1366,
+                     "text":  "SISTEMA DE AGENDAMENTO PARA BARBEARIAS\nEscolha o plano da sua barbearia\n\nTodos os planos incluem o site de agendamento online da sua barbearia. O Pro libera barbeiros ilimitados e as ferramentas de gestão.\n\nEssencial\n\nPara quem está começando a agenda online.\n\nR$ 89,90/mês\n\nAté 2 barbeiros\nAgendamento online e conta do cliente\nAgenda por barbeiro\nCadastro de serviços e valores\nAviso ao cliente pelo WhatsApp (envio manual)\nRECOMENDADO\nPro\n\nPara a barbearia com equipe, caixa e números de perto.\n\nR$ 109,90/mês\n\nBarbeiros ilimitados\nTudo do Essencial\nÁrea do barbeiro com comissões\nFinanceiro, comissões e controle de caixa\nRecepção, atendentes e pagamentos\nDistribuição automática de clientes\nAnálise do período e ranking de barbeiros\nProcedimentos extras no atendimento\nSuporte prioritário\n\nValores mensais por barbearia. Mude de plano quando quiser."
+                 },
+        "page":  "planos.html",
+        "size":  "desktop"
+    },
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\planos-mobile.png",
+        "data":  {
+                     "title":  "Planos · Sistema de agendamento para barbearias",
+                     "url":  "http://127.0.0.1:8765/planos.html",
+                     "width":  390,
+                     "contentWidth":  375,
+                     "text":  "SISTEMA DE AGENDAMENTO PARA BARBEARIAS\nEscolha o plano da sua barbearia\n\nTodos os planos incluem o site de agendamento online da sua barbearia. O Pro libera barbeiros ilimitados e as ferramentas de gestão.\n\nEssencial\n\nPara quem está começando a agenda online.\n\nR$ 89,90/mês\n\nAté 2 barbeiros\nAgendamento online e conta do cliente\nAgenda por barbeiro\nCadastro de serviços e valores\nAviso ao cliente pelo WhatsApp (envio manual)\nRECOMENDADO\nPro\n\nPara a barbearia com equipe, caixa e números de perto.\n\nR$ 109,90/mês\n\nBarbeiros ilimitados\nTudo do Essencial\nÁrea do barbeiro com comissões\nFinanceiro, comissões e controle de caixa\nRecepção, atendentes e pagamentos\nDistribuição automática de clientes\nAnálise do período e ranking de barbeiros\nProcedimentos extras no atendimento\nSuporte prioritário\n\nValores mensais por barbearia. Mude de plano quando quiser."
+                 },
+        "page":  "planos.html",
+        "size":  "mobile"
+    },
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\admin-desktop.png",
+        "data":  {
+                     "title":  "Portal do chefe · Barbearia Daniel Silva",
+                     "url":  "http://127.0.0.1:8765/admin.html?demo=atendente",
+                     "width":  1366,
+                     "contentWidth":  1351,
+                     "text":  "DS\nBARBEARIA\nDaniel Silva\nPORTAL DA EQUIPE · MANAUS\n☾\nTema escuro\n\n\n\n\nSUA BARBEARIA\n\n▦\nAgenda\n▣\nCaixa diário\n✓\nAtendimentos\n\nUma agenda organizada.\nMais tempo para atender bem.\n\nNO SEU TEMPO, DO SEU JEITO\nAgenda de clientes\nSair\nDia da agenda\nAtualizar\nHoje\nCada cliente, um cuidado especial.\n\nConsulte os horários, registre novas reservas e prepare os avisos por WhatsApp.\n\nCONSULTA RÁPIDA\nEncontre um horário livre\n\nPesquise o barbeiro e veja os intervalos disponíveis. O serviço será escolhido ao confirmar.\n\nAgendamento presencial\nNome do barbeiro\nData de Manaus\nBuscar horários livres\n\n+ Registrar agendamento presencial\nWhatsApp: envio manual e teste\nAgenda por barbeiro\nConfirmado\nCliente recebido\nConcluído\nCancelado\n\n9 agendamento(s) · R$ 375,00 confirmados\n\nDS\nDaniel Silva\n\n3 confirmado(s) · R$ 120,00\n\nTerça-Feira, 17 De Novembro\n\n09:40 — 09:40\n\nGuilherme\n\nCorte masculino · R$ 40,00\n\nCelular: 92991230000\n\nConfirmadoRegistrar falta\nCódigo da reserva\nWhatsApp e avisos\nCancelar horário\n\n11:00 — 12:00\n\nJoão Pedro\n\nCorte masculino · R$ 40,00\n\nCelular: 92991234103\n\nAtendimento concluído\nCódigo da reserva\nWhatsApp e avisos\n\n15:30 — 16:30\n\nPedro Henrique\n\nCorte masculino · R$ 40,00\n\nCelular: 92991234106\n\nConfirmadoRegistrar falta\nCódigo da reserva\nWhatsApp e avisos\nCancelar horário\nLR\nLucas Rocha\n\n2 confirmado(s) · R$ 60,00\n\nTerça-Feira, 17 De Novembro\n\n09:00 — 10:00\n\nMarcos Vinícius\n\nBarba completa · R$ 30,00\n\nCelular: 92991234101\n\nCancelado · origem não registrada\n\nMotivo: Imprevisto no trabalho\n\nCódigo da reserva\nWhatsApp e avisos\n\n12:30 — 13:30\n\nThiago Ramos\n\nBarba completa · R$ 30,00\n\nCelular: 92991234104\n\nCliente recebido\nCódigo da reserva\nWhatsApp e avisos\n\n16:00 — 17:00\n\nDiego Martins\n\nBarba completa · R$ 30,00\n\nCelular: 92991234107\n\nConfirmadoRegistrar falta\nCódigo da reserva\nWhatsApp e avisos\nCancelar horário\nPA\nPedro Alves\n\n3 confirmado(s) · R$ 195,00\n\nTerça-Feira, 17 De Novembro\n\n10:30 — 11:30\n\nGustavo Reis\n\nCorte + barba · R$ 65,00\n\nCelular: 92991234102\n\nAtendimento concluído\nCódigo da reserva\nWhatsApp e avisos\n\n13:00 — 14:00\n\nCarlos Mendes\n\nCorte + barba · R$ 65,00\n\nCelular: 92991234105\n\nConfirmadoRegistrar falta\nCódigo da reserva\nWhatsApp e avisos\nCancelar horário\n\n17:30 — 18:30\n\nAndré Souza\n\nCorte + barba · R$ 65,00\n\nCelular: 92991234108\n\nConfirmadoRegistrar falta\nCódigo da reserva\nWhatsApp e avisos\nCancelar horário\nDemonstração com dados fictícios · voltar às telas"
+                 },
+        "page":  "admin.html?demo=atendente",
+        "size":  "desktop"
+    },
+    {
+        "screenshot":  "C:\\Users\\Guise\\orca\\workspaces\\Agendamento-Barbearia\\planos-s-essencial-r-89-90-e-pro-r-109-90\\qa\\..\\reports\\screenshots\\admin-mobile.png",
+        "data":  {
+                     "title":  "Portal do chefe · Barbearia Daniel Silva",
+                     "url":  "http://127.0.0.1:8765/admin.html?demo=atendente",
+                     "width":  390,
+                     "contentWidth":  375,
+                     "text":  "BARBEARIA\nDaniel Silva\n☾\nTema escuro\n\n\n\n\n▦\nAgenda\n▣\nCaixa diário\n✓\nAtendimentos\nNO SEU TEMPO, DO SEU JEITO\nAgenda de clientes\nSair\nDia da agenda\nAtualizar\nHoje\nCada cliente, um cuidado especial.\n\nConsulte os horários, registre novas reservas e prepare os avisos por WhatsApp.\n\nCONSULTA RÁPIDA\nEncontre um horário livre\n\nPesquise o barbeiro e veja os intervalos disponíveis. O serviço será escolhido ao confirmar.\n\nAgendamento presencial\nNome do barbeiro\nData de Manaus\nBuscar horários livres\n\n+ Registrar agendamento presencial\nWhatsApp: envio manual e teste\nAgenda por barbeiro\nConfirmado\nCliente recebido\nConcluído\nCancelado\n\n9 agendamento(s) · R$ 375,00 confirmados\n\nDS\nDaniel Silva\n\n3 confirmado(s) · R$ 120,00\n\nTerça-Feira, 17 De Novembro\n\n09:40 — 09:40\n\nGuilherme\n\nCorte masculino · R$ 40,00\n\nCelular: 92991230000\n\nConfirmadoRegistrar falta\nCódigo da reserva\nWhatsApp e avisos\nCancelar horário\n\n11:00 — 12:00\n\nJoão Pedro\n\nCorte masculino · R$ 40,00\n\nCelular: 92991234103\n\nAtendimento concluído\nCódigo da reserva\nWhatsApp e avisos\n\n15:30 — 16:30\n\nPedro Henrique\n\nCorte masculino · R$ 40,00\n\nCelular: 92991234106\n\nConfirmadoRegistrar falta\nCódigo da reserva\nWhatsApp e avisos\nCancelar horário\nLR\nLucas Rocha\n\n2 confirmado(s) · R$ 60,00\n\nTerça-Feira, 17 De Novembro\n\n09:00 — 10:00\n\nMarcos Vinícius\n\nBarba completa · R$ 30,00\n\nCelular: 92991234101\n\nCancelado · origem não registrada\n\nMotivo: Imprevisto no trabalho\n\nCódigo da reserva\nWhatsApp e avisos\n\n12:30 — 13:30\n\nThiago Ramos\n\nBarba completa · R$ 30,00\n\nCelular: 92991234104\n\nCliente recebido\nCódigo da reserva\nWhatsApp e avisos\n\n16:00 — 17:00\n\nDiego Martins\n\nBarba completa · R$ 30,00\n\nCelular: 92991234107\n\nConfirmadoRegistrar falta\nCódigo da reserva\nWhatsApp e avisos\nCancelar horário\nPA\nPedro Alves\n\n3 confirmado(s) · R$ 195,00\n\nTerça-Feira, 17 De Novembro\n\n10:30 — 11:30\n\nGustavo Reis\n\nCorte + barba · R$ 65,00\n\nCelular: 92991234102\n\nAtendimento concluído\nCódigo da reserva\nWhatsApp e avisos\n\n13:00 — 14:00\n\nCarlos Mendes\n\nCorte + barba · R$ 65,00\n\nCelular: 92991234105\n\nConfirmadoRegistrar falta\nCódigo da reserva\nWhatsApp e avisos\nCancelar horário\n\n17:30 — 18:30\n\nAndré Souza\n\nCorte + barba · R$ 65,00\n\nCelular: 92991234108\n\nConfirmadoRegistrar falta\nCódigo da reserva\nWhatsApp e avisos\nCancelar horário\nDemonstração com dados fictícios · voltar às telas"
+                 },
+        "page":  "admin.html?demo=atendente",
+        "size":  "mobile"
+    }
+]

@@ -1,0 +1,11 @@
+﻿{
+  "id": "292ebbf6-d9aa-4b0d-8c16-071b0c57aa33",
+  "ok": true,
+  "result": {
+    "result": "{\"cash\":{\"closing\":\"\",\"message\":\"Caixa ainda não fechado. Saldo esperado: R$ 100,00\",\"rows\":2},\"login\":\"Cannot read properties of undefined (reading 'qr_code')\",\"service\":{\"message\":\"Serviço salvo.\",\"record\":{\"created_at\":\"2026-11-17T22:48:05\",\"duration\":20,\"id\":\"demo-1794970085500\",\"name\":\"Servico QA\",\"price\":25}}}",
+    "origin": "http://127.0.0.1:8765/admin.html#caixa"
+  },
+  "_meta": {
+    "runtimeId": "7aa36721-ad0d-40ff-8bf5-179ca591f252"
+  }
+}

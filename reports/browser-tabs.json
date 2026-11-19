@@ -1,0 +1,11 @@
+﻿{
+  "id": "a1e80870-49d1-48de-be59-5b1534a7569c",
+  "ok": true,
+  "result": {
+    "result": "{\"tabs\":[{\"characters\":1039,\"name\":\"dashboard\",\"status\":\"BI atualizado.\",\"visible\":true},{\"characters\":2181,\"name\":\"agenda\",\"status\":\"BI atualizado.\",\"visible\":true},{\"characters\":1105,\"name\":\"financeiro\",\"status\":\"BI atualizado.\",\"visible\":true},{\"characters\":700,\"name\":\"caixa\",\"status\":\"Caixa atualizado.\",\"visible\":true},{\"characters\":611,\"name\":\"servicos\",\"status\":\"Caixa atualizado.\",\"visible\":true},{\"characters\":1270,\"name\":\"barbeiros\",\"status\":\"Caixa atualizado.\",\"visible\":true},{\"characters\":1334,\"name\":\"atendimentos\",\"status\":\"Caixa atualizado.\",\"visible\":true}],\"theme\":\"dark\"}",
+    "origin": "http://127.0.0.1:8765/admin.html#atendimentos"
+  },
+  "_meta": {
+    "runtimeId": "7aa36721-ad0d-40ff-8bf5-179ca591f252"
+  }
+}

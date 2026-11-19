@@ -1,0 +1,26 @@
+﻿.staff-toolbar-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.role-attendant .staff-shell{grid-template-columns:minmax(0,1fr);gap:8px}
+.role-attendant .staff-sidebar{position:static!important;padding:0!important;margin:0;background:transparent!important;border:0!important;box-shadow:none;min-height:0}
+.role-attendant .staff-nav{display:flex;flex-direction:row;gap:8px;flex-wrap:wrap;width:100%}
+.role-attendant .staff-nav button{width:auto;flex:1;justify-content:center;min-height:48px;margin:0}
+.role-attendant .staff-nav-label,.role-attendant .sidebar-caption{display:none}
+.role-attendant .staff-content{padding-top:24px;min-width:0}
+.role-attendant .staff-toolbar{align-items:center;gap:20px;margin-bottom:24px}
+.role-attendant .staff-toolbar h2{font-size:clamp(28px,4vw,40px);line-height:1.15;margin-top:8px}
+.role-attendant #tab-atendimentos>.section-intro{display:none}
+.role-attendant .visit-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+.role-attendant .visit-card{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.role-attendant .visit-card h3,.role-attendant .visit-card p{margin:0}
+.role-attendant .visit-action{margin-top:auto;min-height:44px}
+.role-attendant .visit-filters{margin-bottom:24px}
+@media(max-width:650px){
+ .role-attendant .staff-toolbar{align-items:flex-start;flex-direction:column}
+ .role-attendant .staff-toolbar-actions{width:100%;justify-content:space-between}
+ .role-attendant .staff-nav{display:grid!important;grid-template-columns:1fr 1fr;overflow:visible;width:100%!important}
+ .role-attendant .visit-list{grid-template-columns:1fr}
+ .role-attendant .staff-content{padding-top:16px}
+ .role-attendant .visit-filters{grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+ .role-attendant .visit-filters label{min-width:0;margin:0}
+ .role-attendant .visit-filters input,.role-attendant .visit-filters select{min-width:0;width:100%}
+ .role-attendant .staff-toolbar{padding:16px;margin-bottom:16px;gap:12px}
+}

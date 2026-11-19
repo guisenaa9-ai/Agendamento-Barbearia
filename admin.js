@@ -282,6 +282,7 @@ function chooseBarberPhoto(id,name){const input=document.createElement('input');
 async function catalog(){
 for(const table of ['services','barbers']){const values=await request('/rest/v1/'+table+'?select=*&order=name');
 setBookingOptions(table,values);
+if(window.StaffAuth.role()==='attendant')continue;
 let detailsError=false;
 
 if(table==='barbers'){try{const rows=await request('/rest/v1/barber_details?select=barber_id,cpf,phone,commission_rate,login_email');

@@ -1,0 +1,18 @@
+/* Área do barbeiro: ganhos do mês e avaliações (barber-growth.js) */
+.barber-growth{display:grid;gap:14px;margin:18px 0 26px}
+.barber-goal{padding:22px;border-radius:18px;background:#18392c;color:#fff}
+.barber-goal-eyebrow{margin:0 0 6px;font:700 11px DM Sans,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#d8b67c}
+.barber-goal-value{margin:0;font:600 26px/1.2 'Playfair Display',Georgia,serif;color:#fff}
+.barber-goal-bar{height:12px;margin:14px 0 6px;border-radius:999px;background:rgba(255,255,255,.18);overflow:hidden}
+.barber-goal-bar span{display:block;height:100%;border-radius:inherit;background:#d8b67c}
+.barber-goal-pct{margin:0;font-size:13px;color:#e7efe9}
+.barber-goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.barber-goal-grid div{padding:12px;border-radius:12px;background:rgba(255,255,255,.08)}
+.barber-goal-grid span{display:block;font-size:12px;color:#d6e2da}
+.barber-goal-grid strong{display:block;margin-top:4px;font-size:18px;color:#fff}
+.barber-goal-help{margin:12px 0 0;font-size:12px;color:#c4d3c9}
+.barber-rating{padding:18px 20px;border:1px solid #e7c9a0;border-radius:16px;background:#fdf6ea}
+.barber-rating-score{margin:0;font:600 28px/1 'Playfair Display',Georgia,serif;color:#8a5b31}
+.barber-rating-count{margin:6px 0 0;font-size:13px;color:#8a5b31}
+.barber-rating blockquote{margin:10px 0 0;padding:0 0 0 12px;border-left:3px solid #e7c9a0;font-size:14px;line-height:1.5;color:#5a4128}
+@media(max-width:420px){.barber-goal-grid{grid-template-columns:1fr}}

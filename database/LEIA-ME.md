@@ -3,7 +3,7 @@
 ## 1. Supabase (projeto novo para o cliente)
 Banco que já está em uso: rode só `atualizar-banco-existente.sql` (todas as atualizações, na ordem).
 
-Atalho: rode só `instalar-tudo.sql` (itens 1 a 12 abaixo juntos, gerado por `gerar-instalar-tudo.sh`).
+Atalho: rode só `instalar-tudo.sql` (itens 1 a 12 abaixo juntos, incluindo o 10b, gerado por `gerar-instalar-tudo.sh`).
 
 No SQL Editor, execute nesta ordem (todos podem ser repetidos sem problema):
 
@@ -18,6 +18,7 @@ No SQL Editor, execute nesta ordem (todos podem ser repetidos sem problema):
 8. `sem-horario-duplicado.sql` – impede duas reservas no mesmo horário para o mesmo barbeiro
 9. `barbeiro-fidelidade.sql` – área do barbeiro e programa de fidelidade (desligado até o chefe ativar)
 10. `barbeiro-avisos.sql` – barbeiro vê avisos de novos agendamentos e cancelamentos
+10b. `crescimento.sql` – lembretes e campanhas pelo WhatsApp, avaliação no Google, produtos com estoque, clube de assinatura, meta do barbeiro, avaliações e gorjeta
 11. `lgpd.sql` – permite ao cliente excluir a própria conta (exigência da LGPD)
 12. `seguranca-permissoes.sql` – tira de visitantes e clientes as funções que são só do chefe ou de uso interno
 13. `seguranca-2fa.sql` – só para banco antigo: o `00-base.sql` (e o `instalar-tudo.sql`) já exige o código do celular (verificação em duas etapas) para o chefe. No primeiro login o painel mostra o QR Code e cadastra o código antes de abrir; sem o código, a senha sozinha não acessa nada
