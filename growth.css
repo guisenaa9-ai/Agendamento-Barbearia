@@ -41,3 +41,10 @@
 .growth-sub{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:8px}
 .growth-sub button{font-size:12px;padding:8px 12px}
 @media(max-width:640px){.growth-inline input{width:92px}.growth-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.growth-card{min-height:104px;padding:12px}.growth-card-title{font-size:14px}.growth-card .growth-muted{font-size:12px}.growth-card strong{font-size:26px}}
+/* WhatsApp oficial (whatsapp-api.js) */
+.wa-pill{display:inline-block;margin-left:8px;padding:2px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.04em;vertical-align:1px}
+.wa-on{background:#e3f3ea;color:#1f7a4d}.wa-wait{background:#fdf6ea;color:#8a5b31}.wa-off{background:#efece3;color:#5d6b62}
+.wa-official .payment-check{display:flex;gap:8px;align-items:center;margin:6px 0}
+.wa-template{width:100%;min-height:90px;font-size:14px;background:#f7f6f2}
+.wa-note{margin:4px 0 0;padding:10px 12px;border-radius:10px;background:#fdf6ea;color:#8a5b31;font-size:13px;font-weight:600}
+.wa-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:4px}
