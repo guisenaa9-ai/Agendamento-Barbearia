@@ -1,0 +1,43 @@
+/* Crescimento: lembretes, campanhas, produtos, assinaturas, metas (growth.js) */
+.growth-box summary{font-size:15px}
+.growth-box h4{margin:22px 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#7f5f31}
+.growth-count{margin:10px 0 4px;font-weight:600;color:#18392c}
+.growth-muted{display:block;font-size:13px;color:#5d6b62;line-height:1.5}
+.growth-low{color:#9b473b;font-weight:600}
+.growth-queue{display:grid}
+.growth-row{display:flex;justify-content:space-between;align-items:center;gap:12px 18px;flex-wrap:wrap;padding:12px 0;border-top:1px solid #e1e4d8}
+.growth-row>div:first-child{min-width:0;flex:1 1 220px}
+.growth-row strong{display:block;color:#18392c}
+.growth-row.is-sent strong{color:#5d6b62}
+.growth-row.is-off{opacity:.6}
+.growth-row.is-late strong{color:#9b473b}
+.growth-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.growth-inline label{display:grid;gap:2px;font-size:11px;color:#5d6b62;margin:0}
+.growth-inline input{width:110px;padding:7px 9px}
+.growth-inline select{width:auto;min-width:150px;padding:7px 9px}
+.growth-inline .growth-wide{width:230px}
+.growth-actions button{min-height:38px;padding:0 14px;font-size:13px;margin:0}
+#campaigndays{max-width:160px}
+.growth-send{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;background:#1f7a4d;color:#fff;font-weight:600;font-size:13px;text-decoration:none;white-space:nowrap}
+.growth-send:hover{background:#17603c}
+.growth-send:focus-visible,.growth-card:focus-visible{outline:3px solid #a47d48;outline-offset:2px}
+.growth-done{font-size:12px;font-weight:700;color:#1f7a4d}
+.growth-stop{background:#fff;color:#9b473b;border:1px solid #e1c8c1;font-size:12px;padding:8px 10px}
+.growth-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px 14px;align-items:end;margin:6px 0 10px}
+.growth-form button{min-height:42px}
+/* Campanhas */
+.growth-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:18px 0}
+.growth-card{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:118px;padding:16px;border:1.5px solid #dedfd7;border-radius:14px;background:#fff;color:#18392c;text-align:left;cursor:pointer;box-shadow:none}
+.growth-card strong{margin-top:auto;font:600 34px/1 Georgia,serif;color:#18392c}
+.growth-card-title{font-weight:700;font-size:15px}
+.growth-card[aria-pressed=true]{border-color:#18392c;background:#18392c;color:#fff}
+.growth-card[aria-pressed=true] .growth-muted,.growth-card[aria-pressed=true] strong{color:#fff}
+.growth-panel{display:grid;gap:10px}
+.growth-panel textarea{width:100%;min-height:96px}
+.growth-panel h4{margin:14px 0 0;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#7f5f31}
+/* Ficha de atendimento */
+.growth-product{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap}
+.growth-product select{max-width:260px;padding:8px}
+.growth-sub{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:8px}
+.growth-sub button{font-size:12px;padding:8px 12px}
+@media(max-width:640px){.growth-inline input{width:92px}.growth-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.growth-card{min-height:104px;padding:12px}.growth-card-title{font-size:14px}.growth-card .growth-muted{font-size:12px}.growth-card strong{font-size:26px}}

@@ -36,17 +36,25 @@ function seed(){
    const state=cancelled?null:past?'completed':d===0&&i===3?'arrived':'scheduled';
    const booking={id,customer:names[(i*5+d+40)%12],phone:'929'+String(91234000+(i*5+d+40)%12),customer_id:null,service_id:s.id,service_name:s.name,barber_id:b.id,barber_name:b.name,price:s.price,starts_at:start,ends_at:plus(start,s.duration),status:cancelled?'cancelled':'confirmed',attendance_state:state,no_show:false,no_preference:d===0&&i===5,cancellation_reason:cancelled?'Imprevisto no trabalho':null,cancellation_source:cancelled?'customer':null,created_at:`${day(d-2)}T08:00:00`};
    bookings.push(booking);if(state==='completed')visit(booking,['pix','cash','credit','debit'][n%4]);if(state==='arrived')visit(booking,null,false);}}
+ // Clientes que pararam de vir (35 a 60 dias atrás), para a campanha "Sumidos"
+ ['Ricardo Alves','Fábio Moura','Wesley Prado','Caio Ribeiro','Igor Santana'].forEach((name,k)=>{for(const back of [60-k*3,38+k]){let date=day(-back);if(weekday(date)===0)date=day(-back-1);const s=services[k%3],b=barbers[k%3],start=date+'T'+String(10+k).padStart(2,'0')+':00:00';
+  const row={id:'demo-old-'+k+'-'+back,customer:name,phone:'929'+String(91235000+k),customer_id:null,service_id:s.id,service_name:s.name,barber_id:b.id,barber_name:b.name,price:s.price,starts_at:start,ends_at:plus(start,s.duration),status:'confirmed',attendance_state:'completed',no_show:false,created_at:date+'T08:00:00'};bookings.push(row);visit(row,'pix');}});
  // Reservas do cliente da demonstração (domingo fechado: passa para segunda)
  for(const [d,h,s,b] of [[2,'10:00',0,0],[9,'15:30',2,1],[-12,'11:00',0,0],[-26,'16:00',1,1]]){const sv=services[s],bb=barbers[b],date=weekday(day(d))===0?day(d+1):day(d),start=`${date}T${h}:00`;
   const booking={id:'demo-me-'+d,customer:'Guilherme',phone:'92991230000',customer_id:'u1',service_id:sv.id,service_name:sv.name,barber_id:bb.id,barber_name:bb.name,price:sv.price,starts_at:start,ends_at:plus(start,sv.duration),status:'confirmed',attendance_state:d<0?'completed':'scheduled',no_show:false,created_at:`${day(d-3)}T08:00:00`};
   bookings.push(booking);if(d<0)visit(booking,'pix');}
- return {v:2,barbers,services,bookings,attendances,cash_movements:[],cash_sessions:[],schedule_blocks:[],attendants:[],photos:{},
-  barber_details:barbers.map((b,i)=>({barber_id:b.id,commission_rate:[50,40,40][i],cpf:'',phone:'',login_email:i?'':EMAIL})),
+ return {v:3,barbers,services,bookings,attendances,cash_movements:[],cash_sessions:[],schedule_blocks:[],attendants:[],photos:{},
+  barber_details:barbers.map((b,i)=>({barber_id:b.id,commission_rate:[50,40,40][i],cpf:'',phone:'',login_email:i?'':EMAIL,monthly_goal:[5000,3500,3500][i],pix_key:['daniel.silva@pix.demo','','92991234567'][i]||null})),
   business_hours:[1,2,3,4,5,6].map(w=>({id:'h'+w,barber_id:null,weekday:w,opens_at:'09:00',closes_at:w===6?'17:00':'19:00'})),
-  shop_settings:[{id:1,slot_minutes:20,booking_days:60,loyalty_enabled:true,loyalty_goal:10}],
+  shop_settings:[{id:1,slot_minutes:20,booking_days:60,loyalty_enabled:true,loyalty_goal:10,google_review_url:'https://g.page/r/barbearia-demo/review'}],
   customer_profiles:[{id:'u1',name:'Guilherme',phone:'(92) 99123-0000',whatsapp_opt_in:true}],
-  customer_directory:names.map((name,i)=>({id:'c'+i,name,phone:'929'+String(91234000+i),email:null}))};}
-let db=get('demo-db');if(db?.v!==2)db=seed();
+  customer_directory:names.map((name,i)=>({id:'c'+i,name,phone:'929'+String(91234000+i),email:null})),
+  products:[{id:'p1',name:'Pomada modeladora',price:45,stock:12,active:true},{id:'p2',name:'Óleo para barba',price:38,stock:3,active:true},{id:'p3',name:'Shampoo anticaspa',price:32,stock:0,active:true}],
+  subscription_plans:[{id:'sp1',name:'Corte ilimitado',price:99.9,visits_per_month:null,description:'Corte masculino quantas vezes quiser no mês.',active:true},{id:'sp2',name:'Corte + barba (4 por mês)',price:149.9,visits_per_month:4,description:'Até 4 atendimentos de corte e barba.',active:true}],
+  subscriptions:[{id:'sb1',plan_id:'sp1',customer:names[0],phone:'929'+String(91234000),active:true,paid_until:day(12)},{id:'sb2',plan_id:'sp2',customer:names[3],phone:'929'+String(91234003),active:true,paid_until:day(-4)},{id:'sb3',plan_id:'sp1',customer:'Guilherme',phone:'92991230000',active:true,paid_until:day(20)}],
+  reviews:bookings.filter(b=>b.attendance_state==='completed').slice(0,14).map((b,i)=>({booking_id:b.id,barber_id:b.barber_id,rating:[5,5,4,5,5,3,5,4,5,5,4,5,5,5][i],comment:['Melhor degradê da cidade!','','Atendimento pontual.','Barba ficou perfeita.','','Demorou um pouco, mas ficou ótimo.','Ambiente top.','','Voltarei com certeza.','','Gostei do acabamento.','','Profissional atencioso.',''][i],created_at:b.starts_at+'-04:00'})),
+  message_log:[]};}
+let db=get('demo-db');if(db?.v!==3)db=seed();
 // shortcut: se a sessionStorage lotar (fotos grandes), descarta as fotos enviadas para não perder o resto; trocar por IndexedDB se virar problema.
 const save=()=>{if(!put('demo-db',db)){db.photos={};for(const b of db.barbers)if(String(b.photo_url).startsWith('data:'))b.photo_url=null;put('demo-db',db);}};save();
 const settings=()=>db.shop_settings[0];
@@ -73,8 +81,12 @@ function book(p,extra){validDate(p.p_date);if(!/^\d{2}:\d{2}$/.test(p.p_time||''
  const me=db.customer_profiles.find(c=>c.id==='u1'),start=`${p.p_date}T${p.p_time}:00`,row={id:uuid(),customer:me?.name||'Cliente',phone:digits(me?.phone),customer_id:'u1',service_id:s.id,service_name:s.name,barber_id:b.id,barber_name:b.name,price:s.price,starts_at:start,ends_at:plus(start,s.duration),status:'confirmed',attendance_state:'scheduled',no_show:false,no_preference:!p.p_barber,created_at:now(),...extra};
  db.bookings.push(row);save();return row;}
 function cancel(id,source,reason){const b=booking(id);b.status='cancelled';b.cancellation_source=source;b.cancellation_reason=reason||null;b.updated_at=now();save();return null;}
-function loyalty(phone){const s=settings();if(!s.loyalty_enabled)return {enabled:false};const mine=db.attendances.filter(a=>a.paid&&digits(db.bookings.find(b=>b.id===a.booking_id)?.phone)===digits(phone)),paid=mine.filter(a=>a.payment_method!=='courtesy').length,used=mine.length-paid;
+function loyalty(phone){const s=settings();if(!s.loyalty_enabled)return {enabled:false};const mine=db.attendances.filter(a=>a.paid&&digits(db.bookings.find(b=>b.id===a.booking_id)?.phone)===digits(phone)),paid=mine.filter(a=>!['courtesy','subscription'].includes(a.payment_method)).length,used=mine.filter(a=>a.payment_method==='courtesy').length;
  return {enabled:true,goal:s.loyalty_goal,progress:paid%s.loyalty_goal,available:Math.max(0,Math.floor(paid/s.loyalty_goal)-used)};}
+// Assinatura do cliente desta reserva (mesma regra de subscription_for_booking)
+function subscriptionFor(b){const s=db.subscriptions.find(x=>x.active&&x.phone===digits(b.phone));if(!s)return null;const plan=db.subscription_plans.find(x=>x.id===s.plan_id),month=day(0).slice(0,7);
+ const used=db.attendances.filter(a=>a.subscription_id===s.id&&a.booking_id!==b.id&&db.bookings.find(x=>x.id===a.booking_id)?.starts_at.startsWith(month)).length,up=s.paid_until>=day(0);
+ return {id:s.id,plan:plan.name,paid_until:s.paid_until,up_to_date:up,limit:plan.visits_per_month,used,available:up&&(plan.visits_per_month==null||used<plan.visits_per_month)};}
 const myBarber=()=>db.barber_details.find(d=>d.login_email===EMAIL)?.barber_id||'b1';
 const rpc={staff_role:()=>store?.getItem('demo-role')||'admin',is_admin:()=>true,
  available_slots:p=>{const s=service(p.p_service);return free(p.p_date,p.p_barber,s.duration).map(slot=>({slot}));},
@@ -101,9 +113,28 @@ const rpc={staff_role:()=>store?.getItem('demo-role')||'admin',is_admin:()=>true
   if(p.p_version!==a.version)fail('Este atendimento foi atualizado em outra tela. Atualize antes de salvar.');if(!Array.isArray(p.p_extras)||p.p_extras.length>20)fail('Procedimentos extras inválidos.');
   let extras=0;for(const x of p.p_extras){if(typeof x?.name!=='string'||!x.name.trim()||typeof x.price!=='number'||x.price<0||!Number.isInteger(x.quantity)||x.quantity<1||x.quantity>99)fail('Preencha nome, valor e quantidade de cada procedimento.');extras+=x.price*x.quantity;}
   const subtotal=Number(a.base_price)+extras,discount=Number(p.p_discount);if(!(discount>=0)||discount>subtotal)fail('Desconto inválido. Confira o total dos procedimentos.');
-  if(p.p_paid&&!['pix','cash','debit','credit','transfer','courtesy','other'].includes(p.p_method))fail('Selecione a forma de pagamento.');if(p.p_paid&&p.p_method==='courtesy'&&subtotal-discount!==0)fail('Cortesia exige total igual a zero.');if(p.p_finish&&!p.p_paid)fail('Confirme o pagamento antes de concluir o atendimento.');
+  if(p.p_paid&&!['pix','cash','debit','credit','transfer','courtesy','subscription','other'].includes(p.p_method))fail('Selecione a forma de pagamento.');if(p.p_paid&&p.p_method==='courtesy'&&subtotal-discount!==0)fail('Cortesia exige total igual a zero.');
+  if(p.p_paid&&p.p_method==='subscription'&&(!a.subscription_id||subtotal-discount!==0))fail('Use "Usar assinatura" e cobre os extras com outra forma de pagamento. "Assinatura" só vale com total zero.');if(p.p_finish&&!p.p_paid)fail('Confirme o pagamento antes de concluir o atendimento.');
+  // Ao concluir, cada produto vendido sai do estoque; falta de estoque impede a conclusão
+  if(p.p_finish){for(const x of p.p_extras.filter(x=>x.product_id)){const pr=db.products.find(r=>r.id===x.product_id);if(!pr||pr.stock<x.quantity)fail('Estoque insuficiente de '+x.name+'. Confira o estoque em Serviços.');}for(const x of p.p_extras.filter(x=>x.product_id))db.products.find(r=>r.id===x.product_id).stock-=x.quantity;}
   const at=new Date().toISOString();Object.assign(a,{extras:p.p_extras,discount,total:Math.round((subtotal-discount)*100)/100,paid:!!p.p_paid,payment_method:p.p_paid?p.p_method:null,paid_at:p.p_paid?a.paid_at||at:null,notes:p.p_notes||'',finished_at:p.p_finish?at:null,version:a.version+1});
   b.attendance_state=p.p_finish?'completed':'arrived';save();return a.version;},
+ subscription_for_booking:p=>subscriptionFor(booking(p.p_booking)),
+ apply_subscription:p=>{const a=db.attendances.find(a=>a.booking_id===p.p_booking);if(!a)fail('Confirme a chegada antes de usar a assinatura.');if(a.finished_at)fail('Este atendimento já foi concluído.');let info=null;
+  if(p.p_apply){info=subscriptionFor(booking(p.p_booking));if(!info)fail('Este cliente não tem assinatura ativa.');if(!info.up_to_date)fail('A mensalidade da assinatura está atrasada. Registre o pagamento antes.');if(!info.available)fail('O cliente já usou todos os atendimentos do plano neste mês.');}
+  const subtotal=Number(a.total)+Number(a.discount);a.subscription_id=info?.id||null;a.discount=p.p_apply?Number(a.base_price):0;a.total=Math.max(subtotal-a.discount,0);a.version++;save();return a.version;},
+ admin_subscription_payment:p=>{if(!['pix','cash','debit','credit','transfer','other'].includes(p.p_method))fail('Selecione a forma de pagamento.');const sub=db.subscriptions.find(x=>x.id===p.p_subscription&&x.active);if(!sub)fail('Assinatura não encontrada ou cancelada.');const plan=db.subscription_plans.find(x=>x.id===sub.plan_id);
+  const base=sub.paid_until>day(0)?sub.paid_until:day(0),d=new Date(base+'T12:00:00Z');d.setUTCMonth(d.getUTCMonth()+1);sub.paid_until=d.toISOString().slice(0,10);
+  db.cash_movements.push({id:uuid(),business_date:day(0),kind:'income',category:'Assinatura',description:plan.name+' · '+sub.customer,amount:plan.price,payment_method:p.p_method,created_at:now()});save();return sub.paid_until;},
+ customer_review:p=>{const b=db.bookings.find(b=>b.id===p.p_booking&&b.customer_id==='u1');if(!b||b.attendance_state!=='completed')fail('Só é possível avaliar atendimentos concluídos da sua conta.');if(!(p.p_rating>=1&&p.p_rating<=5))fail('Escolha de 1 a 5 estrelas.');if(String(p.p_comment||'').length>300)fail('Use até 300 caracteres no comentário.');
+  db.reviews=db.reviews.filter(r=>r.booking_id!==b.id).concat({booking_id:b.id,barber_id:b.barber_id,rating:p.p_rating,comment:String(p.p_comment||'').trim(),created_at:new Date().toISOString()});save();return null;},
+ customer_tip_info:p=>{const b=db.bookings.find(b=>b.id===p.p_booking&&b.customer_id==='u1'&&b.attendance_state==='completed'),k=b&&db.barber_details.find(d=>d.barber_id===b.barber_id)?.pix_key;return k?{barber_name:b.barber_name,pix_key:k}:null;},
+ barber_month:()=>{const id=myBarber(),d=db.barber_details.find(d=>d.barber_id===id),rate=Number(d?.commission_rate??40),month=day(0).slice(0,7),agora=now();
+  const gross=db.attendances.filter(a=>a.paid&&db.bookings.some(b=>b.id===a.booking_id&&b.barber_id===id&&b.starts_at.startsWith(month))).reduce((s,a)=>s+Number(a.total),0);
+  const booked=db.bookings.filter(b=>b.barber_id===id&&b.status==='confirmed'&&!b.no_show&&b.attendance_state!=='completed'&&b.starts_at>=agora&&b.starts_at.startsWith(month)).reduce((s,b)=>s+Number(b.price),0);
+  const mine=db.reviews.filter(r=>r.barber_id===id);
+  return {month,rate,goal:d?.monthly_goal??null,gross,commission:Math.round(gross*rate)/100,forecast:gross+booked,rating:mine.length?Math.round(mine.reduce((s,r)=>s+r.rating,0)/mine.length*10)/10:null,reviews:mine.length,
+   comments:mine.filter(r=>r.comment).sort((a,b)=>b.created_at.localeCompare(a.created_at)).slice(0,5).map(({rating,comment,created_at})=>({rating,comment,created_at}))};},
  mark_no_show:p=>{booking(p.p_booking||p.p_id).no_show=true;save();return null;},
  save_barber:p=>{if(!String(p.p_name||'').trim())fail('Informe o nome do barbeiro.');let b=p.p_id&&db.barbers.find(b=>b.id===p.p_id);if(!b){b={id:uuid(),active:true,photo_url:null,specialty:'',bio:''};db.barbers.push(b);db.barber_details.push({barber_id:b.id,commission_rate:40,cpf:'',phone:'',login_email:''});}
   b.name=p.p_name.trim();Object.assign(db.barber_details.find(d=>d.barber_id===b.id),{cpf:p.p_cpf||'',phone:p.p_phone||''});for(const r of db.bookings)if(r.barber_id===b.id)r.barber_name=b.name;save();return b.id;},
@@ -118,7 +149,7 @@ const rpc={staff_role:()=>store?.getItem('demo-role')||'admin',is_admin:()=>true
  admin_save_customer:p=>{const phone=digits(p.p_phone);if(!String(p.p_name||'').trim())fail('Informe o nome do cliente.');if(phone.length<10||phone.length>15)fail('Informe celular com DDD.');
   let c=db.customer_directory.find(c=>c.phone===phone);if(!c){c={id:uuid(),phone};db.customer_directory.push(c);}Object.assign(c,{name:p.p_name.trim(),email:String(p.p_email||'').trim().toLowerCase()||c.email||null});save();return c.id;}};
 // Valores padrão do banco para inserções feitas pelo painel
-const defaults={services:{active:true,photo_url:null,description:''},barbers:{active:true,photo_url:null,specialty:'',bio:''}};
+const defaults={services:{active:true,photo_url:null,description:''},barbers:{active:true,photo_url:null,specialty:'',bio:''},products:{active:true,stock:0},subscription_plans:{active:true,description:'',visits_per_month:null},subscriptions:{active:true},message_log:{campaign:null,booking_id:null}};
 const headers={'Content-Type':'application/json','X-Content-Type-Options':'nosniff'};
 const json=(v,status=200)=>new Response(v===undefined?'':JSON.stringify(v),{status,headers});
 const realFetch=window.fetch.bind(window);
@@ -139,7 +170,7 @@ window.fetch=async(input,init={})=>{const url=String(input?.url||input);if(!url.
  if(method==='GET'){let out=filter(rows,[...u.searchParams]);const order=u.searchParams.get('order');if(order){const [k,dir]=order.split(',')[0].split('.');out=[...out].sort((a,b)=>cmp(a[k],b[k])*(dir==='desc'?-1:1));}
   const offset=Number(u.searchParams.get('offset')||0),limit=u.searchParams.get('limit');return json(out.slice(offset,limit==null?undefined:offset+Number(limit)));}
  if(method==='PATCH'){for(const r of filter(rows,[...u.searchParams]))Object.assign(r,body);save();return json([]);}
- if(method==='POST'){const keys=u.searchParams.get('on_conflict')?.split(',');for(const r of [].concat(body)){const same=keys&&rows.find(x=>keys.every(k=>(x[k]??null)===(r[k]??null)));if(same)Object.assign(same,r);else rows.push({id:uuid(),created_at:now(),...defaults[table],...r});}save();return json([]);}
+ if(method==='POST'){const keys=u.searchParams.get('on_conflict')?.split(',');const out=[];for(const r of [].concat(body)){const same=keys&&rows.find(x=>keys.every(k=>(x[k]??null)===(r[k]??null)));if(same)out.push(Object.assign(same,r));else{const row={id:uuid(),created_at:now(),...defaults[table],...r};rows.push(row);out.push(row);}}save();return json(out);}
  if(method==='DELETE'){db[table]=rows.filter(r=>!filter([r],[...u.searchParams]).length);save();return json([]);}
  return json([]);};
 // Faixa fixa avisando que é demonstração, com volta ao início

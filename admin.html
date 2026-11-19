@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="pole.css?v=services-64">
 <link rel="stylesheet" href="polish.css?v=services-64">
 <link rel="stylesheet" href="painel.css?v=services-64">
-<link rel="stylesheet" href="attendance.css?v=services-64"><link rel="stylesheet" href="design.css?v=services-64"><link rel="stylesheet" href="manual.css?v=services-64"><link rel="stylesheet" href="balcao.css?v=balcao-1"><script src="tema.js?v=services-64"></script>
+<link rel="stylesheet" href="attendance.css?v=services-64"><link rel="stylesheet" href="design.css?v=services-64"><link rel="stylesheet" href="manual.css?v=growth-1"><link rel="stylesheet" href="balcao.css?v=balcao-1"><link rel="stylesheet" href="growth.css?v=growth-1"><script src="tema.js?v=services-64"></script>
 <body class="staff-page">
 <main>
 <header class="staff-header">
@@ -55,6 +55,8 @@
 <span aria-hidden="true">♙</span>Barbeiros</button>
 <button id="nav-atendimentos" role="tab" type="button" aria-selected="false" aria-controls="tab-atendimentos" tabindex="-1">
 <span aria-hidden="true">✓</span>Atendimentos</button>
+<button id="nav-campanhas" role="tab" type="button" aria-selected="false" aria-controls="tab-campanhas" tabindex="-1">
+<span aria-hidden="true">✉</span>Campanhas</button>
 <button id="nav-manual" role="tab" type="button" aria-selected="false" aria-controls="tab-manual" tabindex="-1">
 <span aria-hidden="true">?</span>Manual</button>
 </div>
@@ -253,6 +255,7 @@
 </article>
 </div>
 <article class="catalog-form attendants-admin"><h3>Atendentes</h3><p class="help">A atendente acessa só Agenda, Atendimentos, Caixa diário e o Manual. Ela cria a conta pelo site (Primeiro acesso) e, no primeiro login no painel, ativa o código do celular.</p><form id="attendantform"><label>E-mail da atendente<input id="attendantemail" type="email" maxlength="120" required autocomplete="off"></label><button>Liberar acesso</button></form><div id="attendantlist" class="block-list"></div></article></section>
+<section id="tab-campanhas" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-campanhas" hidden><div id="campaigns-app"></div></section>
 <section id="tab-manual" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-manual" hidden><div id="manual-app"></div></section>
 <section id="tab-atendimentos" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-atendimentos" hidden>
 <div class="section-intro"><h3>Recepção e pagamentos</h3><p>Confirme a chegada, registre procedimentos extras, forma de pagamento e conclusão.</p></div><p id="visitstatus" role="status" tabindex="-1"></p>
@@ -277,7 +280,7 @@
 </form>
 </section>
 </div>
-<script src="demo-mock.js?v=services-64"></script><script src="config.js?v=services-64">
+<script src="demo-mock.js?v=growth-1"></script><script src="config.js?v=services-64">
 </script>
 <script src="api.js?v=services-64">
 </script>
@@ -291,15 +294,16 @@
 </script>
 <script src="staff-auth.js?v=services-64">
 </script>
-<script src="staff-tabs.js?v=balcao-1">
+<script src="staff-tabs.js?v=growth-1">
 </script>
 <script src="service-cards.js?v=services-64"></script><script src="admin.js?v=balcao-1">
 </script>
 <script src="cash.js?v=services-64"></script>
 <script src="operations.js?v=services-64"></script>
 <script src="agenda-pro.js?v=services-64"></script>
-<script src="attendance-model.js?v=services-64"></script>
-<script src="attendance.js?v=services-64"></script>
-<script src="manual-app.js?v=services-64"></script>
+<script src="attendance-model.js?v=growth-1"></script>
+<script src="attendance.js?v=growth-1"></script>
+<script src="manual-app.js?v=growth-1"></script>
+<script src="growth.js?v=growth-1"></script>
 <script src="update-check.js?v=services-64" data-version="services-64"></script><button id="installapp" type="button" class="install-app" hidden>📲 Instalar app</button></body>
 </html>

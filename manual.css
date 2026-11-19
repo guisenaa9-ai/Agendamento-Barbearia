@@ -33,8 +33,8 @@
 .org-link+.org-lane{margin-top:16px}
 .org-tree{display:grid;justify-items:center}
 .org-tree>.org-node{flex:none;width:min(320px,100%);text-align:center;align-items:center}
-.org-children{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;width:100%;margin-top:26px}
-.org-children::before{content:"";position:absolute;top:-14px;left:calc(100%/12);right:calc(100%/12);height:1.5px;background:var(--m-line-strong)}
+.org-children{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:12px;width:100%;margin-top:26px}
+.org-children::before{content:"";position:absolute;top:-14px;left:calc(100%/14);right:calc(100%/14);height:1.5px;background:var(--m-line-strong)}
 .org-children::after{content:"";position:absolute;top:-26px;left:50%;width:1.5px;height:12px;background:var(--m-line-strong)}
 .org-children>*{position:relative}
 .org-children>*::before{content:"";position:absolute;top:-14px;left:50%;width:1.5px;height:14px;background:var(--m-line-strong)}

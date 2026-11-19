@@ -9,7 +9,7 @@
   painel:'M3 10 12 3l9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10Z',agenda:'M4 5h16v15H4zM4 10h16M9 14h2m3 0h2m-7 3h2',atendimentos:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM8 12l3 3 5-6',
   caixa:'M3 7h18v12H3zM3 11h18M7 15h4',dashboard:'M4 20V11m6 9V5m6 15v-7m-14 7h20',financeiro:'M12 3v18m4-14H10a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6H7',
   servicos:'M6 6a2.5 2.5 0 1 0 0 .01M6 18a2.5 2.5 0 1 0 0 .01M8 7l12 10M8 17 20 7',barbeiros:'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-6 9a6 6 0 0 1 12 0m1-15a3 3 0 0 1 0 6m2 9a6 6 0 0 0-3-5.2',
-  'area-barbeiro':'M7 3h10v18H7zM11 18h2',seguranca:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3Zm-3 9 2 2 4-4',faq:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-2.5 6a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14m0 3h.01'};
+  'area-barbeiro':'M7 3h10v18H7zM11 18h2',seguranca:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3Zm-3 9 2 2 4-4',campanhas:'M4 6h16v12H4zM4 7l8 6 8-6',faq:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-2.5 6a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14m0 3h.01'};
  const icon=id=>{const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),path=document.createElementNS(ns,'path');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');svg.setAttribute('class','manual-card-icon');path.setAttribute('d',ICONS[id]||ICONS.faq);svg.append(path);return svg;};
  const make=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;};
  const clone=nodes=>[...nodes].map(n=>document.importNode(n,true));
@@ -17,7 +17,7 @@
  const attendant=()=>document.body.classList.contains('role-attendant');
  async function load(){
   if(modules)return modules;
-  const r=await fetch('manual.html?v=services-64',{cache:'no-store'});if(!r.ok)throw Error('sem acesso');
+  const r=await fetch('manual.html?v=growth-1',{cache:'no-store'});if(!r.ok)throw Error('sem acesso');
   const doc=new DOMParser().parseFromString(await r.text(),'text/html');
   modules=[...doc.querySelectorAll('.manual-section')].map(s=>{const h=s.querySelector('h2').textContent,n=h.match(/^(\d+) · /);
    return{id:s.id,title:n?h.slice(n[0].length):h,num:n?.[1],desc:s.dataset.desc,group:s.dataset.group,owner:s.dataset.role==='chefe',intro:s.querySelector('.m-intro'),steps:[...s.querySelectorAll('.m-step')]};});

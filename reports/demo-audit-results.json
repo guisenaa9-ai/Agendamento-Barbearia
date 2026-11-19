@@ -1,7 +1,7 @@
 {
-  "time": "2026-11-18T02:58:42.198Z",
+  "time": "2026-11-19T03:31:50.406Z",
   "scope": "Isolated demo simulator, no production requests",
-  "passed": 41,
+  "passed": 52,
   "failed": 0,
   "results": [
     {
@@ -166,6 +166,50 @@
     },
     {
       "name": "Recuperar reserva usa codigo compativel com formulario UUID",
+      "status": "PASS"
+    },
+    {
+      "name": "Assinatura: usar zera o servico e conclui como Assinatura",
+      "status": "PASS"
+    },
+    {
+      "name": "Assinatura: forma Assinatura exige total zero",
+      "status": "PASS"
+    },
+    {
+      "name": "Assinatura atrasada nao pode ser usada",
+      "status": "PASS"
+    },
+    {
+      "name": "Mensalidade entra no caixa e adianta a validade",
+      "status": "PASS"
+    },
+    {
+      "name": "Produto vendido sai do estoque ao concluir",
+      "status": "PASS"
+    },
+    {
+      "name": "Estoque insuficiente impede concluir",
+      "status": "PASS"
+    },
+    {
+      "name": "Cliente avalia atendimento concluido e ve a chave Pix do barbeiro",
+      "status": "PASS"
+    },
+    {
+      "name": "Avaliacao recusa atendimento nao concluido",
+      "status": "PASS"
+    },
+    {
+      "name": "Painel do barbeiro: meta, comissao e previsao",
+      "status": "PASS"
+    },
+    {
+      "name": "Assinatura nao conta ponto na fidelidade",
+      "status": "PASS"
+    },
+    {
+      "name": "Cadastro pelo painel devolve a linha criada",
       "status": "PASS"
     }
   ]

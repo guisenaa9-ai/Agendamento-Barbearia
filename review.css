@@ -1,0 +1,16 @@
+/* Minha conta: avaliação e gorjeta (review.js) */
+.review-box{display:grid;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid #e1e4d8}
+.review-title{margin:0;font-weight:600;color:#18392c}
+.review-stars{display:flex;gap:4px}
+.review-star{width:40px;height:40px;padding:0;border:1px solid #e1e4d8;border-radius:10px;background:#fff;color:#c9cfbf;font-size:22px;line-height:1;cursor:pointer;box-shadow:none}
+.review-star.on{color:#c49242;border-color:#e7c9a0;background:#fdf6ea}
+.review-star:focus-visible,.review-open:focus-visible,.review-link:focus-visible{outline:3px solid #a47d48;outline-offset:2px}
+.review-box textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid #dedfd7;border-radius:10px;font:inherit}
+.review-open{justify-self:start;min-height:40px;padding:0 16px;border-radius:999px;border:0;background:#18392c;color:#fff;font-weight:600;cursor:pointer}
+.review-link{justify-self:start;padding:6px 0;border:0;background:none;color:#18392c;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;box-shadow:none}
+.review-done{margin:0;color:#8a5b31;font-weight:600;letter-spacing:.04em}
+.review-msg{margin:0;font-size:13px;color:#9b473b}
+.review-msg:empty{display:none}
+.review-tip{display:grid;gap:6px;padding:12px;border-radius:12px;background:#f4f2ea}
+.review-tip p{margin:0;font-size:14px;color:#3c5247}
+.review-tip code{font-size:14px;word-break:break-all;color:#18392c}

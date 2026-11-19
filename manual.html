@@ -3,7 +3,7 @@
 <meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#18392c"><link rel="icon" href="icones/icone-192.png">
 <title>Manual do sistema · Barbearia Daniel Silva</title>
-<link rel="stylesheet" href="manual.css?v=services-64">
+<link rel="stylesheet" href="manual.css?v=growth-1">
 <body class="manual-page"><a class="manual-skip" href="#conteudo">Pular para o conteúdo</a>
 <header class="manual-header"><a class="manual-brand" href="admin.html"><span>DS</span>Barbearia Daniel Silva</a><a href="admin.html">Voltar para o painel</a></header>
 <main id="conteudo" class="manual-wrap">
@@ -19,7 +19,7 @@
 <div class="org-row">
  <a class="org-node" href="#conta"><span class="org-step">1</span><b>Conta</b><span>Cria a conta com e-mail e celular</span></a><span class="org-arrow" aria-hidden="true">→</span>
  <a class="org-node" href="#agendar"><span class="org-step">2</span><b>Agendar</b><span>Serviço, barbeiro, dia e horário</span></a><span class="org-arrow" aria-hidden="true">→</span>
- <a class="org-node" href="#reservas"><span class="org-step">3</span><b>Minhas reservas</b><span>Altera, cancela e vê a fidelidade</span></a><span class="org-arrow" aria-hidden="true">→</span>
+ <a class="org-node" href="#reservas"><span class="org-step">3</span><b>Minhas reservas</b><span>Altera, cancela, avalia e dá gorjeta</span></a><span class="org-arrow" aria-hidden="true">→</span>
  <a class="org-node" href="#atendimentos"><span class="org-step">4</span><b>Na cadeira</b><span>Chegada, extras e pagamento no balcão</span></a>
 </div>
 
@@ -33,14 +33,15 @@
   <div><a class="org-node" href="#atendimentos"><b>Atendimentos</b><span>Chegada, extras e pagamento</span></a></div>
   <div><a class="org-node" href="#caixa"><b>Caixa diário</b><span>Abertura, despesas e fechamento</span></a></div>
   <div class="org-node org-group"><a class="org-group-link" href="#dashboard"><b>Números</b><span>Só o chefe vê</span></a><span class="org-sub"><a href="#dashboard">Dashboard e BI</a><a href="#financeiro">Financeiro</a></span></div>
-  <div><a class="org-node" href="#servicos"><b>Serviços</b><span>Preços, duração, fotos e fidelidade</span><span class="org-tag">Só chefe</span></a></div>
-  <div><a class="org-node" href="#barbeiros"><b>Barbeiros</b><span>Equipe, comissão e atendentes</span><span class="org-tag">Só chefe</span></a></div>
+  <div><a class="org-node" href="#servicos"><b>Serviços</b><span>Preços, produtos, fidelidade e clube</span><span class="org-tag">Só chefe</span></a></div>
+  <div><a class="org-node" href="#barbeiros"><b>Barbeiros</b><span>Equipe, metas e chave Pix</span><span class="org-tag">Só chefe</span></a></div>
+  <div><a class="org-node" href="#campanhas"><b>Campanhas</b><span>Sumidos, fiéis e avaliação no Google</span><span class="org-tag">Só chefe</span></a></div>
  </div>
 </div>
 
 <div class="org-link"><span>o barbeiro acompanha pelo celular</span></div>
 <div class="org-row org-row-short">
- <a class="org-node" href="#area-barbeiro"><b>Área do barbeiro</b><span>Agenda do dia, novidades e comissão</span></a>
+ <a class="org-node" href="#area-barbeiro"><b>Área do barbeiro</b><span>Meta do mês, ganhos e avaliações</span></a>
  <a class="org-node" href="#seguranca"><b>Acesso e segurança</b><span>Senha, código, tema e app</span></a>
  <a class="org-node" href="#faq"><b>Perguntas frequentes</b><span>Situações do dia a dia</span></a>
 </div>
@@ -125,6 +126,12 @@ Com "Sem preferência", o sistema escolhe o barbeiro livre com menos reservas no
 <ol><li>Em "Já agendei antes de criar a conta", digitar o código da reserva e o celular usado no agendamento.</li>
 <li>Tocar em "Vincular reserva". Ela passa a aparecer na lista.</li></ol>
 </div>
+<div class="m-step" data-kind="flow"><h3>Avaliar o atendimento e dar gorjeta</h3>
+<ol><li>Na reserva com "Atendimento concluído", tocar em "Avaliar atendimento".</li>
+<li>Escolher de 1 a 5 estrelas, escrever um comentário se quiser e tocar em "Enviar avaliação".</li>
+<li>Se o barbeiro tiver chave Pix cadastrada, aparece "Copiar chave Pix" para dar gorjeta. O dinheiro vai direto para o barbeiro, pelo app do banco do cliente.</li></ol>
+<p>A nota e o comentário aparecem para o barbeiro na Área do barbeiro. Dá para mudar a avaliação depois.</p>
+</div>
 <div class="m-step" data-kind="info"><h3>Cartão fidelidade</h3>
 <p>Quando o chefe liga a fidelidade, o cartão aparece em "Minha conta". Cada atendimento pago conta um ponto pelo celular do cliente. Ao completar a meta, o cliente ganha um atendimento grátis e avisa no balcão.</p>
 </div>
@@ -160,6 +167,12 @@ Escolher a aba no menu lateral. No celular, o menu fica no topo e desliza para o
 <section class="manual-section" id="agenda" data-desc="Horários livres, reservas no balcão e folgas" data-group="painel" aria-labelledby="agenda-t"><h2 id="agenda-t">Agenda</h2>
 <div class="m-intro"><p><strong>Para que serve:</strong> ver as reservas de cada barbeiro, marcar clientes no balcão ou por telefone, cancelar, registrar faltas e organizar folgas e o horário de funcionamento.</p>
 <p><strong>Quem usa:</strong> chefe e atendente.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Lembretes de horário</h3>
+<ol><li>No topo da Agenda, abrir "Lembretes de horário". A lista mostra os clientes do resto de hoje e de amanhã.</li>
+<li>Tocar em "Enviar lembrete". O WhatsApp abre com a mensagem pronta; tocar em Enviar no WhatsApp.</li>
+<li>O painel marca "✓ Enviado" e conta quantos já foram avisados, para ninguém mandar duas vezes.</li></ol>
+<p>O ideal é mandar os lembretes de amanhã no fim da tarde. Cliente avisado falta bem menos.</p>
 </div>
 <div class="m-step" data-kind="flow"><h3>Encontrar um horário livre</h3>
 <ol><li>Em "Consulta rápida", digitar o nome do barbeiro (ou deixar vazio para todos) e escolher a data.</li>
@@ -211,9 +224,13 @@ Quando o cliente chegar, tocar em "Confirmar chegada". Só funciona no dia da re
 </li><li>
 Tocar em "Registrar procedimentos e pagamento" para abrir a ficha. Se fez algo a mais, tocar em "+ Hidratação", "+ Escova" ou "+ Outro procedimento" e ajustar valor e quantidade.
 </li><li>
+Se o cliente levar um produto (pomada, óleo), escolher na lista ao lado de "+ Produto" e tocar no botão. Ele entra como extra, com o preço cadastrado.
+</li><li>
+Se a ficha mostrar "Assinante", tocar em "Usar assinatura": o serviço sai do total, porque já foi pago na mensalidade.
+</li><li>
 Se houver desconto, preencher "Desconto (R$)". O total se atualiza sozinho.
 </li><li>
-Marcar "Pagamento recebido" e escolher a forma: Pix, Dinheiro, Cartão de débito, Cartão de crédito, Transferência, Cortesia ou Outro.
+Marcar "Pagamento recebido" e escolher a forma: Pix, Dinheiro, Cartão de débito, Cartão de crédito, Transferência, Cortesia, Assinatura ou Outro. "Assinatura" só vale quando o total ficou zero; se houve extra ou produto, cobrar esse valor com outra forma.
 </li><li>
 Tocar em "Concluir atendimento e pagamento" e confirmar. Para guardar sem concluir, usar "Salvar atendimento".
 </li></ol>
@@ -231,6 +248,10 @@ Tocar em "Concluir atendimento e pagamento" e confirmar. Para guardar sem conclu
 <em>"Cortesia exige total igual a zero."</em> Lançar o desconto do valor inteiro antes de escolher Cortesia.
 </li><li>
 <em>O botão "Confirmar chegada" está apagado.</em> A reserva é de outro dia. Conferir a data no topo da aba.
+</li><li>
+<em>"Estoque insuficiente de…"</em> O produto acabou. Tirar o produto da ficha ou registrar a entrada em Serviços → Produtos e estoque.
+</li><li>
+<em>"A mensalidade da assinatura está atrasada."</em> O chefe registra o pagamento em Serviços → Clube de assinatura; depois é só tocar em "Usar assinatura" de novo.
 </li></ul>
 </div>
 <a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
@@ -299,7 +320,7 @@ Para guardar ou mandar ao contador, tocar em "Baixar CSV" (abre no Excel) ou em 
 
 <section class="manual-section" id="servicos" data-desc="Preço, duração, fotos e fidelidade" data-group="painel" data-role="chefe" aria-labelledby="servicos-t"><h2 id="servicos-t">Serviços</h2>
 <p class="manual-who">Só chefe</p>
-<div class="m-intro"><p><strong>Para que serve:</strong> definir o que a barbearia oferece, quanto custa e quanto tempo leva. A duração define quanto tempo a agenda reserva.</p>
+<div class="m-intro"><p><strong>Para que serve:</strong> definir o que a barbearia oferece, quanto custa e quanto tempo leva, os produtos à venda, o clube de assinatura e a fidelidade. A duração define quanto tempo a agenda reserva.</p>
 <p><strong>Quem usa:</strong> só o chefe.</p>
 </div>
 <div class="m-step" data-kind="flow"><h3>Cadastrar ou editar um serviço</h3>
@@ -307,6 +328,17 @@ Para guardar ou mandar ao contador, tocar em "Baixar CSV" (abre no Excel) ou em 
 <li>Se quiser, escolher uma foto do corte (JPG, PNG ou WebP de até 3 MB).</li>
 <li>Tocar em "Cadastrar serviço". Para mudar depois, tocar em "Editar serviço / foto" na lista e em "Salvar serviço".</li></ol>
 <p>"Desativar" tira o serviço do site sem apagar o histórico. "Ativar" traz de volta.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Produtos e estoque</h3>
+<ol><li>Em "Produtos e estoque", preencher produto, preço e estoque inicial e tocar em "Cadastrar produto".</li>
+<li>Quando chegar mercadoria, preencher "+ Entrada" com a quantidade e tocar em "Salvar". O preço também muda ali.</li>
+<li>Cada produto vendido na ficha sai do estoque quando o atendimento é concluído. "Acabando" aparece com 3 ou menos.</li></ol>
+</div>
+<div class="m-step" data-kind="flow"><h3>Clube de assinatura</h3>
+<ol><li>Em "Clube de assinatura", criar o plano: nome, mensalidade e quantos atendimentos por mês (vazio = ilimitado).</li>
+<li>Cadastrar o assinante com nome, celular, plano e a forma em que pagou a 1ª mensalidade. O valor entra no Caixa do dia.</li>
+<li>Todo mês, ao receber, tocar em "Registrar mensalidade". A assinatura fica em dia por mais um mês e o valor entra no Caixa.</li></ol>
+<p>A cobrança é feita fora do sistema (Pix, cartão ou dinheiro). Assinante atrasado aparece em vermelho e na campanha "Assinante atrasado".</p>
 </div>
 <div class="m-step" data-kind="flow"><h3>Programa de fidelidade</h3>
 <ol><li>Marcar "Ativar programa de fidelidade".</li>
@@ -327,6 +359,12 @@ Para guardar ou mandar ao contador, tocar em "Baixar CSV" (abre no Excel) ou em 
 <li>Para o barbeiro usar a Área do barbeiro, preencher o e-mail de acesso. Tocar em "Cadastrar barbeiro".</li></ol>
 <p>Para mudar depois, tocar em "Editar dados". "Desativar" tira o barbeiro do agendamento sem apagar o histórico.</p>
 </div>
+<div class="m-step" data-kind="flow"><h3>Metas e gorjetas da equipe</h3>
+<ol><li>Em "Metas e gorjetas da equipe", preencher a meta do mês (R$) de cada barbeiro.</li>
+<li>Preencher a chave Pix do barbeiro, se ele quiser receber gorjeta dos clientes.</li>
+<li>Tocar em "Salvar" na linha do barbeiro.</li></ol>
+<p>A meta aparece para o barbeiro com o quanto ele já faturou e a previsão do mês. A chave Pix aparece só para o cliente que foi atendido por ele.</p>
+</div>
 <div class="m-step" data-kind="flow"><h3>Liberar uma atendente</h3>
 <ol><li>A atendente cria a conta pelo site, em "Primeiro acesso".</li>
 <li>Em "Atendentes", digitar o e-mail dela e tocar em "Liberar acesso".</li>
@@ -334,14 +372,44 @@ Para guardar ou mandar ao contador, tocar em "Baixar CSV" (abre no Excel) ou em 
 </div>
 <a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
 
+<section class="manual-section" id="campanhas" data-desc="Sumidos, fiéis, atrasados e Google" data-group="painel" data-role="chefe" aria-labelledby="campanhas-t"><h2 id="campanhas-t">Campanhas</h2>
+<p class="manual-who">Só chefe</p>
+<div class="m-intro"><p><strong>Para que serve:</strong> trazer de volta quem sumiu, agradecer os fiéis, cobrar assinante atrasado e pedir avaliação no Google, pelo WhatsApp da barbearia.</p>
+<p><strong>Quem usa:</strong> só o chefe.</p>
+</div>
+<div class="m-step" data-kind="flow"><h3>Passo a passo</h3>
+<ol><li>
+Na aba Campanhas, tocar num dos públicos: Sumidos, Fiéis, Assinante atrasado ou Avaliação no Google. O número mostra quantos clientes estão nele.
+</li><li>
+Ajustar a mensagem se quiser. {nome}, {barbeiro}, {link} e os outros códigos são trocados sozinhos para cada cliente.
+</li><li>
+Na fila de envio, tocar em "Enviar ↗" em cada cliente. O WhatsApp abre com a mensagem pronta; tocar em Enviar no WhatsApp.
+</li><li>
+O painel marca "✓ Enviado". Quem pedir para não receber mais sai das campanhas em "Não enviar mais".
+</li></ol>
+</div>
+<div class="m-step" data-kind="info"><h3>Bom saber</h3>
+<ul><li>
+"Sumidos" são clientes que já vieram e não voltaram no número de dias escolhido (30 dias, se nada for mudado), sem horário marcado.
+</li><li>
+"Avaliação no Google" mostra quem foi atendido nos últimos 7 dias e ainda não recebeu o pedido. Antes, salvar o link de avaliação do Perfil da Empresa no Google.
+</li><li>
+Mande só para clientes da barbearia e respeite quem pedir para parar (LGPD). A mensagem que você ajusta fica guardada neste aparelho.
+</li></ul>
+</div>
+<a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
+
 <section class="manual-section" id="area-barbeiro" data-desc="Agenda do dia, novidades e comissão" data-group="barbeiro" aria-labelledby="area-barbeiro-t"><h2 id="area-barbeiro-t">Área do barbeiro</h2>
-<div class="m-intro"><p><strong>Para que serve:</strong> o barbeiro acompanha a própria agenda e a própria comissão pelo celular, sem acesso ao resto do painel.</p>
+<div class="m-intro"><p><strong>Para que serve:</strong> o barbeiro acompanha a própria meta, os ganhos, as avaliações e a agenda pelo celular, sem acesso ao resto do painel.</p>
 <p><strong>Quem usa:</strong> cada barbeiro, com o e-mail que o chefe cadastrou.</p>
 </div>
 <div class="m-step" data-kind="flow"><h3>Primeiro acesso</h3>
 <ol><li>O barbeiro passa um e-mail ao chefe, que preenche em "E-mail de acesso à Área do barbeiro".</li>
 <li>O barbeiro cria a conta pelo site com esse mesmo e-mail.</li>
 <li>Na tela de entrada, tocar em "Sou barbeiro: acessar minha agenda" e entrar com e-mail e senha.</li></ol>
+</div>
+<div class="m-step" data-kind="info"><h3>Meta e ganhos do mês</h3>
+<p>No topo da Área do barbeiro fica o cartão do mês: quanto já faturou contra a meta, a comissão do mês e a previsão até o fim do mês, somando os horários já marcados. Logo abaixo, a nota média e os últimos comentários dos clientes.</p>
 </div>
 <div class="m-step" data-kind="flow"><h3>No dia a dia</h3>
 <ol><li>Em "Novidades", ver reservas novas, alteradas e canceladas dos últimos 7 dias. Tocar na lista para marcar como vistas.</li>
@@ -383,7 +451,7 @@ Para guardar ou mandar ao contador, tocar em "Baixar CSV" (abre no Excel) ou em 
 <p>Na Agenda, use "Registrar agendamento presencial" no horário de agora e depois confirme a chegada em Atendimentos.</p>
 </div>
 <div class="m-step" data-kind="faq"><h3>As mensagens de WhatsApp saem sozinhas?</h3>
-<p>Não. O sistema abre o WhatsApp com a mensagem pronta, e o envio só acontece quando você tocar em Enviar.</p>
+<p>Não. Lembretes e campanhas abrem o WhatsApp com a mensagem pronta, e o envio só acontece quando você tocar em Enviar. Assim não há custo por mensagem nem risco de bloqueio do número. O painel marca quem já recebeu.</p>
 </div>
 <div class="m-step" data-kind="faq"><h3>Os números do Financeiro são o dinheiro que tenho no banco?</h3>
 <p>Não. São os pagamentos registrados nos atendimentos. Taxas da maquininha e impostos não estão descontados.</p>
