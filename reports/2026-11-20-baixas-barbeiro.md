@@ -20,3 +20,11 @@ Data: 20/11/2026. Branch: `baixas-barbeiro` (cópia separada em `orca/workspaces
 ## Não verificado
 - `baixas-barbeiro.sql` não foi rodado em PostgreSQL nenhum (só a versão do simulador foi testada).
 - Nada foi commitado nem publicado.
+
+## Rodada 2: aba própria "Acerto dos barbeiros" (PR seguinte)
+- O usuário não achou o lançamento no fim do Financeiro. Escolheu "Aba própria" e o nome "Despesa do barbeiro".
+- Nova aba no menu do chefe: mês do acerto, "+ Lançar despesa" (com escolha do barbeiro), total a pagar no mês, um cartão por barbeiro (comissão, despesas, a pagar ou ✓ pago) e o detalhe com "Excluir" e "Marcar como pago".
+- Financeiro ganhou o botão "+ Despesa do barbeiro" (abre a aba) e as colunas passaram a "Despesas" / "A pagar".
+- "Baixa" virou "despesa" na tela, no manual (seção nova "Acerto dos barbeiros"), na Área do barbeiro e nas mensagens do banco (admin_add_deduction e admin_delete_deduction reaplicadas no Supabase real).
+- Corrigido: página aberta direto em #acerto não carregava os cartões (login terminava antes do script).
+- Verificado: 60/60, static OK; navegador 1366 e 390 px (lançar compra 4x para o Lucas, pagar em dinheiro, saída no Caixa). Prints: acerto-aba-desktop.png, acerto-aba-mobile.png, acerto-despesa-mobile.png.

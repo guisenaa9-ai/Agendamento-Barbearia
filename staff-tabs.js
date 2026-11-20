@@ -1,5 +1,5 @@
 ﻿(function(){
-const names={dashboard:'Visão geral e BI',agenda:'Agenda de clientes',financeiro:'Faturamento e comissões',caixa:'Caixa diário',servicos:'Serviços da barbearia',barbeiros:'Equipe e dados dos barbeiros',atendimentos:'Atendimentos',campanhas:'Campanhas',manual:'Manual do sistema'};
+const names={dashboard:'Visão geral e BI',agenda:'Agenda de clientes',financeiro:'Faturamento e comissões',acerto:'Acerto dos barbeiros',caixa:'Caixa diário',servicos:'Serviços da barbearia',barbeiros:'Equipe e dados dos barbeiros',atendimentos:'Atendimentos',campanhas:'Campanhas',manual:'Manual do sistema'};
 const $=id=>document.getElementById(id),all=Object.keys(names);
 let allowed=null;
 function select(name){

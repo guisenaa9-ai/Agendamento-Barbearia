@@ -63,3 +63,17 @@
 .deduction-form{margin:10px 0;padding:14px;border:1px solid #e1e4d8;border-radius:12px;background:#fbfaf6}
 .deduction-form .help{grid-column:1/-1;margin:0}
 .finance-table .col-deductions{white-space:nowrap;padding-left:8px;padding-right:8px}
+/* Aba Acerto dos barbeiros (baixas.js) */
+.acerto-bar{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:6px 0 4px}
+.acerto-bar label{max-width:220px}
+.acerto-add{min-height:46px;padding:0 22px;font-weight:700}
+.acerto-total{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 6px;margin:16px 0 0;font-size:15px;color:#3c5247}
+.acerto-total strong{font:600 24px/1 Georgia,serif;color:#18392c}
+.acerto-cards .growth-card{min-height:170px;gap:4px}
+.acerto-card .acerto-minus{color:#9b473b}
+.acerto-card .acerto-paid{font-size:12px;font-weight:700;color:#1f7a4d}
+.acerto-card[aria-pressed=true] .acerto-minus,.acerto-card[aria-pressed=true] .acerto-paid{color:#fff}
+.acerto-detail{margin-top:6px}
+.acerto-detail .settlement-head button{width:auto}
+.deduction-form h4{grid-column:1/-1;margin:0;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#7f5f31}
+@media(max-width:640px){.acerto-bar label{max-width:none;flex:1 1 100%}.acerto-add{width:100%}.acerto-cards .growth-card{min-height:150px}}

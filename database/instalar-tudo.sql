@@ -1461,7 +1461,7 @@ begin
  if not public.is_admin() then raise exception 'Acesso permitido somente ao chefe.'; end if;
  if not exists(select 1 from public.barbers where id=p_barber) then raise exception 'Barbeiro não encontrado.'; end if;
  if p_date is null then raise exception 'Informe a data.'; end if;
- if p_kind not in('product','cash','purchase','other') then raise exception 'Tipo de baixa inválido.'; end if;
+ if p_kind not in('product','cash','purchase','other') then raise exception 'Tipo de despesa inválido.'; end if;
  if p_kind='product' then
   if p_quantity is null or p_quantity not between 1 and 99 then raise exception 'Quantidade de 1 a 99.'; end if;
   update public.products set stock=stock-p_quantity where id=p_product and active and stock>=p_quantity returning * into prod;
@@ -1472,7 +1472,7 @@ begin
  else
   total:=p_amount;
   if total is null or total<=0 or total>100000 or total<>round(total,2) then raise exception 'Valor inválido.'; end if;
-  if descr='' then raise exception 'Descreva a baixa.'; end if;
+  if descr='' then raise exception 'Descreva a despesa.'; end if;
  end if;
  if length(descr)>120 then raise exception 'Descrição com até 120 caracteres.'; end if;
  if p_kind='purchase' then parts:=coalesce(p_installments,1); if parts not between 1 and 24 then raise exception 'Parcelas de 1 a 24.'; end if; end if;
@@ -1496,8 +1496,8 @@ declare d public.barber_deductions%rowtype; removed int;
 begin
  if not public.is_admin() then raise exception 'Acesso permitido somente ao chefe.'; end if;
  select * into d from public.barber_deductions where id=p_id for update;
- if not found then raise exception 'Baixa não encontrada.'; end if;
- if d.settlement_id is not null then raise exception 'Esta baixa já entrou num acerto pago e não pode ser excluída.'; end if;
+ if not found then raise exception 'Despesa não encontrada.'; end if;
+ if d.settlement_id is not null then raise exception 'Esta despesa já entrou num acerto pago e não pode ser excluída.'; end if;
  if d.kind='product' and d.product_id is not null then update public.products set stock=stock+d.quantity where id=d.product_id; end if;
  delete from public.barber_deductions where group_id=d.group_id and settlement_id is null;
  get diagnostics removed=row_count;

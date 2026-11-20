@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="pole.css?v=services-64">
 <link rel="stylesheet" href="polish.css?v=services-64">
 <link rel="stylesheet" href="painel.css?v=services-64">
-<link rel="stylesheet" href="attendance.css?v=services-64"><link rel="stylesheet" href="design.css?v=services-64"><link rel="stylesheet" href="manual.css?v=growth-1"><link rel="stylesheet" href="balcao.css?v=balcao-1"><link rel="stylesheet" href="growth.css?v=baixas-1"><script src="tema.js?v=services-64"></script>
+<link rel="stylesheet" href="attendance.css?v=services-64"><link rel="stylesheet" href="design.css?v=services-64"><link rel="stylesheet" href="manual.css?v=growth-1"><link rel="stylesheet" href="balcao.css?v=balcao-1"><link rel="stylesheet" href="growth.css?v=acerto-1"><script src="tema.js?v=services-64"></script>
 <body class="staff-page">
 <main>
 <header class="staff-header">
@@ -47,6 +47,8 @@
 <span aria-hidden="true">▦</span>Agenda</button>
 <button id="nav-financeiro" role="tab" type="button" aria-selected="false" aria-controls="tab-financeiro" tabindex="-1">
 <span aria-hidden="true">R$</span>Financeiro</button>
+<button id="nav-acerto" role="tab" type="button" aria-selected="false" aria-controls="tab-acerto" tabindex="-1">
+<span aria-hidden="true">⇄</span>Acerto dos barbeiros</button>
 <button id="nav-caixa" role="tab" type="button" aria-selected="false" aria-controls="tab-caixa" tabindex="-1">
 <span aria-hidden="true">▣</span>Caixa diário</button>
 <button id="nav-servicos" role="tab" type="button" aria-selected="false" aria-controls="tab-servicos" tabindex="-1">
@@ -255,6 +257,10 @@
 </article>
 </div>
 <article class="catalog-form attendants-admin"><h3>Atendentes</h3><p class="help">A atendente acessa só Agenda, Atendimentos, Caixa diário e o Manual. Ela cria a conta pelo site (Primeiro acesso) e entra no painel com o e-mail e a senha dela.</p><form id="attendantform"><label>E-mail da atendente<input id="attendantemail" type="email" maxlength="120" required autocomplete="off"></label><button>Liberar acesso</button></form><div id="attendantlist" class="block-list"></div></article></section>
+<section id="tab-acerto" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-acerto" hidden>
+<div class="section-intro"><h3>Acerto dos barbeiros</h3><p>Comissão do mês menos as despesas que a barbearia pagou pelo barbeiro: vales em dinheiro, produtos do estoque e compras parceladas. Toque num barbeiro para ver o detalhe e marcar como pago.</p></div>
+<div id="acerto-app"></div>
+</section>
 <section id="tab-campanhas" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-campanhas" hidden><div id="campaigns-app"></div></section>
 <section id="tab-manual" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-manual" hidden><div id="manual-app"></div></section>
 <section id="tab-atendimentos" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-atendimentos" hidden>
@@ -280,7 +286,7 @@
 </form>
 </section>
 </div>
-<script src="demo-mock.js?v=baixas-1"></script><script src="demo-baixas.js?v=baixas-1"></script><script src="config.js?v=services-64">
+<script src="demo-mock.js?v=baixas-1"></script><script src="demo-baixas.js?v=acerto-1"></script><script src="config.js?v=services-64">
 </script>
 <script src="api.js?v=services-64">
 </script>
@@ -294,7 +300,7 @@
 </script>
 <script src="staff-auth.js?v=sem2fa-1">
 </script>
-<script src="staff-tabs.js?v=growth-1">
+<script src="staff-tabs.js?v=acerto-1">
 </script>
 <script src="service-cards.js?v=services-64"></script><script src="admin.js?v=baixas-1">
 </script>
@@ -303,9 +309,9 @@
 <script src="agenda-pro.js?v=services-64"></script>
 <script src="attendance-model.js?v=growth-1"></script>
 <script src="attendance.js?v=growth-1"></script>
-<script src="manual-app.js?v=sem2fa-1"></script>
+<script src="manual-app.js?v=acerto-1"></script>
 <script src="growth.js?v=growth-1"></script>
 <script src="whatsapp-api.js?v=wa-1"></script>
-<script src="baixas.js?v=baixas-1"></script>
+<script src="baixas.js?v=acerto-1"></script>
 <script src="update-check.js?v=services-64" data-version="services-64"></script><button id="installapp" type="button" class="install-app" hidden>📲 Instalar app</button></body>
 </html>

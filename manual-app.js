@@ -17,7 +17,7 @@
  const attendant=()=>document.body.classList.contains('role-attendant');
  async function load(){
   if(modules)return modules;
-  const r=await fetch('manual.html?v=sem2fa-1',{cache:'no-store'});if(!r.ok)throw Error('sem acesso');
+  const r=await fetch('manual.html?v=acerto-1',{cache:'no-store'});if(!r.ok)throw Error('sem acesso');
   const doc=new DOMParser().parseFromString(await r.text(),'text/html');
   modules=[...doc.querySelectorAll('.manual-section')].map(s=>{const h=s.querySelector('h2').textContent,n=h.match(/^(\d+) · /);
    return{id:s.id,title:n?h.slice(n[0].length):h,num:n?.[1],desc:s.dataset.desc,group:s.dataset.group,owner:s.dataset.role==='chefe',intro:s.querySelector('.m-intro'),steps:[...s.querySelectorAll('.m-step')]};});
