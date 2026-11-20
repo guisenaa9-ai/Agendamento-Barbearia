@@ -32,3 +32,10 @@ Data: 20/11/2026. Branch: `baixas-barbeiro` (cópia separada em `orca/workspaces
 ## Rodada 3: Acerto vira sub-aba do Financeiro
 - Pedido do usuário: o Acerto fica dentro do Financeiro. Saiu do menu lateral; o Financeiro tem as sub-abas "Relatório" e "Acerto dos barbeiros". O botão "+ Despesa do barbeiro" do Relatório abre a sub-aba com o formulário.
 - Verificado: 60/60, static OK; navegador 1366 e 390 px (sub-abas, cartões, atalho, sem rolagem lateral). Prints: acerto-subaba-desktop.png, acerto-subaba-mobile.png.
+
+## Rodada 4: sub-abas em todas as abas e Financeiro com 4 sub-abas
+- Pedido: sub-abas no estilo da imagem enviada (barra clara, ativa escura) em todos os tópicos; tirar "Acerto dos barbeiros" e deixar tudo no Financeiro.
+- `subtabs.js` monta a barra em cada aba e mostra só os blocos da sub-aba escolhida (MutationObserver reaplica quando growth.js/whatsapp-api.js recriam blocos):
+  Dashboard (Visão geral | Análise do período), Agenda (Agenda | Nova reserva | Bloqueios e horários, esta só chefe), Financeiro (Visão geral | Comissões | Despesas do barbeiro | Detalhamento), Caixa (Hoje | Novo lançamento | Movimentações), Serviços (Serviços | Produtos | Clube de assinatura | Fidelidade), Barbeiros (Equipe | Metas e Pix | Atendentes), Campanhas (Públicos | Fila de envio | WhatsApp oficial).
+- Financeiro: Comissões = tabela do mês (comissão, despesas, a pagar, Pagar / ✓ Pago) com detalhe e "Marcar como pago"; Despesas do barbeiro = lista do mês com filtro por barbeiro, "+ Lançar despesa" e "Excluir". Colunas extras do relatório saíram (ficam em Comissões). Impressão continua com relatório + detalhamento.
+- Verificado: 60/60, static OK; navegador: todas as sub-abas de todas as abas clicadas (blocos certos em cada uma), despesa 4x para o Lucas + pagamento em dinheiro, 1366 e 390 px sem rolagem lateral. Prints subabas-*.png.

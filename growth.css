@@ -69,18 +69,40 @@
 .acerto-add{min-height:46px;padding:0 22px;font-weight:700}
 .acerto-total{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 6px;margin:16px 0 0;font-size:15px;color:#3c5247}
 .acerto-total strong{font:600 24px/1 Georgia,serif;color:#18392c}
-.acerto-cards .growth-card{min-height:170px;gap:4px}
-.acerto-card .acerto-minus{color:#9b473b}
-.acerto-card .acerto-paid{font-size:12px;font-weight:700;color:#1f7a4d}
-.acerto-card[aria-pressed=true] .acerto-minus,.acerto-card[aria-pressed=true] .acerto-paid{color:#fff}
 .acerto-detail{margin-top:6px}
 .acerto-detail .settlement-head button{width:auto}
 .deduction-form h4{grid-column:1/-1;margin:0;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#7f5f31}
-@media(max-width:640px){.acerto-bar label{max-width:none;flex:1 1 100%}.acerto-add{width:100%}.acerto-cards .growth-card{min-height:150px}}
-/* Financeiro: sub-abas Relatório | Acerto dos barbeiros */
-.fin-subtabs{display:inline-flex;gap:4px;margin:4px 0 18px;padding:4px;border:1px solid #e1e4d8;border-radius:12px;background:#fff}
-.fin-subtabs button{margin:0;min-height:40px;padding:0 18px;border:0;border-radius:9px;background:transparent;color:#3c5247;font-weight:700;box-shadow:none}
-.fin-subtabs button[aria-selected=true]{background:#18392c;color:#fff}
-#fin-acerto>.help{margin:0 0 4px}
-@media(max-width:640px){.fin-subtabs{display:flex}.fin-subtabs button{flex:1;padding:0 6px;font-size:13px;white-space:nowrap}}
-@media print{.fin-subtabs{display:none!important}}
+@media(max-width:640px){.acerto-bar label{max-width:none;flex:1 1 100%}.acerto-add{width:100%}}
+.acerto-bar{justify-content:flex-start}.acerto-bar .acerto-add{margin-left:auto}
+.acerto-table td.acerto-minus{color:#9b473b}
+.acerto-table td.acerto-topay{font-weight:700;color:#18392c}
+.acerto-table td.acerto-action{text-align:right;white-space:nowrap}
+.acerto-table td.acerto-action button{margin:0;min-height:36px;padding:0 16px;font-size:13px}
+.acerto-table .acerto-paidbtn{background:#e3f3ea;color:#1f7a4d;border:0;box-shadow:none}
+.acerto-table tr.is-selected td{background:#f3f1ea}
+.despesas-list{margin-top:10px}
+/* Sub-abas de todas as abas do painel (subtabs.js) */
+.staff-subtabs{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 22px;padding:6px;border:1px solid #e4e6ea;border-radius:14px;background:#eef0f3}
+.staff-subtabs button{margin:0;min-height:42px;padding:0 20px;border:0;border-radius:10px;background:transparent;color:#4b5a66;font-weight:600;font-size:15px;box-shadow:none;cursor:pointer}
+.staff-subtabs button:hover{background:#e3e6ea;color:#18392c}
+.staff-subtabs button[aria-selected=true]{background:#18392c;color:#fff;box-shadow:0 2px 6px rgba(24,57,44,.18)}
+.staff-subtabs button:focus-visible{outline:2px solid #c69543;outline-offset:2px}
+.sub-off{display:none!important}
+body.role-attendant .staff-subtabs .chefe-only{display:none}
+@media(max-width:640px){.staff-subtabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.staff-subtabs::-webkit-scrollbar{display:none}.staff-subtabs button{flex:0 0 auto;padding:0 14px;font-size:14px}}
+@media print{.staff-subtabs,#fin-comissoes,#fin-despesas{display:none!important}#fin-geral.sub-off,#fin-detalhe.sub-off{display:block!important}}
+@media(max-width:640px){
+ .acerto-table thead{display:none}
+ .acerto-table,.acerto-table tbody{display:block;min-width:0!important;width:100%}
+ .acerto-table tr{display:grid;grid-template-columns:1fr auto;grid-template-areas:"name pay" "com pay" "desp act";gap:2px 12px;padding:12px 14px;border-bottom:1px solid #e1e4d8}
+ .acerto-table td{display:block;padding:0!important;border:0!important;text-align:left!important}
+ .acerto-table td.acerto-topay,.acerto-table td.acerto-action{text-align:right!important}
+ .acerto-table td:nth-child(1){grid-area:name;font-weight:700;color:#18392c}
+ .acerto-table td:nth-child(2){grid-area:com;font-size:13px;color:#5d6b62}
+ .acerto-table td:nth-child(2)::before{content:"Comissão "}
+ .acerto-table td:nth-child(3){grid-area:desp;font-size:13px;color:#5d6b62}
+ .acerto-table td:nth-child(3)::before{content:"Despesas "}
+ .acerto-table td.acerto-minus{color:#9b473b}
+ .acerto-table td.acerto-topay{grid-area:pay;align-self:center;text-align:right;font:600 20px/1 Georgia,serif}
+ .acerto-table td.acerto-action{grid-area:act;text-align:right}
+}
