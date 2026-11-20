@@ -106,3 +106,45 @@ body.role-attendant .staff-subtabs .chefe-only{display:none}
  .acerto-table td.acerto-topay{grid-area:pay;align-self:center;text-align:right;font:600 20px/1 Georgia,serif}
  .acerto-table td.acerto-action{grid-area:act;text-align:right}
 }
+/* Dashboard → Visão geral (dashboard-overview.js) */
+.overview{margin:0 0 28px}
+.overview-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.overview-title{margin:0;font:600 34px/1.1 Georgia,serif;color:#18392c}
+.overview-sub{margin:6px 0 0;color:#5d6b62;font-size:15px}
+.overview-seg{display:inline-flex;gap:4px;padding:5px;border:1px solid #e4e6ea;border-radius:12px;background:#eef0f3}
+.overview-seg button{margin:0;min-height:36px;padding:0 16px;border:0;border-radius:9px;background:transparent;color:#5d6b62;font:600 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;box-shadow:none;cursor:pointer}
+.overview-seg button[aria-pressed=true]{background:#fff;color:#18392c;box-shadow:0 1px 4px rgba(24,57,44,.12)}
+.overview-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:18px}
+.overview-card{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:22px 24px;border:1px solid #e7e8e2;border-radius:18px;background:#fffefb;box-shadow:0 6px 22px rgba(24,57,44,.05)}
+.overview-label{margin:0;color:#5d6b62;font-size:15px}
+.overview-value{margin:10px 0 12px;font:700 34px/1 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.02em;color:#141f19}
+.overview-delta{display:flex;align-items:center;gap:6px;margin:0;color:#7a857e;font-size:14px}
+.overview-badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:7px;font:600 13px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace}
+.overview-badge.is-good{background:#e3f3ea;color:#1f7a4d}.overview-badge.is-bad{background:#fbeae7;color:#9b473b}.overview-badge.is-flat{background:#eef0ea;color:#5d6b62}
+.overview-spark{flex:0 0 120px;width:120px;height:40px;overflow:visible}
+.overview-spark .spark-line{fill:none;stroke:#6b7a70;stroke-width:1.6}
+.overview-spark .spark-area{fill:#18392c;opacity:.06}
+.overview-spark .spark-dot.is-good{fill:#1f7a4d}.overview-spark .spark-dot.is-bad{fill:#9b473b}
+.overview-chart{padding:22px 24px;border:1px solid #e7e8e2;border-radius:18px;background:#fffefb;box-shadow:0 6px 22px rgba(24,57,44,.05)}
+.overview-chart-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.overview-chart-head h3{margin:0;font-size:17px;color:#18392c}
+.overview-chart-total{margin:8px 0 0;color:#5d6b62;font-size:15px}
+.overview-chart-total strong{font:700 26px/1 system-ui,-apple-system,"Segoe UI",sans-serif;color:#141f19;margin-right:6px}
+.overview-chart-tools{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.overview-legend{display:flex;gap:16px;color:#5d6b62;font-size:14px}
+.overview-legend span::before{content:"";display:inline-block;width:18px;margin-right:7px;vertical-align:middle;border-top:3px solid #c69543}
+.overview-legend .lg-prev::before{border-top:2px dashed #9aa39c}
+.overview-toggle{display:inline-flex;gap:2px;padding:3px;border:1px solid #e4e6ea;border-radius:10px;background:#fff}
+.overview-toggle button{display:grid;place-items:center;width:34px;height:30px;min-height:0;margin:0;padding:0;border:0;border-radius:7px;background:transparent;box-shadow:none;cursor:pointer}
+.overview-toggle button[aria-pressed=true]{background:#f6eedf}
+.overview-toggle svg{width:18px;height:18px;fill:none;stroke:#5d6b62;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.overview-toggle button[aria-pressed=true] svg{stroke:#ad7a35}
+.overview-svg{display:block;width:100%;height:auto}
+.overview-svg .grid{stroke:#e4e6e0;stroke-dasharray:3 4}
+.overview-svg .axis{fill:#7a857e;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.overview-svg .area{fill:#c69543;opacity:.14}
+.overview-svg .cur{fill:none;stroke:#c69543;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
+.overview-svg .prev{fill:none;stroke:#9aa39c;stroke-width:1.8;stroke-dasharray:6 5}
+.overview-svg .pt{fill:#fffefb;stroke:#c69543;stroke-width:2}
+.overview-table td,.overview-table th{white-space:nowrap}
+@media(max-width:760px){.overview-cards{grid-template-columns:1fr}.overview-title{font-size:28px}.overview-value{font-size:28px}.overview-spark{flex-basis:96px;width:96px}.overview-card{padding:18px}.overview-chart{padding:16px}.overview-seg{width:100%}.overview-seg button{flex:1}}
