@@ -33,15 +33,15 @@ Object.assign(M.rpc,{
  admin_barber_settlement:p=>settlementData(p.p_barber,p.p_start,p.p_end),
  my_settlement:p=>settlementData(M.myBarber(),p.p_start,p.p_end),
  admin_add_deduction:p=>{if(!db.barbers.some(b=>b.id===p.p_barber))fail('Barbeiro não encontrado.');if(!p.p_date)fail('Informe a data.');
-  if(!['product','cash','purchase','other'].includes(p.p_kind))fail('Tipo de baixa inválido.');let total,descr=String(p.p_description||'').trim(),extra={};
+  if(!['product','cash','purchase','other'].includes(p.p_kind))fail('Tipo de despesa inválido.');let total,descr=String(p.p_description||'').trim(),extra={};
   if(p.p_kind==='product'){const q=p.p_quantity;if(!(q>=1&&q<=99))fail('Quantidade de 1 a 99.');const pr=db.products.find(x=>x.id===p.p_product&&x.active);if(!pr||pr.stock<q)fail('Produto sem estoque suficiente.');
    pr.stock-=q;total=pr.price*q;if(!descr)descr=pr.name+' x'+q;extra={product_id:pr.id,quantity:q};}
-  else{total=Number(p.p_amount);if(!(total>0)||total>100000||cents(total)/100!==total)fail('Valor inválido.');if(!descr)fail('Descreva a baixa.');}
+  else{total=Number(p.p_amount);if(!(total>0)||total>100000||cents(total)/100!==total)fail('Valor inválido.');if(!descr)fail('Descreva a despesa.');}
   if(descr.length>120)fail('Descrição com até 120 caracteres.');
   if(p.p_kind==='purchase'){extra.installments=p.p_installments||1;if(!(extra.installments>=1&&extra.installments<=24))fail('Parcelas de 1 a 24.');}
   if(p.p_kind==='cash'){const c={id:uuid(),business_date:p.p_date,kind:'withdrawal',category:'Vale barbeiro',description:descr+' · '+db.barbers.find(b=>b.id===p.p_barber).name,amount:total,payment_method:'cash',created_at:now()};db.cash_movements.push(c);extra.cash=c.id;}
   const grp=add(p.p_barber,p.p_date,p.p_kind,descr,total,extra);save();return grp;},
- admin_delete_deduction:p=>{const d=db.barber_deductions.find(x=>x.id===p.p_id);if(!d)fail('Baixa não encontrada.');if(d.settlement_id)fail('Esta baixa já entrou num acerto pago e não pode ser excluída.');
+ admin_delete_deduction:p=>{const d=db.barber_deductions.find(x=>x.id===p.p_id);if(!d)fail('Despesa não encontrada.');if(d.settlement_id)fail('Esta despesa já entrou num acerto pago e não pode ser excluída.');
   if(d.kind==='product'&&d.product_id){const pr=db.products.find(x=>x.id===d.product_id);if(pr)pr.stock+=d.quantity;}
   const before=db.barber_deductions.length;db.barber_deductions=db.barber_deductions.filter(x=>!(x.group_id===d.group_id&&!x.settlement_id));
   if(d.kind==='cash'&&d.cash_movement_id)db.cash_movements=db.cash_movements.filter(c=>c.id!==d.cash_movement_id);save();return before-db.barber_deductions.length;},
