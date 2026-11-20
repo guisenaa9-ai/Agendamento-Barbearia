@@ -153,6 +153,9 @@ const defaults={services:{active:true,photo_url:null,description:''},barbers:{ac
 const headers={'Content-Type':'application/json','X-Content-Type-Options':'nosniff'};
 const json=(v,status=200)=>new Response(v===undefined?'':JSON.stringify(v),{status,headers});
 // Extensões da demonstração (ex.: demo-baixas.js) usam o mesmo banco fictício e acrescentam funções.
+// Aviso de exemplo na faixa do site (Campanhas → Aviso no site).
+if(db.shop_settings[0].announcement===undefined){db.shop_settings[0].announcement='Novembro: corte + barba com 10% de desconto';save();}
+rpc.site_announcement=()=>db.shop_settings[0].announcement||null;
 window.DemoMock={db:()=>db,rpc,save,fail,uuid,day,now,myBarber};
 const realFetch=window.fetch.bind(window);
 window.fetch=async(input,init={})=>{const url=String(input?.url||input);if(!url.startsWith(URL0))return realFetch(input,init);

@@ -20,7 +20,8 @@ const TABS={
  campanhas:[
   ['Públicos',()=>{const app=$('campaigns-app'),h=queueHead();return [...q(app,':scope>.growth-cards,.growth-panel'),...q(app,'.growth-panel>*').filter(e=>!h||!from(h).includes(e))];}],
   ['Fila de envio',()=>{const h=queueHead();return [...q($('campaigns-app'),'.growth-panel'),...(h?from(h):[])];}],
-  ['WhatsApp oficial',()=>[$('waofficial')],{open:true}]]
+  ['WhatsApp oficial',()=>[$('waofficial')],{open:true}],
+  ['Aviso no site',()=>[$('sitebanneradmin')]]]
 };
 const current={},bars={};
 // A barra fica logo abaixo do título da aba (em Campanhas, o título é criado pelo growth.js).
