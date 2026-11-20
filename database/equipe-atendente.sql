@@ -11,11 +11,10 @@ create table if not exists public.attendants(
 alter table public.attendants enable row level security;
 revoke all on public.attendants from anon,authenticated;
 
--- Atendente sempre entra com o código do celular (aal2), como o chefe no painel.
+-- Atendente entra com e-mail e senha, como o chefe.
 create or replace function public.is_attendant()
 returns boolean language sql stable security definer set search_path='' as $$
- select exists(select 1 from public.attendants where user_id=auth.uid())
-  and coalesce(auth.jwt()->>'aal','aal1')='aal2';
+ select exists(select 1 from public.attendants where user_id=auth.uid());
 $$;
 create or replace function public.is_staff()
 returns boolean language sql stable security definer set search_path='' as $$
