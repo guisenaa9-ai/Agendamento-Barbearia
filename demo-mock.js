@@ -152,6 +152,8 @@ const rpc={staff_role:()=>store?.getItem('demo-role')||'admin',is_admin:()=>true
 const defaults={services:{active:true,photo_url:null,description:''},barbers:{active:true,photo_url:null,specialty:'',bio:''},products:{active:true,stock:0},subscription_plans:{active:true,description:'',visits_per_month:null},subscriptions:{active:true},message_log:{campaign:null,booking_id:null}};
 const headers={'Content-Type':'application/json','X-Content-Type-Options':'nosniff'};
 const json=(v,status=200)=>new Response(v===undefined?'':JSON.stringify(v),{status,headers});
+// Extensões da demonstração (ex.: demo-baixas.js) usam o mesmo banco fictício e acrescentam funções.
+window.DemoMock={db:()=>db,rpc,save,fail,uuid,day,now,myBarber};
 const realFetch=window.fetch.bind(window);
 window.fetch=async(input,init={})=>{const url=String(input?.url||input);if(!url.startsWith(URL0))return realFetch(input,init);
  const u=new URL(url),path=u.pathname,method=(init.method||'GET').toUpperCase();

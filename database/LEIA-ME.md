@@ -18,6 +18,7 @@ No SQL Editor, execute nesta ordem (todos podem ser repetidos sem problema):
 8. `sem-horario-duplicado.sql` – impede duas reservas no mesmo horário para o mesmo barbeiro
 9. `barbeiro-fidelidade.sql` – área do barbeiro e programa de fidelidade (desligado até o chefe ativar)
 10. `barbeiro-avisos.sql` – barbeiro vê avisos de novos agendamentos e cancelamentos
+10d. `baixas-barbeiro.sql` – baixas na comissão (vale, produto do estoque, compra parcelada) e acerto do barbeiro
 10c. `whatsapp-oficial.sql` – lembrete automático e robô de agendamento pela API oficial do WhatsApp (fica desligado; veja `WHATSAPP-OFICIAL.md`)
 10b. `crescimento.sql` – lembretes e campanhas pelo WhatsApp, avaliação no Google, produtos com estoque, clube de assinatura, meta do barbeiro, avaliações e gorjeta
 11. `lgpd.sql` – permite ao cliente excluir a própria conta (exigência da LGPD)

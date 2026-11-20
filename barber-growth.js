@@ -24,6 +24,17 @@ async function render(){
    for(const c of m.comments.slice(0,3))rating.append(el('blockquote',null,'“'+c.comment+'” · '+'★'.repeat(c.rating)));}
   else rating.append(el('p','barber-rating-count','Quando seus clientes avaliarem o atendimento pela conta deles, a nota aparece aqui.'));
   box.replaceChildren(card,rating);
+  // Acerto do mês: baixas na comissão (vales, produtos, compras) e o que falta receber.
+  try{const today=api.day(),start=today.slice(0,8)+'01',end=new Date(Date.UTC(+today.slice(0,4),+today.slice(5,7),0)).toISOString().slice(0,10);
+   const s=await auth.rpc('my_settlement',{p_start:start,p_end:end}),acc=el('article','barber-settlement');
+   acc.append(el('p','barber-goal-eyebrow','Acerto de '+month));
+   const row=(label,value,cls)=>{const p=el('p','barber-settlement-line'+(cls?' '+cls:''));p.append(el('span',null,label),el('strong',null,value));return p;};
+   acc.append(row('Comissão do mês',money(s.commission)));
+   for(const i of s.items)acc.append(row(i.description+(i.installments>1?' ('+i.installment+'/'+i.installments+')':'')+' · '+i.due_date.slice(8,10)+'/'+i.due_date.slice(5,7)+(i.included?'':' · próximo acerto'),'- '+money(i.amount),'barber-settlement-item'+(i.included?'':' is-carry')));
+   if(!s.items.length)acc.append(el('p','barber-settlement-none','Nenhuma baixa neste mês.'));
+   acc.append(row(s.settlement?'Recebido':'A receber',money(s.to_pay),'barber-settlement-total'));
+   if(s.settlement)acc.append(el('p','barber-settlement-none','✓ Acerto pago pelo chefe.'));
+   box.append(acc);}catch{}
  }catch(e){box.replaceChildren(el('p','help',e.message));}
  finally{loading=false;}
 }

@@ -16,3 +16,10 @@
 .barber-rating-count{margin:6px 0 0;font-size:13px;color:#8a5b31}
 .barber-rating blockquote{margin:10px 0 0;padding:0 0 0 12px;border-left:3px solid #e7c9a0;font-size:14px;line-height:1.5;color:#5a4128}
 @media(max-width:420px){.barber-goal-grid{grid-template-columns:1fr}}
+.barber-settlement{padding:18px 20px;border:1px solid #e1e4d8;border-radius:16px;background:#fff}
+.barber-settlement .barber-goal-eyebrow{color:#7f5f31}
+.barber-settlement-line{display:flex;justify-content:space-between;gap:12px;margin:8px 0 0;font-size:14px;color:#3c5247}
+.barber-settlement-item{color:#9b473b}
+.barber-settlement-item.is-carry{color:#8a5b31;opacity:.8}
+.barber-settlement-total{margin-top:12px;padding-top:10px;border-top:2px solid #18392c;font-size:17px;color:#18392c}
+.barber-settlement-none{margin:8px 0 0;font-size:13px;color:#5d6b62}

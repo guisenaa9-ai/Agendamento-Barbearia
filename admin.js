@@ -203,6 +203,7 @@ if(run!==financeLoading||!session)return;
 const rates=new Map(details.map(r=>[r.barber_id,Number(r.commission_rate)]));
 financeReport=window.BarberFinance.summarize(bookings,attendances,barbers,rates);
 renderFinance(start,end);
+window.dispatchEvent(new CustomEvent('financerendered',{detail:{start,end,report:financeReport}}));
 status('Relatório financeiro atualizado.');
 }catch(e){status(e.message+' Execute relatorio-financeiro.sql no Supabase para ativar esta aba.');
 }finally{if(run===financeLoading)$('financerefresh').disabled=false;

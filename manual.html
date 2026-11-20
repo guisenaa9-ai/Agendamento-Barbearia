@@ -41,7 +41,7 @@
 
 <div class="org-link"><span>o barbeiro acompanha pelo celular</span></div>
 <div class="org-row org-row-short">
- <a class="org-node" href="#area-barbeiro"><b>Área do barbeiro</b><span>Meta do mês, ganhos e avaliações</span></a>
+ <a class="org-node" href="#area-barbeiro"><b>Área do barbeiro</b><span>Meta, ganhos, baixas e avaliações</span></a>
  <a class="org-node" href="#seguranca"><b>Acesso e segurança</b><span>Senha, código, tema e app</span></a>
  <a class="org-node" href="#faq"><b>Perguntas frequentes</b><span>Situações do dia a dia</span></a>
 </div>
@@ -299,7 +299,7 @@ Ler a receita recebida, o ticket médio, os serviços mais procurados, os horár
 
 <section class="manual-section" id="financeiro" data-desc="Faturamento e comissão de cada barbeiro" data-group="painel" data-role="chefe" aria-labelledby="financeiro-t"><h2 id="financeiro-t">Financeiro</h2>
 <p class="manual-who">Só chefe</p>
-<div class="m-intro"><p><strong>Para que serve:</strong> fechar o faturamento e calcular a comissão de cada barbeiro num período.</p>
+<div class="m-intro"><p><strong>Para que serve:</strong> fechar o faturamento, calcular a comissão de cada barbeiro num período, descontar as baixas (vales, produtos, compras) e registrar o pagamento.</p>
 <p><strong>Quem usa:</strong> só o chefe.</p>
 </div>
 <div class="m-step" data-kind="flow"><h3>Passo a passo</h3>
@@ -312,6 +312,13 @@ Ver o "Detalhamento por barbeiro e serviço" logo abaixo.
 </li><li>
 Para guardar ou mandar ao contador, tocar em "Baixar CSV" (abre no Excel) ou em "Imprimir".
 </li></ol>
+</div>
+<div class="m-step" data-kind="flow"><h3>Acerto do barbeiro e baixas na comissão</h3>
+<ol><li>Gerar o relatório do período. Logo abaixo aparece "Acerto do barbeiro": escolher o barbeiro.</li>
+<li>Para descontar algo da comissão, tocar em "+ Lançar baixa" e escolher o tipo: Vale em dinheiro (também sai do Caixa do dia), Produto do estoque (o valor vem do cadastro e o estoque diminui), Compra parcelada (dividida em parcelas mensais) ou Outra baixa.</li>
+<li>Conferir a comissão, as baixas e o valor "A pagar". Baixa lançada errado sai em "Excluir".</li>
+<li>Ao pagar o barbeiro, escolher a forma e tocar em "Marcar como pago". Pagamento em dinheiro também sai do Caixa do dia.</li></ol>
+<p>Se as baixas passarem da comissão, entram as mais antigas até o limite e o resto fica para o próximo acerto. Depois de pago, as baixas daquele acerto não podem ser excluídas. O relatório também mostra as colunas "Baixas" e "A pagar ao barbeiro".</p>
 </div>
 <div class="m-step" data-kind="info"><h3>Bom saber</h3>
 <p>A comissão é calculada sobre os valores pagos, com a porcentagem cadastrada na aba Barbeiros. Os valores são das vendas registradas: não descontam taxas da maquininha nem impostos.</p>
@@ -412,6 +419,9 @@ Mande só para clientes da barbearia e respeite quem pedir para parar (LGPD). A 
 </div>
 <div class="m-step" data-kind="info"><h3>Meta e ganhos do mês</h3>
 <p>No topo da Área do barbeiro fica o cartão do mês: quanto já faturou contra a meta, a comissão do mês e a previsão até o fim do mês, somando os horários já marcados. Logo abaixo, a nota média e os últimos comentários dos clientes.</p>
+</div>
+<div class="m-step" data-kind="info"><h3>Acerto do mês</h3>
+<p>Abaixo da meta, o barbeiro vê o acerto do mês: a comissão, cada baixa lançada pelo chefe (vale, produto, parcela de compra) e o valor a receber. Quando o chefe marca como pago, aparece "Acerto pago".</p>
 </div>
 <div class="m-step" data-kind="flow"><h3>No dia a dia</h3>
 <ol><li>Em "Novidades", ver reservas novas, alteradas e canceladas dos últimos 7 dias. Tocar na lista para marcar como vistas.</li>

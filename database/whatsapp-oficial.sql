@@ -15,7 +15,7 @@ create table if not exists public.whatsapp_settings(
  reminders_enabled boolean not null default true,
  bot_enabled boolean not null default true,
  phone_number_id text check(phone_number_id is null or phone_number_id ~ '^[0-9]{5,30}$'),
- template_name text not null default 'lembrete_horario' check(template_name ~ '^[a-z0-9_]{1,512}$'),
+ template_name text not null default 'lembrete_horario' check(template_name ~ '^[a-z0-9_]+$' and length(template_name)<=512),
  template_lang text not null default 'pt_BR' check(template_lang ~ '^[a-z]{2}(_[A-Z]{2})?$'),
  graph_version text not null default 'v26.0' check(graph_version ~ '^v[0-9]{2}\.0$'),
  reminder_hour int not null default 18 check(reminder_hour between 6 and 22),
