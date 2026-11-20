@@ -77,3 +77,10 @@
 .acerto-detail .settlement-head button{width:auto}
 .deduction-form h4{grid-column:1/-1;margin:0;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#7f5f31}
 @media(max-width:640px){.acerto-bar label{max-width:none;flex:1 1 100%}.acerto-add{width:100%}.acerto-cards .growth-card{min-height:150px}}
+/* Financeiro: sub-abas Relatório | Acerto dos barbeiros */
+.fin-subtabs{display:inline-flex;gap:4px;margin:4px 0 18px;padding:4px;border:1px solid #e1e4d8;border-radius:12px;background:#fff}
+.fin-subtabs button{margin:0;min-height:40px;padding:0 18px;border:0;border-radius:9px;background:transparent;color:#3c5247;font-weight:700;box-shadow:none}
+.fin-subtabs button[aria-selected=true]{background:#18392c;color:#fff}
+#fin-acerto>.help{margin:0 0 4px}
+@media(max-width:640px){.fin-subtabs{display:flex}.fin-subtabs button{flex:1;padding:0 6px;font-size:13px;white-space:nowrap}}
+@media print{.fin-subtabs{display:none!important}}

@@ -28,3 +28,7 @@ Data: 20/11/2026. Branch: `baixas-barbeiro` (cópia separada em `orca/workspaces
 - "Baixa" virou "despesa" na tela, no manual (seção nova "Acerto dos barbeiros"), na Área do barbeiro e nas mensagens do banco (admin_add_deduction e admin_delete_deduction reaplicadas no Supabase real).
 - Corrigido: página aberta direto em #acerto não carregava os cartões (login terminava antes do script).
 - Verificado: 60/60, static OK; navegador 1366 e 390 px (lançar compra 4x para o Lucas, pagar em dinheiro, saída no Caixa). Prints: acerto-aba-desktop.png, acerto-aba-mobile.png, acerto-despesa-mobile.png.
+
+## Rodada 3: Acerto vira sub-aba do Financeiro
+- Pedido do usuário: o Acerto fica dentro do Financeiro. Saiu do menu lateral; o Financeiro tem as sub-abas "Relatório" e "Acerto dos barbeiros". O botão "+ Despesa do barbeiro" do Relatório abre a sub-aba com o formulário.
+- Verificado: 60/60, static OK; navegador 1366 e 390 px (sub-abas, cartões, atalho, sem rolagem lateral). Prints: acerto-subaba-desktop.png, acerto-subaba-mobile.png.

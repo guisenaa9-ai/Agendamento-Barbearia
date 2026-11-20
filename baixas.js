@@ -1,4 +1,4 @@
-/* Aba "Acerto dos barbeiros" (só chefe): comissão do mês menos as despesas que a barbearia pagou pelo barbeiro.
+/* Financeiro → sub-aba "Acerto dos barbeiros" (só chefe): comissão do mês menos as despesas que a barbearia pagou pelo barbeiro.
    Banco: database/baixas-barbeiro.sql. Também acrescenta as colunas Despesas e A pagar no relatório do Financeiro. */
 (()=>{
 const $=id=>document.getElementById(id),app=$('acerto-app'),api=window.BarberAPI,auth=window.StaffAuth;if(!app||!api||!auth)return;
@@ -116,11 +116,16 @@ async function refreshColumns(){
  const foot=$('financefoot')?.rows[0];if(foot){foot.querySelectorAll('.col-deductions').forEach(td=>td.remove());
   const sum=k=>list.reduce((s,d)=>s+(d?Number(d[k]):0),0);for(const v of [money(sum('deductions')),money(sum('to_pay'))])foot.append(el('td','col-deductions',v));}
 }
-const goAcerto=()=>{$('nav-acerto').click();form();};
+// Sub-abas do Financeiro: Relatório | Acerto dos barbeiros.
+const subs={relatorio:$('finsub-relatorio'),acerto:$('finsub-acerto')};
+const isOpen=()=>!$('fin-acerto').hidden&&!$('tab-financeiro').hidden;
+function sub(name){for(const [k,b] of Object.entries(subs)){const on=k===name;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;$('fin-'+k).hidden=!on;}
+ if(name==='acerto'&&auth.session()&&auth.role()==='admin')load();}
+for(const [k,b] of Object.entries(subs)){b.onclick=()=>sub(k);b.onkeydown=e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();const o=k==='acerto'?'relatorio':'acerto';sub(o);subs[o].focus();};}
 const filters=document.querySelector('#tab-financeiro .finance-filters');
-if(filters&&!$('financededuction')){const b=button('+ Despesa do barbeiro',null,goAcerto);b.id='financededuction';filters.append(b);}
+if(filters&&!$('financededuction')){const b=button('+ Despesa do barbeiro',null,()=>{sub('acerto');form();});b.id='financededuction';filters.append(b);}
 window.addEventListener('financerendered',e=>{if(auth.role()!=='admin')return;lastReport=e.detail;refreshColumns();});
-window.addEventListener('stafftabchange',e=>{if(e.detail.name==='acerto'&&auth.session()&&auth.role()==='admin')load();});
-// O login pode terminar antes deste arquivo carregar (página aberta direto em #acerto).
-if(!$('tab-acerto').hidden&&auth.role()==='admin')load();
+window.addEventListener('stafftabchange',e=>{if(e.detail.name==='financeiro'&&isOpen()&&auth.role()==='admin')load();});
+// O login pode terminar antes deste arquivo carregar.
+if(isOpen()&&auth.role()==='admin')load();
 })();
