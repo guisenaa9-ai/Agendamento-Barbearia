@@ -1,0 +1,44 @@
+/* Calendário + horários (calendar-picker.js) e faixa de aviso (aviso-site.js). Cores da barbearia: verde e dourado. */
+.calpick-native{display:none!important}
+.calpick{display:grid;grid-template-columns:minmax(0,400px) minmax(220px,1fr);margin:12px 0 18px;border:1px solid #dfe3d8;border-radius:14px;background:#fff;overflow:hidden}
+.calpick-cal{padding:16px 18px;border-right:1px solid #e7eae2}
+.calpick-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.calpick-month{margin:0;font-weight:700;font-size:15px;color:#18392c;text-transform:capitalize}
+.calpick-nav{width:34px;height:34px;min-height:0;margin:0;padding:0;border:1px solid #dfe3d8;border-radius:9px;background:#fff;color:#18392c;font-size:20px;line-height:1;box-shadow:none;cursor:pointer}
+.calpick-nav:disabled{opacity:.35;cursor:default}
+.calpick-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.calpick-dow{padding:4px 0;text-align:center;font-size:12px;color:#6b7a70}
+.calpick-day{height:42px;min-height:0;width:100%;margin:0;padding:0;border:0;border-radius:9px;background:transparent;color:#18392c;font:inherit;font-size:14px;box-shadow:none;cursor:pointer}
+.calpick-day:hover:not(:disabled){background:#eef2ea}
+.calpick-day.is-today{box-shadow:inset 0 0 0 1px #c69543}
+.calpick-day[aria-pressed=true]{background:#18392c;color:#fff;box-shadow:none}
+.calpick-day:disabled{color:#b8c0b9;cursor:default}
+.calpick-day:focus-visible,.calpick-time:focus-visible,.calpick-nav:focus-visible{outline:2px solid #c69543;outline-offset:2px}
+.calpick-times{display:flex;flex-direction:column;min-height:0;background:#fbfaf6}
+.calpick-title{margin:0;padding:14px 14px 8px;text-align:center;font-size:13px;font-weight:700;color:#18392c}
+.calpick-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px;align-content:start;padding:4px 14px 14px;overflow-y:auto;max-height:316px}
+.calpick-time{display:flex;flex-direction:column;align-items:center;gap:1px;width:100%;min-height:40px;margin:0;padding:6px 10px;border:1px solid #d5dbcf;border-radius:9px;background:#fff;color:#18392c;font:inherit;font-size:14px;font-weight:600;box-shadow:none;cursor:pointer}
+.calpick-time small{font-size:11px;font-weight:500;color:#6b7a70}
+.calpick-time:hover:not(:disabled){border-color:#18392c}
+.calpick-time[aria-pressed=true]{background:#18392c;border-color:#18392c;color:#fff}
+.calpick-time[aria-pressed=true] small{color:#e7dcc6}
+.calpick-time:disabled{opacity:.45;cursor:default}
+.calpick-empty{margin:6px 0;text-align:center;font-size:13px;color:#6b7a70}
+@media(max-width:640px){
+ .calpick{grid-template-columns:1fr}
+ .calpick-cal{border-right:0;border-bottom:1px solid #e7eae2;padding:14px}
+ .calpick-list{grid-template-columns:repeat(3,minmax(0,1fr));max-height:none}
+ .calpick-day{height:40px}
+}
+/* Faixa de aviso no topo do site */
+.site-banner{position:relative;z-index:30;display:flex;align-items:center;justify-content:center;min-height:42px;padding:8px 48px;overflow:hidden;isolation:isolate;background:#18392c;color:#fff;font-size:14px;font-weight:600;text-align:center}
+.site-banner-glow{position:absolute;inset:0;z-index:-1;background-image:repeating-linear-gradient(60deg,rgba(198,149,67,0) 0,rgba(198,149,67,.55) 6%,rgba(198,149,67,0) 12%,rgba(79,128,97,0) 18%,rgba(79,128,97,.6) 24%,rgba(79,128,97,0) 30%,rgba(231,220,198,.35) 36%,rgba(231,220,198,0) 42%,rgba(198,149,67,0) 50%);background-size:200% 100%;animation:site-banner-move 18s linear infinite;mask-image:linear-gradient(to bottom,#fff,rgba(255,255,255,.35))}
+@keyframes site-banner-move{from{background-position:0% 0}to{background-position:100% 0}}
+.site-banner-text{text-wrap:balance}
+.site-banner-close{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:32px;height:32px;min-height:0;margin:0;padding:0;border:0;border-radius:8px;background:transparent;color:#e7dcc6;font-size:22px;line-height:1;box-shadow:none;cursor:pointer}
+.site-banner-close:hover{background:rgba(255,255,255,.12);color:#fff}
+.site-banner-close:focus-visible{outline:2px solid #c69543}
+.site-banner-label{margin:14px 0 0;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7f5f31}
+.site-banner-preview{border-radius:10px;margin-top:4px}
+.site-banner-preview.is-empty{background:#eef0ea;color:#6b7a70;font-weight:500}
+@media(prefers-reduced-motion:reduce){.site-banner-glow{animation:none}}

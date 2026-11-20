@@ -21,6 +21,7 @@ No SQL Editor, execute nesta ordem (todos podem ser repetidos sem problema):
 10d. `baixas-barbeiro.sql` – baixas na comissão (vale, produto do estoque, compra parcelada) e acerto do barbeiro
 10c. `whatsapp-oficial.sql` – lembrete automático e robô de agendamento pela API oficial do WhatsApp (fica desligado; veja `WHATSAPP-OFICIAL.md`)
 10b. `crescimento.sql` – lembretes e campanhas pelo WhatsApp, avaliação no Google, produtos com estoque, clube de assinatura, meta do barbeiro, avaliações e gorjeta
+10e. `aviso-site.sql` – faixa de aviso no topo do site do cliente (o chefe escreve em Campanhas → Aviso no site)
 11. `lgpd.sql` – permite ao cliente excluir a própria conta (exigência da LGPD)
 12. `seguranca-permissoes.sql` – tira de visitantes e clientes as funções que são só do chefe ou de uso interno
 
