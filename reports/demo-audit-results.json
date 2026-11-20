@@ -1,7 +1,7 @@
 {
-  "time": "2026-11-19T03:31:50.406Z",
+  "time": "2026-11-20T15:50:38.629Z",
   "scope": "Isolated demo simulator, no production requests",
-  "passed": 52,
+  "passed": 60,
   "failed": 0,
   "results": [
     {
@@ -210,6 +210,38 @@
     },
     {
       "name": "Cadastro pelo painel devolve a linha criada",
+      "status": "PASS"
+    },
+    {
+      "name": "Acerto: comissao menos baixas pendentes",
+      "status": "PASS"
+    },
+    {
+      "name": "Baixa de produto tira do estoque e usa o preco do cadastro",
+      "status": "PASS"
+    },
+    {
+      "name": "Vale em dinheiro sai do caixa do dia",
+      "status": "PASS"
+    },
+    {
+      "name": "Compra parcelada divide em parcelas mensais que somam o total",
+      "status": "PASS"
+    },
+    {
+      "name": "Excluir baixa devolve estoque e tira o vale do caixa",
+      "status": "PASS"
+    },
+    {
+      "name": "Baixas acima da comissao ficam para o proximo acerto",
+      "status": "PASS"
+    },
+    {
+      "name": "Marcar pago fecha as baixas e bloqueia periodo repetido",
+      "status": "PASS"
+    },
+    {
+      "name": "Barbeiro ve o proprio acerto do mes",
       "status": "PASS"
     }
   ]

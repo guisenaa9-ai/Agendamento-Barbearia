@@ -48,3 +48,18 @@
 .wa-template{width:100%;min-height:90px;font-size:14px;background:#f7f6f2}
 .wa-note{margin:4px 0 0;padding:10px 12px;border-radius:10px;background:#fdf6ea;color:#8a5b31;font-size:13px;font-weight:600}
 .wa-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:4px}
+/* Acerto do barbeiro (baixas.js) */
+.settlement-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.settlement-head h3{margin:0}
+.settlement-head select{width:auto;min-width:200px}
+.settlement-period{margin:4px 0 10px;font-weight:600;color:#3c5247}
+.settlement .bill-line,.settlement .bill-total{display:flex;justify-content:space-between;gap:12px;margin:8px 0}
+.settlement .bill-total{padding-top:12px;border-top:2px solid #18392c;font-size:20px}
+.settlement-carry{color:#8a5b31}
+.settlement-items{margin:6px 0 4px;padding-left:12px;border-left:3px solid #e1e4d8}
+.settlement-actions{align-items:center}
+.settlement-actions select{width:auto}
+.settlement-paid{margin:6px 0 0;font-weight:700;color:#1f7a4d}
+.deduction-form{margin:10px 0;padding:14px;border:1px solid #e1e4d8;border-radius:12px;background:#fbfaf6}
+.deduction-form .help{grid-column:1/-1;margin:0}
+.finance-table .col-deductions{white-space:nowrap;padding-left:8px;padding-right:8px}
