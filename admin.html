@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="pole.css?v=services-64">
 <link rel="stylesheet" href="polish.css?v=services-64">
 <link rel="stylesheet" href="painel.css?v=services-64">
-<link rel="stylesheet" href="attendance.css?v=services-64"><link rel="stylesheet" href="design.css?v=services-64"><link rel="stylesheet" href="manual.css?v=growth-1"><link rel="stylesheet" href="balcao.css?v=balcao-1"><link rel="stylesheet" href="growth.css?v=subaba-1"><script src="tema.js?v=services-64"></script>
+<link rel="stylesheet" href="attendance.css?v=services-64"><link rel="stylesheet" href="design.css?v=services-64"><link rel="stylesheet" href="manual.css?v=growth-1"><link rel="stylesheet" href="balcao.css?v=balcao-1"><link rel="stylesheet" href="growth.css?v=subabas-1"><script src="tema.js?v=services-64"></script>
 <body class="staff-page">
 <main>
 <header class="staff-header">
@@ -162,14 +162,10 @@
 </section>
 <section id="tab-financeiro" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-financeiro" hidden>
 <div class="section-intro">
-<h3>Faturamento e comissões</h3>
-<p>Valores calculados a partir dos atendimentos com pagamento registrado no período.</p>
+<h3>Financeiro</h3>
+<p>Faturamento, comissões e despesas dos barbeiros.</p>
 </div>
-<div class="fin-subtabs" role="tablist" aria-label="Partes do Financeiro">
-<button id="finsub-relatorio" role="tab" type="button" aria-selected="true" aria-controls="fin-relatorio">Relatório</button>
-<button id="finsub-acerto" role="tab" type="button" aria-selected="false" aria-controls="fin-acerto" tabindex="-1">Acerto dos barbeiros</button>
-</div>
-<div id="fin-relatorio" role="tabpanel" aria-labelledby="finsub-relatorio">
+<div id="fin-geral">
 <div class="finance-filters">
 <label>Data inicial<input id="financestart" type="date"></label>
 <label>Data final<input id="financeend" type="date"></label>
@@ -187,12 +183,12 @@
 </table>
 </div>
 <p id="financeempty" hidden>Nenhum atendimento pago encontrado no período.</p>
+</div>
+<div id="fin-comissoes"><div id="acerto-app"></div></div>
+<div id="fin-despesas"><div id="despesas-app"></div></div>
+<div id="fin-detalhe">
 <h3 class="finance-detail-title">Detalhamento por barbeiro e serviço</h3>
 <div id="financedetails" class="finance-details"></div>
-</div>
-<div id="fin-acerto" role="tabpanel" aria-labelledby="finsub-acerto" hidden>
-<p class="help">Comissão do mês menos as despesas que a barbearia pagou pelo barbeiro: vales em dinheiro, produtos do estoque e compras parceladas. Toque num barbeiro para ver o detalhe e marcar como pago.</p>
-<div id="acerto-app"></div>
 </div>
 </section>
 <section id="tab-caixa" class="staff-tabpanel" role="tabpanel" aria-labelledby="nav-caixa" hidden>
@@ -313,9 +309,9 @@
 <script src="agenda-pro.js?v=services-64"></script>
 <script src="attendance-model.js?v=growth-1"></script>
 <script src="attendance.js?v=growth-1"></script>
-<script src="manual-app.js?v=subaba-1"></script>
+<script src="manual-app.js?v=subabas-1"></script>
 <script src="growth.js?v=growth-1"></script>
 <script src="whatsapp-api.js?v=wa-1"></script>
-<script src="baixas.js?v=subaba-1"></script>
+<script src="baixas.js?v=subabas-1"></script><script src="subtabs.js?v=subabas-1"></script>
 <script src="update-check.js?v=services-64" data-version="services-64"></script><button id="installapp" type="button" class="install-app" hidden>📲 Instalar app</button></body>
 </html>

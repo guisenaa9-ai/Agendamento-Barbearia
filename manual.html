@@ -32,7 +32,7 @@
   <div><a class="org-node" href="#agenda"><b>Agenda</b><span>Horários, reservas no balcão e folgas</span></a></div>
   <div><a class="org-node" href="#atendimentos"><b>Atendimentos</b><span>Chegada, extras e pagamento</span></a></div>
   <div><a class="org-node" href="#caixa"><b>Caixa diário</b><span>Abertura, despesas e fechamento</span></a></div>
-  <div class="org-node org-group"><a class="org-group-link" href="#dashboard"><b>Números</b><span>Só o chefe vê</span></a><span class="org-sub"><a href="#dashboard">Dashboard e BI</a><a href="#financeiro">Financeiro</a><a href="#acerto">Acerto dos barbeiros</a></span></div>
+  <div class="org-node org-group"><a class="org-group-link" href="#dashboard"><b>Números</b><span>Só o chefe vê</span></a><span class="org-sub"><a href="#dashboard">Dashboard e BI</a><a href="#financeiro">Financeiro</a><a href="#acerto">Comissões e despesas</a></span></div>
   <div><a class="org-node" href="#servicos"><b>Serviços</b><span>Preços, produtos, fidelidade e clube</span><span class="org-tag">Só chefe</span></a></div>
   <div><a class="org-node" href="#barbeiros"><b>Barbeiros</b><span>Equipe, metas e chave Pix</span><span class="org-tag">Só chefe</span></a></div>
   <div><a class="org-node" href="#campanhas"><b>Campanhas</b><span>Sumidos, fiéis e avaliação no Google</span><span class="org-tag">Só chefe</span></a></div>
@@ -148,7 +148,7 @@ Com "Sem preferência", o sistema escolhe o barbeiro livre com menos reservas no
 <ol><li>
 Abrir o Portal do chefe e digitar e-mail e senha.
 </li><li>
-Escolher a aba no menu lateral. No celular, o menu fica no topo e desliza para o lado.
+Escolher a aba no menu lateral. No celular, o menu fica no topo e desliza para o lado. Dentro de cada aba, as sub-abas no topo (por exemplo Serviços, Produtos, Clube de assinatura) separam as partes.
 </li></ol>
 </div>
 <div class="m-step" data-kind="info"><h3>Erros comuns e solução</h3>
@@ -300,40 +300,42 @@ Ler a receita recebida, o ticket médio, os serviços mais procurados, os horár
 </div>
 <div class="m-step" data-kind="flow"><h3>Passo a passo</h3>
 <ol><li>
-Escolher a data inicial e a final e tocar em "Gerar relatório".
+O Financeiro tem quatro sub-abas no topo: Visão geral, Comissões, Despesas do barbeiro e Detalhamento.
+</li><li>
+Em Visão geral, escolher a data inicial e a final e tocar em "Gerar relatório".
 </li><li>
 Conferir, por barbeiro, os atendimentos pagos, o faturamento, a porcentagem e o valor da comissão e o líquido da barbearia.
 </li><li>
-Ver o "Detalhamento por barbeiro e serviço" logo abaixo.
+Em Detalhamento, ver os serviços de cada barbeiro no mesmo período.
 </li><li>
 Para guardar ou mandar ao contador, tocar em "Baixar CSV" (abre no Excel) ou em "Imprimir".
 </li></ol>
 </div>
 <div class="m-step" data-kind="info"><h3>Despesas do barbeiro</h3>
-<p>O relatório mostra as colunas "Despesas" e "A pagar". Para lançar uma despesa, tocar em "+ Despesa do barbeiro" ou abrir a sub-aba <a href="#acerto">Acerto dos barbeiros</a>, ao lado de "Relatório".</p>
+<p>O pagamento da comissão e as despesas do barbeiro ficam nas sub-abas Comissões e Despesas do barbeiro. Veja <a href="#acerto">Comissões e despesas</a>.</p>
 </div>
 <div class="m-step" data-kind="info"><h3>Bom saber</h3>
 <p>A comissão é calculada sobre os valores pagos, com a porcentagem cadastrada na aba Barbeiros. Os valores são das vendas registradas: não descontam taxas da maquininha nem impostos.</p>
 </div>
 <a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
 
-<section class="manual-section" id="acerto" data-desc="Despesas do barbeiro e pagamento da comissão" data-group="painel" data-role="chefe" aria-labelledby="acerto-t"><h2 id="acerto-t">Acerto dos barbeiros</h2>
+<section class="manual-section" id="acerto" data-desc="Despesas do barbeiro e pagamento da comissão" data-group="painel" data-role="chefe" aria-labelledby="acerto-t"><h2 id="acerto-t">Comissões e despesas</h2>
 <p class="manual-who">Só chefe · dentro do Financeiro</p>
 <div class="m-intro"><p><strong>Para que serve:</strong> descontar da comissão o que a barbearia pagou pelo barbeiro (vales, produtos, compras) e registrar o pagamento do mês.</p>
 <p><strong>Quem usa:</strong> só o chefe.</p>
 </div>
 <div class="m-step" data-kind="flow"><h3>Lançar uma despesa</h3>
-<ol><li>Abrir Financeiro, tocar na sub-aba "Acerto dos barbeiros" (ao lado de "Relatório") e tocar em "+ Lançar despesa".</li>
+<ol><li>Abrir Financeiro, tocar na sub-aba "Despesas do barbeiro" e em "+ Lançar despesa".</li>
 <li>Escolher o barbeiro e o tipo: Vale em dinheiro (também sai do Caixa do dia), Produto do estoque (o valor vem do cadastro e o estoque diminui), Compra parcelada (dividida em parcelas, uma por mês) ou Outra despesa.</li>
 <li>Informar a data, a descrição e o valor e tocar em "Lançar despesa".</li></ol>
 </div>
 <div class="m-step" data-kind="flow"><h3>Pagar o barbeiro</h3>
-<ol><li>Escolher o mês. Cada barbeiro aparece num cartão com a comissão, as despesas e o valor "A pagar".</li>
-<li>Tocar no cartão para ver cada despesa. Despesa lançada errado sai em "Excluir".</li>
+<ol><li>Abrir a sub-aba "Comissões" e escolher o mês. Cada barbeiro aparece numa linha com a comissão, as despesas e o valor "A pagar".</li>
+<li>Tocar em "Pagar" para ver cada despesa. Despesa lançada errado sai em "Excluir" (também na sub-aba Despesas do barbeiro).</li>
 <li>Escolher a forma de pagamento e tocar em "Marcar como pago". Pagamento em dinheiro também sai do Caixa do dia.</li></ol>
 </div>
 <div class="m-step" data-kind="info"><h3>Bom saber</h3>
-<p>Se as despesas passarem da comissão, entram as mais antigas até o limite e o resto fica para o próximo mês: o barbeiro nunca fica com valor negativo. Depois de pago, as despesas daquele mês não podem ser excluídas. O barbeiro vê o acerto dele na Área do barbeiro.</p>
+<p>Se as despesas passarem da comissão, entram as mais antigas até o limite e o resto fica para o próximo mês: o barbeiro nunca fica com valor negativo. Depois de pago, aparece "✓ Pago" e as despesas daquele mês não podem ser excluídas. O barbeiro vê o acerto dele na Área do barbeiro.</p>
 </div>
 <a class="manual-back" href="#org-titulo">↑ Voltar ao mapa</a></section>
 
